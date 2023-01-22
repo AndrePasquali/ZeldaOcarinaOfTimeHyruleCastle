@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.81
+    m_Value: 1.12
   contrast:
     m_OverrideState: 1
     m_Value: 18
@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 32
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,18 +56,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa3b8214f75b354e9ba2caadd022259, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   quality:
     m_OverrideState: 0
     m_Value: 3
   focusMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   focusDistance:
-    m_OverrideState: 0
-    m_Value: 3.97
+    m_OverrideState: 1
+    m_Value: 3.69
   focusDistanceMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   nearFocusStart:
     m_OverrideState: 0
@@ -126,10 +126,10 @@ MonoBehaviour:
     m_Value: 0.54
   intensity:
     m_OverrideState: 1
-    m_Value: 0.587
+    m_Value: 0.794
   scatter:
     m_OverrideState: 0
-    m_Value: 0.7
+    m_Value: 0.705
   tint:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
