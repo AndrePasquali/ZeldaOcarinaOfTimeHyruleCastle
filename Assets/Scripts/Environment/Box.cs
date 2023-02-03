@@ -1,4 +1,5 @@
 using System;
+using MainLeaf.OcarinaOfTime.Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -20,8 +21,18 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
 
         private void OnCollisionStay(Collision other)
         {
-            if(other.gameObject.tag.Equals("Player")) Push(gameObject, _rigibody);
+            if(other.gameObject.tag.Equals("Player")) Push(other.gameObject, _rigibody);
         }
+
+        private void OnCollisionExit(Collision other)
+        {
+            if (other.gameObject.tag.Equals("Player"))
+            {
+                var player = other.gameObject.GetComponent<PlayerController>();
+                player.SetAnimator("Push", false);
+            }
+        }
+
         public void Push(GameObject player, Rigidbody pushableObject)
         {
             if (_drag)
@@ -29,8 +40,13 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
                 Debug.Log($"Push {gameObject.name}");
                 pushableObject.isKinematic = false;
                 pushableObject.AddForce(gameObject.transform.forward * _forceMultiplier, ForceMode.Force);
+                player.GetComponent<PlayerController>().SetAnimator("Push", true);
             }
-            else pushableObject.isKinematic = true;
+            else
+            {
+                pushableObject.isKinematic = true;
+                player.GetComponent<PlayerController>().SetAnimator("Push", false);
+            }
         }
     }
 }

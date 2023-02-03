@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MainLeaf.OcarinaOfTime.Character;
 using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        private CharacterAbility _characterAbility;
         [SerializeField] private float m_moveSpeed = 2;
         [SerializeField] private float m_turnSpeed = 200;
         [SerializeField] private float m_jumpForce = 10;
@@ -126,6 +128,8 @@ namespace MainLeaf.OcarinaOfTime.Player
             
             m_wasGrounded = m_isGrounded;
             m_jumpInput = false;
+            
+            
         }
 
         private void UpdateMovement()
@@ -185,6 +189,11 @@ namespace MainLeaf.OcarinaOfTime.Player
             {
                 m_animator.SetFloat("Jump", 1);
             }
+        }
+
+        public void SetAnimator(string clipName, bool value)
+        {
+            m_animator.SetBool(clipName, value);
         }
     }
 }
