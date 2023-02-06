@@ -1,4 +1,4 @@
-namespace MainLeaf.OcarinaOfTime.Character.Enum
+namespace MainLeaf.OcarinaOfTime.Character.StateMachine
 {
     public enum CharacterDirection
     {

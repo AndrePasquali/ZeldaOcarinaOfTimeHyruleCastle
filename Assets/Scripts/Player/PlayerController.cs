@@ -165,7 +165,7 @@ namespace MainLeaf.OcarinaOfTime.Player
             m_animator.SetFloat("Turn", m_currentH);
 
 
-            JumpingAndLanding();
+            //JumpingAndLanding();
         }
 
         private void JumpingAndLanding()

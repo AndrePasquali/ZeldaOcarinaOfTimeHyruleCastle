@@ -1,6 +1,6 @@
-namespace MainLeaf.OcarinaOfTime.Character.Enum
+namespace MainLeaf.OcarinaOfTime.Character.StateMachine
 {
-    public enum CharacterMovementStates
+    public enum CharacterMovement
     {
         Default,
         Idle,
@@ -8,7 +8,6 @@ namespace MainLeaf.OcarinaOfTime.Character.Enum
         Falling,
         Running,
         Crouching,
-        WallClinging,
         Diving,
         Jumping,
         Pushing,
