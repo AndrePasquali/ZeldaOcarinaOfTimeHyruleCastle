@@ -16,10 +16,19 @@ namespace MainLeaf.OcarinaOfTime.Character
         
         public InputController InputController;
 
+        public static Action<MainLeaf.OcarinaOfTime.Character.StateMachine.CharacterMovement> OnCharacterMovementStateChange;
+
+        private void OnCharacterMovementChange(MainLeaf.OcarinaOfTime.Character.StateMachine.CharacterMovement newMovementState)
+        {
+            CharacterState.CurrentMovementState = newMovementState;
+        }
+
         private void Awake() => Initialize();
 
         private void Initialize()
         {
+            OnCharacterMovementStateChange += OnCharacterMovementChange;
+            
             CharacterState = GetComponent<CharacterStateMachine>();
             CharacterMovement = GetComponent<CharacterMovement>();
             InputController = GetComponent<InputController>();

@@ -18,18 +18,18 @@ MonoBehaviour:
     type: 2}
   m_RenderingPathDefaultCameraFrameSettings:
     bitDatas:
-      data1: 140666587840333
+      data1: 140666587840332
       data2: 13763000511710068760
     lodBias: 1
     lodBiasMode: 0
-    lodBiasQualityLevel: 0
+    lodBiasQualityLevel: 1
     maximumLODLevel: 0
     maximumLODLevelMode: 0
-    maximumLODLevelQualityLevel: 0
+    maximumLODLevelQualityLevel: 1
     sssQualityMode: 0
     sssQualityLevel: 0
     sssCustomSampleBudget: 20
-    msaaMode: 1
+    msaaMode: 2
     materialQuality: 0
   m_RenderingPathDefaultBakedOrCustomReflectionFrameSettings:
     bitDatas:
@@ -100,7 +100,7 @@ MonoBehaviour:
     serializedProfiles: []
     serializedBakeSettings: []
     serializedBakingSets: []
-    m_LightingScenario: 
+    m_LightingScenario: Default
   m_Version: 5
   m_ShaderVariantLogLevel: 0
   m_ExportShaderVariants: 1

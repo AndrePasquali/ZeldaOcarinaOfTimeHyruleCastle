@@ -1,10 +1,13 @@
+using System;
+using System.Threading.Tasks;
 using MainLeaf.OcarinaOfTime.Character.Physics;
+using MainLeaf.OcarinaOfTime.Character.StateMachine;
 using MainLeaf.OcarinaOfTime.Services;
 using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Character
 {
-    public class CharacterJump: CharacterAbility
+    public class CharacterJump: CharacterAbility, ICharacterStateObserver
     {
         [SerializeField] private float _jumpForce = 5;
         [SerializeField] private float _minJumpInterval = 2.0F;
@@ -17,13 +20,14 @@ namespace MainLeaf.OcarinaOfTime.Character
 
             if(!physics.IsGrounded()) return;
             
-            bool jumpCooldownOver = (Time.time - _jumpTime) >= _minJumpInterval;
+            bool jumpAllowed = (Time.time - _jumpTime) >= _minJumpInterval;
             
-            if (jumpCooldownOver)
+            if (jumpAllowed)
             {
                 _jumpTime = Time.time;
                 Rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
                 UpdateAnimator();
+                OnStateStart();
             }
         }
 
@@ -33,5 +37,18 @@ namespace MainLeaf.OcarinaOfTime.Character
         }
 
         public void Jump() => Execute();
+        public async void OnStateStart()
+        {
+            Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Jumping);
+
+            await Task.Delay(TimeSpan.FromSeconds(1.0F));
+            
+            OnStateFinish();
+        }
+
+        public void OnStateFinish()
+        {
+            Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Default);
+        }
     }
 }

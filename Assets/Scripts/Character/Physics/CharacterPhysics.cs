@@ -10,6 +10,7 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
     public class CharacterPhysics: MonoBehaviour
     {
         public float RayCastDistance = 3.0F;
+        public float RayCastOffset = 0.5F;
         public enum RayDirection
         {
             Up,
@@ -68,7 +69,7 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
                 }
                 case RayDirection.Left:
                 {
-                    var origin = transform.position + (transform.up * 0.5F);
+                    var origin = transform.position + (transform.up * RayCastOffset);
                     var target = -transform.right;
                     var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: RayCastDistance);
                     Debug.DrawRay(origin, target, Color.blue);
@@ -76,7 +77,7 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
                 }
                 case RayDirection.Right:
                 {
-                    var origin = transform.position + (transform.up * 0.5F);
+                    var origin = transform.position + (transform.up * RayCastOffset);
                     var target = transform.right;
                     var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: RayCastDistance);
                     Debug.DrawRay(origin, target, Color.yellow);
@@ -84,7 +85,7 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
                 }
                 case RayDirection.Back:
                 {
-                    var origin = transform.position + (transform.up * 0.5F);
+                    var origin = transform.position + (transform.up * RayCastOffset);
                     var target = -transform.forward;
                     var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: RayCastDistance);
                     Debug.DrawRay(origin, target, Color.green);
@@ -92,7 +93,7 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
                 }
                 case RayDirection.Front:
                 {
-                    var origin = transform.position + (transform.up * 0.5F);
+                    var origin = transform.position + (transform.up * RayCastOffset);
                     var target = transform.forward;
                     var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: RayCastDistance);
                     Debug.DrawRay(origin, target, Color.magenta);
