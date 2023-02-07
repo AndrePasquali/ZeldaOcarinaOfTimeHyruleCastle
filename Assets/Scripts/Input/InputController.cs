@@ -28,6 +28,7 @@ namespace MainLeaf.OcarinaOfTime
                     case CommandState.Jump:
                     {
                         _commands["jump"].Execute();
+                        _commands["climb"].Execute();
                         break;
                     }
                     case CommandState.Push:
@@ -49,7 +50,8 @@ namespace MainLeaf.OcarinaOfTime
             _commands = new Dictionary<string, InputCommand>
             {
                 { "jump", new InputJump(GetComponent<CharacterJump>()) },
-                { "push", new InputPush(GetComponent<CharacterPush>()) }
+                { "push", new InputPush(GetComponent<CharacterPush>()) },
+                { "climb", new InputClimb(GetComponent<CharacterClimb>())}
             };
         }
         

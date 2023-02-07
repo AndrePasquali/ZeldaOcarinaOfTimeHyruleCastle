@@ -19,6 +19,13 @@ namespace MainLeaf.OcarinaOfTime.Character.StateMachine
                     pushBehaviour.Push();
                     break;
                 }
+                case CharacterMovement.Jumping:
+                {
+                    var climb = GetComponent<CharacterClimb>();
+                    
+                    climb.Climb();
+                    break;
+                }
             }
         }
         

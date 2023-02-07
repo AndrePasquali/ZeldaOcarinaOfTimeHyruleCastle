@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using MainLeaf.OcarinaOfTime.Character.Physics;
 using MainLeaf.OcarinaOfTime.Character.StateMachine;
 using MainLeaf.OcarinaOfTime.Enrironment;
@@ -10,6 +12,7 @@ namespace MainLeaf.OcarinaOfTime.Character
     {
         [SerializeField] private float PushForce = 2.0F;
         [SerializeField] private float MinDistanceToPush = 2.0F;
+        private Rigidbody _targetRigidbody;
         protected override void Execute()
         {
            if(!AbilityEnabled) return;
@@ -29,6 +32,8 @@ namespace MainLeaf.OcarinaOfTime.Character
                    if (hit.transform.GetComponent<IPushable>() != null)
                    {
                        var rigibody = hit.transform.GetComponent<Rigidbody>();
+
+                       _targetRigidbody = rigibody;
 
                        if(rigibody != null) rigibody.AddForce(Vector3.forward * PushForce, ForceMode.Impulse);
                        
@@ -54,15 +59,19 @@ namespace MainLeaf.OcarinaOfTime.Character
             Execute();
         }
 
-        public void OnStateStart()
+        public async void OnStateStart()
         {
+            Debug.Log($"PUSH: START");
             Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Pushing);
+            _targetRigidbody.isKinematic = false;
+            await Task.Delay(TimeSpan.FromSeconds(3.0F));
+            OnStateFinish();
+
         }
 
         public void OnStateFinish()
         {
             Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Default);
-
         }
     }
 }

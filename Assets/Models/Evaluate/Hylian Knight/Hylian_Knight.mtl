@@ -1,0 +1,50 @@
+newmtl m0
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Knights_Sword_Hilt.png
+Ni 1.00
+Ks 0.45 0.45 0.45
+Ns 0.06
+newmtl m1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Hylian_Knight.png
+Ni 1.00
+newmtl m3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Hylian_Knight.png
+Ni 1.00
+Ks 0.45 0.45 0.45
+Ns 0.06
+newmtl m6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Knights_Sheath.png
+Ni 1.00
+newmtl m8
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Knights_Sword_Blade.png
+Ni 1.00
+Ks 0.45 0.45 0.45
+Ns 0.06
+newmtl m10
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Knights_Shield.png
+Ni 1.00
+Ks 0.45 0.45 0.45
+Ns 0.06

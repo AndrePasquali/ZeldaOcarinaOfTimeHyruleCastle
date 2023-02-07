@@ -4,6 +4,7 @@ namespace MainLeaf.OcarinaOfTime.Character.StateMachine
     {
         Default,
         Idle,
+        Climb,
         Walking,
         Falling,
         Running,

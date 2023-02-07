@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Enrironment
@@ -14,10 +16,11 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
             }
         }
 
-        private void OnCollisionExit(Collision other)
+        private async void OnCollisionExit(Collision other)
         {
             if (other.gameObject.tag.Equals("Player"))
             {
+                await Task.Delay(TimeSpan.FromSeconds(2));
                 _rigibody.isKinematic = true;
             }
         }

@@ -15,13 +15,13 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.93966246, y: 0.99236333, z: 1, w: 0}
+    m_Value: {x: 0.9885272, y: 1, z: 0.8590851, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.8985011, y: 0.92387486, z: 1, w: 0}
+    m_Value: {x: 0.9178982, y: 0.9602415, z: 1, w: 0}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 0.99436146, y: 0.9957708, z: 1, w: 0}
+    m_Value: {x: 0.89237726, y: 0.88764775, z: 1, w: 0}
 --- !u!114 &-7168298072799280487
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -36,11 +36,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   postExposure:
-    m_OverrideState: 1
-    m_Value: 0.94
+    m_OverrideState: 0
+    m_Value: 0.24
   contrast:
     m_OverrideState: 1
-    m_Value: 13
+    m_Value: 19
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -49,7 +49,7 @@ MonoBehaviour:
     m_Value: -10
   saturation:
     m_OverrideState: 1
-    m_Value: 71
+    m_Value: 82
 --- !u!114 &-3816925635354385549
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -65,13 +65,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9267468, z: 0.87160164, w: 0}
+    m_Value: {x: 0.99220824, y: 1, z: 0.95333195, w: 0}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.9554222, z: 0.9630779, w: 0}
+    m_Value: {x: 1, y: 0.95133007, z: 0.9797136, w: 0}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 0.9747829, y: 1, z: 0.9922519, w: 0}
+    m_Value: {x: 0.95133, y: 0.97161543, z: 1, w: 0}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 2
   useFullACES:
     m_OverrideState: 0
     m_Value: 0
@@ -206,28 +206,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d08ce26990eb1a4a9177b860541e702, type: 3}
   m_Name: Exposure
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 1
   meteringMode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2
   luminanceSource:
     m_OverrideState: 0
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 12.708872
+    m_Value: 14.491645
   compensation:
     m_OverrideState: 1
-    m_Value: 3.4
+    m_Value: 2.86
   limitMin:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: -5
   limitMax:
-    m_OverrideState: 0
-    m_Value: 14.88
+    m_OverrideState: 1
+    m_Value: 15
   curveMap:
     m_OverrideState: 0
     m_Value:
@@ -307,14 +307,14 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   adaptationMode:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   adaptationSpeedDarkToLight:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 6.48
   adaptationSpeedLightToDark:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 2.12
   weightTextureMask:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -360,7 +360,7 @@ MonoBehaviour:
   active: 1
   skyType:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 4
   cloudType:
     m_OverrideState: 1
     m_Value: 1
@@ -369,10 +369,10 @@ MonoBehaviour:
     m_Value: 1
   windOrientation:
     m_OverrideState: 1
-    m_Value: 86
+    m_Value: 70
   windSpeed:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 2.94
   fogType:
     m_OverrideState: 0
     m_Value: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   active: 1
   type:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 7
   intensity:
     m_OverrideState: 1
     m_Value: 0.627
@@ -480,15 +480,15 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 1.62
   intensity:
     m_OverrideState: 1
-    m_Value: 0.447
+    m_Value: 0.875
   scatter:
     m_OverrideState: 1
-    m_Value: 0.507
+    m_Value: 0.544
   tint:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   dirtTexture:
     m_OverrideState: 0

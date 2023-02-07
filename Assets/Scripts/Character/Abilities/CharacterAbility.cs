@@ -1,4 +1,5 @@
 using System;
+using MainLeaf.OcarinaOfTime.Services;
 using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Character
@@ -10,7 +11,9 @@ namespace MainLeaf.OcarinaOfTime.Character
         public KeyCode ActionKey;
         
         public string AnimationName;
-        public Animator Animator;
+        public Animator Animator => _animator ?? (_animator = ServiceLocator.Get<Animator>());
+
+        private Animator _animator;
 
         protected bool Initialized;
         public Rigidbody Rigidbody => _rigibody ?? (_rigibody = GetComponent<Rigidbody>());

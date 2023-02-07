@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using MainLeaf.OcarinaOfTime.Character.Physics;
 using MainLeaf.OcarinaOfTime.Character.StateMachine;
+using MainLeaf.OcarinaOfTime.Enrironment;
 using MainLeaf.OcarinaOfTime.Services;
 using UnityEngine;
 
@@ -19,9 +20,23 @@ namespace MainLeaf.OcarinaOfTime.Character
             var physics = ServiceLocator.Get<CharacterPhysics>();
 
             if(!physics.IsGrounded()) return;
-            
+
+            if (physics.RayToDirection(CharacterPhysics.RayDirection.Front))
+            {
+                var hit = physics.GetHit();
+
+                if (hit.collider != null &&
+                    Vector3.Distance(hit.transform.position, transform.position) <= 2.0F)
+                {
+                    if (hit.transform.GetComponent<IPushable>() != null)
+                    {
+                        return;
+                    }
+                }
+            }
+
             bool jumpAllowed = (Time.time - _jumpTime) >= _minJumpInterval;
-            
+
             if (jumpAllowed)
             {
                 _jumpTime = Time.time;
