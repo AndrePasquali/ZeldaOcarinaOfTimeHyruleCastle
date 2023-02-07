@@ -7,28 +7,44 @@ using UnityEngine.AI;
 
 namespace MainLeaf.OcarinaOfTime.Character.AI
 {
-    public class WalkState : AIState
+    public class WalkState : IAIState
     {
-        public WalkState(SquareWalkAI parent, Transform[] points, NavMeshAgent agent) : base(parent, points, agent)
+        private AIStateMachine _stateMachine;
+        private NavMeshAgent _agent;
+        private Transform[] _wayPoints;
+        private Transform _currentDestination;
+        private float _timeCounter;
+        private readonly float _distanceThreshold = 3f;
+
+        public WalkState(AIStateMachine stateMachine, NavMeshAgent agent, Transform[] wayPoints)
         {
-            Parent = parent;
-            Points = points;
-            Agent = agent;
+            _stateMachine = stateMachine;
+            _agent = agent;
+            _wayPoints = wayPoints;
+            _currentDestination = wayPoints[UnityEngine.Random.Range(0, _wayPoints.Length - 1)];
         }
 
-        public override  AIState UpdateState()
+        public void UpdateState()
         {
-            Vector3 target = Points[Parent.CurrentPoint].position;
-            Agent.destination = target;
+            _agent.SetDestination(_currentDestination.position);
 
-            if (Agent.remainingDistance <= Agent.stoppingDistance + 0.75F)
+            if (DestinationIsReached())
             {
-                Parent.CurrentPoint = (Parent.CurrentPoint + 1) % Points.Length;
+                _agent.isStopped = true;
+                _timeCounter += Time.deltaTime;
+                if(_timeCounter <= 5F) return;
+                _timeCounter = 0;
+                _agent.isStopped = false;
                 
-                return new PauseState(Parent, Parent.PauseTime);
+                _stateMachine.ChangeState(_stateMachine.FollowPlayerState);
             }
+        }
 
-            return this;
+        private bool DestinationIsReached()
+        {
+            var isNear = Vector3.Distance(_agent.transform.position, _currentDestination.position) <= 3F;
+
+            return isNear;        
         }
     }
 }
