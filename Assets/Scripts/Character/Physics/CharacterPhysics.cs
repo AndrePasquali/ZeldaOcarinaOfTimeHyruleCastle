@@ -41,6 +41,9 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
             _inputController ?? (_inputController = ServiceLocator.Get<InputController>());
         private InputController _inputController;
 
+        public Rigidbody Rigidbody => _rigidbody ?? (_rigidbody = GetComponent<Rigidbody>());
+        private Rigidbody _rigidbody;
+
         [SerializeField] private float _groundCheckDistance = 0.1f;
         [SerializeField] private LayerMask _groundLayerMask;
         [SerializeField] private bool _isGrounded;
@@ -107,11 +110,13 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
 
         public bool IsGrounded()
         {
-            var isGrounded = UnityEngine.Physics.Raycast(transform.position, -Vector3.up, _groundCheckDistance, _groundLayerMask);
+            var isGrounded = UnityEngine.Physics.Raycast(transform.position, -Vector3.up, _groundCheckDistance);
 
             _isGrounded = isGrounded;
             
             return isGrounded;
         }
+
+        public Vector3 GetVelocity() => Rigidbody.velocity;
     }
 }

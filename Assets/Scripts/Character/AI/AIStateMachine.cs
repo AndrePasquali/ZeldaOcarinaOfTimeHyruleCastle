@@ -49,7 +49,12 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
             Vector3 velocity = Agent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);
             
+            Vector3 direction = _agent.steeringTarget - transform.position;
+            var rotateAngle = Vector3.SignedAngle(transform.forward, direction, transform.up) / 180f;
+            
             _animator.SetFloat("Foward", localVelocity.z);
+            _animator.SetFloat("Turn", rotateAngle);
+            
         }
 
         public void ChangeState(IAIState newState)

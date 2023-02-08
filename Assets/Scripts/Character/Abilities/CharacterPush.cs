@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using MainLeaf.OcarinaOfTime.Character.Physics;
 using MainLeaf.OcarinaOfTime.Character.StateMachine;
 using MainLeaf.OcarinaOfTime.Enrironment;
@@ -11,6 +12,7 @@ namespace MainLeaf.OcarinaOfTime.Character
     public class CharacterPush: CharacterAbility, ICharacterStateObserver
     {
         [SerializeField] private float PushForce = 2.0F;
+        [SerializeField] private float PushSpeed = 0.5F;
         [SerializeField] private float MinDistanceToPush = 2.0F;
         private Rigidbody _targetRigidbody;
         protected override void Execute()
@@ -31,14 +33,17 @@ namespace MainLeaf.OcarinaOfTime.Character
                {
                    if (hit.transform.GetComponent<IPushable>() != null)
                    {
-                       var rigibody = hit.transform.GetComponent<Rigidbody>();
-
-                       _targetRigidbody = rigibody;
-
-                       if(rigibody != null) rigibody.AddForce(Vector3.forward * PushForce, ForceMode.Impulse);
+                       var rigidbody = hit.transform.GetComponent<Rigidbody>();
+                       
+                       _targetRigidbody = rigidbody;
+                       
+                       UpdateAnimator(true);
+                       
+                       if(rigidbody != null) rigidbody.AddForce(transform.forward * PushForce, ForceMode.Impulse);
+            
+                       Rigidbody.AddForce(transform.forward * PushSpeed, ForceMode.VelocityChange);
                        
                        blackBars.ShowBlackBars();
-                       UpdateAnimator(true);
                        OnStateStart();
                    }
                }
@@ -54,14 +59,20 @@ namespace MainLeaf.OcarinaOfTime.Character
             Animator.SetTrigger(AnimationName);
         }
 
-        public void Push()
+        public async void Push()
         {
-            Execute();
+            while (Input.GetButton("Push"))
+            {
+                Execute();
+                await UniTask.Delay(TimeSpan.FromSeconds(1));
+            }
+            
+            var blackBars = ServiceLocator.Get<BlackBars>();
+            blackBars.HideBlackBars();
         }
 
         public async void OnStateStart()
         {
-            Debug.Log($"PUSH: START");
             Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Pushing);
             _targetRigidbody.isKinematic = false;
             await Task.Delay(TimeSpan.FromSeconds(3.0F));

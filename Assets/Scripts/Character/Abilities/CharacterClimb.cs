@@ -11,6 +11,14 @@ public class CharacterClimb : CharacterAbility, ICharacterStateObserver
 {
     [SerializeField] private float MinDistanceToClimb = 2.0F;
     [SerializeField] private float ClimbForce = 2.0F;
+    [SerializeField] private float ClimbJumpForce = 5.0F;
+    private bool _isClimbing;
+    private CapsuleCollider _capsuleCollider;
+
+    private void Start()
+    {
+        _capsuleCollider = GetComponent<CapsuleCollider>();
+    }
 
     protected override void Execute()
     {
@@ -28,12 +36,35 @@ public class CharacterClimb : CharacterAbility, ICharacterStateObserver
             {
                 if (hit.transform.GetComponent<IPushable>() != null)
                 {
-                    Rigidbody.AddForce(Vector3.forward * ClimbForce, ForceMode.Impulse);
+                    Rigidbody.AddForce(Vector3.up * ClimbJumpForce, ForceMode.Impulse);
+                    AddForceForward();
                     UpdateAnimator(true);
                     OnStateStart();
+                    _isClimbing = true;
+                    Debug.Log($"START CLIMB");
+
+                }
+                else
+                {
+                    _isClimbing = false;
                 }
             }
         }
+    }
+
+    private async void AddForceForward()
+    {
+        await Task.Delay(TimeSpan.FromSeconds(0.5F));
+        
+        Debug.Log($"START FORCE FORWARD CLIMB");
+        
+        Rigidbody.AddForce(transform.forward * ClimbForce, ForceMode.VelocityChange);
+        
+    }
+
+    private void FixedUpdate()
+    {
+       
     }
 
     protected override void UpdateAnimator(bool value = true)
@@ -47,12 +78,17 @@ public class CharacterClimb : CharacterAbility, ICharacterStateObserver
     {
         Character.OnCharacterMovementStateChange.Invoke(MainLeaf.OcarinaOfTime.Character.StateMachine.CharacterMovement.Climb);
 
-        await Task.Delay(TimeSpan.FromSeconds(3.0F));
+        while (Rigidbody.velocity.y > 0)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(0.25F));
+        }
+        
+        OnStateFinish();
     }
 
     public void OnStateFinish()
     {
-        Rigidbody.isKinematic = true;
+        _isClimbing = false;
         Character.OnCharacterMovementStateChange.Invoke(MainLeaf.OcarinaOfTime.Character.StateMachine.CharacterMovement.Idle);
     }
 }

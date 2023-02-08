@@ -16,6 +16,8 @@ namespace MainLeaf.OcarinaOfTime.Character
         
         public InputController InputController;
 
+        public CharacterPhysics CharacterPhysics;
+
         public static Action<MainLeaf.OcarinaOfTime.Character.StateMachine.CharacterMovement> OnCharacterMovementStateChange;
 
         private void OnCharacterMovementChange(MainLeaf.OcarinaOfTime.Character.StateMachine.CharacterMovement newMovementState)
@@ -32,12 +34,13 @@ namespace MainLeaf.OcarinaOfTime.Character
             CharacterState = GetComponent<CharacterStateMachine>();
             CharacterMovement = GetComponent<CharacterMovement>();
             InputController = GetComponent<InputController>();
+            CharacterPhysics = GetComponent<CharacterPhysics>();
 
             ServiceLocator.Register(_animator);
             ServiceLocator.Register(CharacterState);
             ServiceLocator.Register(CharacterMovement);
             ServiceLocator.Register(InputController);
-            ServiceLocator.Register(GetComponent<CharacterPhysics>());
+            ServiceLocator.Register(CharacterPhysics);
         }
     }
 }

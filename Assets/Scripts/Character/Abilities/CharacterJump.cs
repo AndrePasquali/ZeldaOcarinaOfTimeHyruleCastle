@@ -48,7 +48,8 @@ namespace MainLeaf.OcarinaOfTime.Character
 
         protected override void UpdateAnimator(bool value = true)
         {
-            Animator.SetTrigger(AnimationName);
+            var isRunning = Rigidbody.velocity.magnitude > 0;
+            Animator.SetTrigger(isRunning ? "JumpForward" : "Jump");
         }
 
         public void Jump() => Execute();
@@ -63,7 +64,7 @@ namespace MainLeaf.OcarinaOfTime.Character
 
         public void OnStateFinish()
         {
-            Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Default);
+            Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Idle);
         }
     }
 }
