@@ -1,0 +1,18 @@
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+InfoTitle Alexander Elert
+InfoPreset Use this preset to convert prefabs using DE/DEC shaders.
+InfoStatus ● ● ● ● ○
+InfoOnline https://assetstore.unity.com/publishers/46732
+
+*******************************************************************
+
+OutputMesh DEFAULT
+
+Include DE Commons

@@ -1,0 +1,64 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Staggart Fantasy Foliage
+InfoPreset Use this preset to convert Staggart Creations' FAE prefabs!
+InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/packages/3d/environments/fantasy/fantasy-adventure-environment-70354
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Mesh SetVariation GET_MASK_PROCEDURAL 3
+Mesh SetOcclusion GET_MASK_FROM_CHANNEL 0
+Mesh SetDetailMask GET_MASK_PROCEDURAL 8
+Mesh SetDetailCoord GET_COORD_FROM_CHANNEL 0
+
+Mesh SetHeight GET_MASK_PROCEDURAL 4
+Mesh SetMotion2 GET_MASK_PROCEDURAL 16
+Mesh SetMotion3 GET_MASK_FROM_CHANNEL 0
+
+Mesh SetPivots NONE
+
+*******************************************************************
+
+//Set default properties
+Material SET_FLOAT _RenderNormals 2
+Material SET_FLOAT _SubsurfaceViewValue 0
+Material SET_FLOAT _MainSmoothnessValue 0
+Material SET_VECTOR _VertexOcclusionColor 0.5 0.5 0.5 1.0
+
+*******************************************************************
+
+// Copy Default properties
+Material COPY_TEX _MainTex _MainAlbedoTex
+Material COPY_ST_AS_VECTOR _MainTex _MainUVs
+Material COPY_TEX _BumpMap _MainNormalTex
+
+Material COPY_VECTOR _Color _MainColor
+Material COPY_VECTOR _TransmissionColor _SubsurfaceColor
+
+*******************************************************************
+
+if SHADER_NAME_CONTAINS Trunk
+{
+	Material SET_SHADER SHADER_DEFAULT_BARK
+	Material SET_FLOAT _RenderCull 2
+	Material SET_FLOAT _RenderClip 0
+}
+
+*******************************************************************
+
+if SHADER_NAME_CONTAINS Billboard
+{
+	Include Use Default Cross Settings
+
+	Material COPY_TEX _Atlas _MainAlbedoTex
+	Material COPY_ST_AS_VECTOR _Atlas _MainUVs
+	Material COPY_TEX _Normals _MainNormalTex
+
+	Material SET_FLOAT _RenderCull 2
+	Material SET_FLOAT _MainSmoothnessValue 0
+}

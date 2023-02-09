@@ -1,0 +1,15 @@
+{
+    "name": "Boxophobic.TheVegetationEngine.Runtime",
+    "references": [
+        "GUID:825ad574da7360d4e8aea558f272972e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

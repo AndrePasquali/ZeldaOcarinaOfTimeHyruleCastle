@@ -1,0 +1,35 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Turboscalpeur
+InfoPreset Use this preset to convert Turboscalpeur Vegetation prefabs.
+InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/publishers/12027
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Mesh SetVariation GET_MASK_FROM_CHANNEL 0
+Mesh SetOcclusion GET_MASK_FROM_CHANNEL 2
+Mesh SetDetailMask GET_MASK_PROCEDURAL 8
+Mesh SetDetailCoord GET_COORD_FROM_CHANNEL 0
+
+Mesh SetHeight GET_MASK_PROCEDURAL 4
+Mesh SetMotion2 GET_MASK_PROCEDURAL 16
+Mesh SetMotion3 GET_MASK_FROM_CHANNEL 1
+
+Mesh SetPivots NONE
+
+*******************************************************************
+
+Include Unity Lit Commons
+
+// Use Thickness Map
+Material SET_FLOAT _MainMaskMinValue 1
+Material SET_FLOAT _MainMaskMaxValue 0
+
+// Set Defaults
+Material SET_VECTOR _VertexOcclusionColor 0 0 0 0
+

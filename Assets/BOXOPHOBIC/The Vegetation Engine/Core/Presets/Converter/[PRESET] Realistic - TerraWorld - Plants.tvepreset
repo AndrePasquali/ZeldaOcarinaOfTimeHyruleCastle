@@ -1,0 +1,34 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle TerraWorld
+InfoPreset Use this preset to convert TeraWorld Plant objects. The converted prefabs can be used with GPU Instanced Layer. 
+InfoStatus ● ● ● ● ○
+InfoOnline https://assetstore.unity.com/packages/tools/terrain/terraworld-automated-level-designer-156561
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Mesh SetVariation GET_MASK_PROCEDURAL 3
+Mesh SetOcclusion GET_MASK_PROCEDURAL 6
+Mesh SetDetailMask NONE
+Mesh SetDetailCoord NONE
+
+Mesh SetHeight GET_MASK_PROCEDURAL 4
+Mesh SetMotion2 GET_MASK_PROCEDURAL 16
+Mesh SetMotion3 GET_MASK_FROM_CHANNEL 5
+
+Mesh SetPivots NONE
+
+*******************************************************************
+
+// Enable Material Features
+Material SET_FLOAT _GlobalSize 0
+Material SET_FLOAT _SizeFadeMode 0
+
+// Include Unity Default Features
+Include Try Get Bark Shaders
+Include Unity Lit Commons
+Include Unity Lit Packer

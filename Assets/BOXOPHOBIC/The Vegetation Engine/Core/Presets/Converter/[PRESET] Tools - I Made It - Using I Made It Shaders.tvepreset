@@ -1,0 +1,95 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle I Made It
+InfoPreset Use this preset to convert custom made vegetation. Use the BOXOPHOBIC > The Vegetation Engine > Helpers > I Made It shader to set up your maps for the converter to pack them. Check the documentation for more details!
+InfoStatus ○ ○ ○ ○ ○
+InfoOnline https://docs.google.com/document/d/145JOVlJ1tE-WODW45YoJ6Ixg23mFc56EnB_8Tbwloz8/edit#heading=h.ltnk8tq0d4cg
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+OutputMesh DEFAULT
+OutputMaterial DEFAULT
+
+// Get the variation mask from Vertex Color R
+Mesh SetVariation GET_MASK_FROM_CHANNEL 0
+
+// Get the occlusion mask from Vertex Color A
+Mesh SetOcclusion GET_MASK_FROM_CHANNEL 3
+
+// Set a procedural height mask for detail blending
+Mesh SetDetailMask GET_MASK_PROCEDURAL 8
+
+// Use UV0 texture coord as detail UVs
+Mesh SetDetailCoord GET_COORD_FROM_CHANNEL 0
+
+Mesh SetHeight GET_MASK_PROCEDURAL 4
+
+// Get the squash motion mask from Vertex Color G
+Mesh SetMotion2 GET_MASK_FROM_CHANNEL 1
+
+// Get the flutter motion mask from Vertex Color B
+Mesh SetMotion3 GET_MASK_FROM_CHANNEL 2
+
+Mesh SetPivots NONE
+
+// Use masks from the additional texture using UV4 channel for example
+// Mesh SetDetailMask GET_MASK_FROM_TEXTURE GET_RED _AdditionalTex3 GET_COORD 3
+// Mesh SetMotion2 GET_MASK_FROM_TEXTURE GET_RED _AdditionalTex1 GET_COORD 3
+// Mesh SetMotion3 GET_MASK_FROM_TEXTURE GET_RED _AdditionalTex2 GET_COORD 3
+
+*******************************************************************
+
+if MATERIAL_FLOAT_EQUALS _MaterialMode 0
+{
+	Material SET_SHADER SHADER_DEFAULT_BARK
+}
+
+*******************************************************************
+
+if MATERIAL_FLOAT_EQUALS _SubsurfaceMode 1
+{
+	Material SET_FLOAT _MainMaskMinValue 1
+	Material SET_FLOAT _MainMaskMaxValue 0
+}
+
+*******************************************************************
+
+// Copy Textures
+Material COPY_TEX _MainAlbedoTex _MainAlbedoTex
+Material COPY_TEX _MainNormalTex _MainNormalTex
+Material COPY_TEX _MainMaskTex _MainMaskTexTex
+
+// Properties
+Material COPY_FLOAT _RenderClip _RenderClip
+Material COPY_FLOAT _AlphaClipValue _AlphaClipValue
+Material COPY_VECTOR _MainColor _MainColor
+Material COPY_VECTOR _MainUVs _MainUVs
+Material COPY_FLOAT _MainMetallicValue _MainMetallicValue
+Material COPY_FLOAT _MainOcclusionValue _MainOcclusionValue
+Material COPY_FLOAT _MainSmoothnessValue _MainSmoothnessValue
+
+if MATERIAL_FLOAT_EQUALS _MasksMode 1
+{
+	Texture SetRed GET_GRAY _MainMetallicTex
+	Texture SetGreen GET_GRAY _MainOcclusionTex
+	Texture SetAlpha GET_GRAY _MainSmoothnessTex
+
+	Texture SetBlue GET_GRAY _MainSubsurfaceTex
+	Texture SetBlue GET_GRAY _MainHeightTex
+	
+	Utility START_TEXTURE_PACKING
+}
+
+Material COPY_TEX _EmissiveTex _EmissiveTex
+Material COPY_VECTOR _EmissiveUVs _EmissiveUVs
+Material COPY_FLOAT _EmissiveFlagMode _EmissiveFlagMode
+Material COPY_VECTOR _EmissiveColor _EmissiveColor
+Material COPY_VECTOR _EmissiveIntensityParams _EmissiveIntensityParams
+Material COPY_FLOAT _EmissiveExposureValue _EmissiveExposureValue
+
+
+

@@ -1,0 +1,30 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Raygeas Azure Grass
+InfoPreset Use this preset to convert Raygeas Azure Nature assets.
+InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/packages/3d/environments/fantasy/azure-nature-167725
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Include Use Default Grass Masks
+Include Use Default Grass Settings
+
+*******************************************************************
+
+// Set Material Shader
+Material SET_FLOAT _RenderNormals 2
+
+// Copy material props
+Material COPY_TEX _Texture00 _MainAlbedoTex
+Material COPY_ST_AS_VECTOR _Texture00 _MainUVs
+
+Material COPY_FLOAT _Smoothness _MainSmoothnessValue
+
+// Set dual color
+Material COPY_COLOR _Color2 _GradientColorOne
+Material COPY_COLOR _Color1 _GradientColorTwo

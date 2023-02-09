@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using MainLeaf.OcarinaOfTime.Camera;
 using MainLeaf.OcarinaOfTime.Character.Physics;
 using MainLeaf.OcarinaOfTime.Character.StateMachine;
 using MainLeaf.OcarinaOfTime.Enrironment;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Character
 {
-    public class CharacterPush: CharacterAbility, ICharacterStateObserver
+    public class CharacterPush: CharacterAbility, ICharacterStateObserver, ICameraChange
     {
         [SerializeField] private float PushForce = 2.0F;
         [SerializeField] private float PushSpeed = 0.5F;
@@ -38,10 +39,18 @@ namespace MainLeaf.OcarinaOfTime.Character
                        _targetRigidbody = rigidbody;
                        
                        UpdateAnimator(true);
+
+                       var velocity = Rigidbody.velocity;
+                       var isStopped = velocity.magnitude == 0;
+                       var localVelocity = transform.InverseTransformDirection(velocity);
+                       var movingForward = localVelocity.z > 0;
+
+                       var forceToApply = movingForward ? transform.forward * PushForce : -transform.forward * PushForce;
+
                        
-                       if(rigidbody != null) rigidbody.AddForce(transform.forward * PushForce, ForceMode.Impulse);
+                       if(rigidbody != null) rigidbody.AddForce(isStopped ? Vector3.zero : forceToApply, ForceMode.Impulse);
             
-                       Rigidbody.AddForce(transform.forward * PushSpeed, ForceMode.VelocityChange);
+                       Rigidbody.AddForce(isStopped ? Vector3.zero : forceToApply, ForceMode.VelocityChange);
                        
                        blackBars.ShowBlackBars();
                        OnStateStart();
@@ -61,7 +70,8 @@ namespace MainLeaf.OcarinaOfTime.Character
 
         public async void Push()
         {
-            while (Input.GetButton("Push"))
+            ChangeMode(CameraController.CameraMode.ThirdPerson);
+            while (Input.GetKey(KeyCode.F))
             {
                 Execute();
                 await UniTask.Delay(TimeSpan.FromSeconds(1));
@@ -69,6 +79,8 @@ namespace MainLeaf.OcarinaOfTime.Character
             
             var blackBars = ServiceLocator.Get<BlackBars>();
             blackBars.HideBlackBars();
+
+            ChangeMode(CameraController.CameraMode.FreeLook);
         }
 
         public async void OnStateStart()
@@ -83,6 +95,12 @@ namespace MainLeaf.OcarinaOfTime.Character
         public void OnStateFinish()
         {
             Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Default);
+        }
+
+        public void ChangeMode(CameraController.CameraMode newCameraMode)
+        {
+            var cameraController = ServiceLocator.Get<CameraController>();
+            cameraController.ChangeMode(newCameraMode);
         }
     }
 }

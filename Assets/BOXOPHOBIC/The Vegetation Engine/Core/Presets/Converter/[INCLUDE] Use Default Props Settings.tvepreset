@@ -1,0 +1,3 @@
+Material SET_SHADER SHADER_DEFAULT_PROP
+Material SET_FLOAT _RenderCull 2
+Material SET_FLOAT _RenderClip 0

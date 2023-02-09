@@ -1,0 +1,184 @@
+//Created: 10.11.2022
+//Tested: Toon Fantasy Nature / Toon Gas Station
+//Pipeline: BIRP
+
+*******************************************************************
+*                             DETECT                              *
+*******************************************************************
+
+Detect Toon Fantasy Nature
+Preset Stylized - SICS Games - Toon Fantasy Nature
+
+*******************************************************************
+
+Detect Aquarius_Stylized_Trees/Prefabs/Trees
+Preset Stylized - Aquarius Max - Vegetation
+
+Detect Aquarius_Stylized_Trees/Prefabs/Trees/Set 2/Plants, Grass
+Preset Stylized - Aquarius Max - Grass
+
+*******************************************************************
+
+Detect IL3DN && Plant
+Preset Stylized - Artkovski - The Illustrated Nature - Grass
+
+Detect IL3DN && Dead
+Preset Stylized - Artkovski - The Illustrated Nature - Props
+
+Detect IL3DN && Rock
+Preset Stylized - Artkovski - The Illustrated Nature - Props
+
+Detect IL3DN && Props
+Preset Stylized - Artkovski - The Illustrated Nature - Props
+
+Detect IL3DN && Tree
+Preset Stylized - Artkovski - The Illustrated Nature - Vegetation
+
+Detect IL3DN && Shrub
+Preset Stylized - Artkovski - The Illustrated Nature - Vegetation
+
+*******************************************************************
+
+Detect PureNature/Prefabs/Vegetation/Bushes
+Preset Stylized - BK - Pure Nature - Bushes
+
+Detect PureNature/Prefabs/Vegetation/Grass
+Preset Stylized - BK - Pure Nature - Grass
+
+Detect PureNature/Prefabs/Vegetation/Ivy
+Preset Stylized - BK - Pure Nature - Ivy
+
+Detect PureNature/Prefabs/Vegetation/Trees/Birch
+Preset Stylized - BK - Pure Nature - Tree Birch
+
+Detect PureNature/Prefabs/Vegetation/Trees/TallTree
+Preset Stylized - BK - Pure Nature - Tree Birch
+
+Detect PureNature/Prefabs/Vegetation/Trees/Oak
+Preset Stylized - BK - Pure Nature - Tree Oak
+
+Detect PureNature/Prefabs/Vegetation/Trees/Pine
+Preset Stylized - BK - Pure Nature - Tree Pine
+
+Detect PureNature/Prefabs/Vegetation/Mushrooms
+Preset Stylized - BK - Pure Nature - Props
+
+Detect PureNature/Prefabs/Vegetation/Trees/Roots
+Preset Stylized - BK - Pure Nature - Props
+
+Detect PureNature/Prefabs/Ruins
+Preset Stylized - BK - Pure Nature - Props
+
+Detect PureNature/Prefabs/Rocks
+Preset Stylized - BK - Pure Nature - Props
+
+*******************************************************************
+
+Detect DreamscapeMeadows && Prefab_Flower
+Preset Stylized - Polyart Studio - Dreamscape Nature Meadows - Foliage
+
+Detect DreamscapeMeadows && Prefab_Grass
+Preset Stylized - Polyart Studio - Dreamscape Nature Meadows - Grass
+
+Detect DreamscapeMeadows && Props
+Preset Stylized - Polyart Studio - Dreamscape Nature Meadows - Props
+
+Detect DreamscapeMeadows && Prefab_Mushroom
+Preset Stylized - Polyart Studio - Dreamscape Nature Meadows - Props
+
+Detect DreamscapeMeadows && Rocks
+Preset Stylized - Polyart Studio - Dreamscape Nature Meadows - Props
+
+Detect DreamscapeMeadows && Prefab_Bush
+Preset Stylized - Polyart Studio - Dreamscape Nature Meadows - Trees
+
+Detect DreamscapeMeadows && Trees
+Preset Stylized - Polyart Studio - Dreamscape Nature Meadows - Trees
+
+*******************************************************************
+
+Detect AZURE Nature && Bush
+Preset Stylized - Raygeas - Azure Nature - Bushes
+
+Detect AZURE Nature && Fir
+Preset Stylized - Raygeas - Azure Nature - Fir Trees
+
+Detect AZURE Nature && Flowers
+Preset Stylized - Raygeas - Azure Nature - Flowers
+
+Detect AZURE Nature && Grass
+Preset Stylized - Raygeas - Azure Nature - Grass
+
+Detect AZURE Nature && Reeds
+Preset Stylized - Raygeas - Azure Nature - Grass
+
+Detect AZURE Nature && Lily
+Preset Stylized - Raygeas - Azure Nature - Lily
+
+Detect AZURE Nature && Birch
+Preset Stylized - Raygeas - Azure Nature - Trees
+
+Detect AZURE Nature && Broadleaf
+Preset Stylized - Raygeas - Azure Nature - Trees
+
+Detect AZURE Nature && Branch
+Preset Stylized - Raygeas - Azure Nature - Props
+
+Detect AZURE Nature && Cliff
+Preset Stylized - Raygeas - Azure Nature - Props
+
+Detect AZURE Nature && Dead
+Preset Stylized - Raygeas - Azure Nature - Props
+
+Detect AZURE Nature && Mushroom
+Preset Stylized - Raygeas - Azure Nature - Props
+
+Detect AZURE Nature && Reedmace
+Preset Stylized - Raygeas - Azure Nature - Props
+
+Detect AZURE Nature && Rock
+Preset Stylized - Raygeas - Azure Nature - Props
+
+Detect AZURE Nature && Stone
+Preset Stylized - Raygeas - Azure Nature - Props
+
+*******************************************************************
+
+Detect Suntail Village && Buildings
+Preset Stylized - Raygeas - Suntail Village - House
+
+Detect Suntail Village && Building Modules
+Preset Stylized - Raygeas - Suntail Village - Props
+
+Detect Suntail Village && Building Modules && Ivy
+Preset Stylized - Raygeas - Suntail Village - Deco
+
+Detect Suntail Village && Building Modules && Flover
+Preset Stylized - Raygeas - Suntail Village - Deco
+
+Detect Suntail Village && Nature && Rocks
+Preset Stylized - Raygeas - Suntail Village - Props
+
+Detect Suntail Village && Environment
+Preset Stylized - Raygeas - Suntail Village - Props
+
+Detect Suntail Village && Mountains
+Preset Stylized - Raygeas - Suntail Village - Props
+
+Detect Suntail Village && Props
+Preset Stylized - Raygeas - Suntail Village - Props
+
+Detect Suntail Village && Nature && Stone
+Preset Stylized - Raygeas - Suntail Village - Props
+
+Detect Suntail Village && Nature && Grass
+Preset Stylized - Raygeas - Suntail Village - Grass
+
+Detect Suntail Village && Nature && Flowers
+Preset Stylized - Raygeas - Suntail Village - Grass
+
+Detect Suntail Village && Nature && Broadleaf
+Preset Stylized - Raygeas - Suntail Village - Trees
+
+Detect Suntail Village && Nature && Bush
+Preset Stylized - Raygeas - Suntail Village - Trees

@@ -1,0 +1,219 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Angry Mesh
+InfoPreset Use this preset to convert Angry Mesh winter assets and PBR rocks.
+InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/publishers/32104
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+OutputOptions Props/Grass/Vegetation 2
+//OutputPipelines Universal/HD
+
+*******************************************************************
+
+if OUTPUT_OPTION_CONTAINS Props
+{
+	InfoMessage When converting Angry Mesh props, only the moss and sand detail textures will be copied because the snow is achieved via the Global Overlay. The blending will look different because different shading techiques are used!
+}
+
+if OUTPUT_OPTION_CONTAINS Grass
+{
+	InfoMessage When converting Angry Mesh grass, the tint colors will not be copied and you will need to manually adjust the main color or add gradient tinting to match the original tinting.
+}
+
+if OUTPUT_OPTION_CONTAINS Vegetation
+{
+	InfoMessage When converting Angry Mesh vegetation, the tint colors will not be copied and you will need to manually adjust the main color to match the original tinting.
+}
+
+*******************************************************************
+
+if OUTPUT_OPTION_CONTAINS Props
+{
+	Include Use Default Props Masks
+}
+
+if OUTPUT_OPTION_CONTAINS Grass
+{
+	Include Use Default Grass Masks
+}
+
+if OUTPUT_OPTION_CONTAINS Vegetation
+{
+	Mesh SetVariation GET_MASK_PROCEDURAL 3
+	Mesh SetOcclusion GET_MASK_FROM_CHANNEL 3
+	Mesh SetDetailMask GET_MASK_FROM_CHANNEL 2
+	Mesh SetDetailCoord GET_COORD_FROM_CHANNEL 3
+
+	Mesh SetHeight GET_MASK_PROCEDURAL 4
+	Mesh SetMotion2 GET_MASK_PROCEDURAL 16
+	Mesh SetMotion3 GET_MASK_FROM_CHANNEL 2
+
+	Mesh SetPivots NONE
+}
+
+*******************************************************************
+
+// Copy common properties
+
+Material COPY_FLOAT _CullMode _RenderCull
+Material COPY_FLOAT _AlphaCutoff _AlphaClipValue
+
+Material COPY_COLOR _Color _MainColor
+Material COPY_TEX _MainTex _MainAlbedoTex
+Material COPY_ST_AS_VECTOR _MainTex _MainUVs
+Material COPY_TEX _BumpMap _MainNormalTex
+Material COPY_FLOAT _BumpScale _MainNormalValue
+Material COPY_FLOAT _Glossiness _MainSmoothnessValue
+
+// Copy HDRP settings
+Material COPY_FLOAT _DiffusionProfileHash _SubsurfaceDiffusion
+Material COPY_VECTOR _DiffusionProfileAsset _SubsurfaceDiffusion_Asset
+
+// Set default settings
+Material SET_FLOAT _MainOcclusionValue 1
+Material SET_VECTOR _VertexOcclusionColor 0.5 0.5 0.5 0.5
+Material SET_FLOAT _SubsurfaceValue 0.5
+
+*******************************************************************
+
+if SHADER_NAME_CONTAINS Tree Bark
+{
+	Material SET_SHADER SHADER_DEFAULT_BARK
+	Material SET_FLOAT _RenderCull 2
+	Material SET_FLOAT _RenderClip 0
+
+	Material COPY_COLOR _Color _SecondColor
+	Material COPY_TEX _MainTex _SecondAlbedoTex
+	Material COPY_ST_AS_VECTOR _MainTex _SecondUVs
+	Material COPY_TEX _BumpMap _SecondNormalTex
+	Material COPY_FLOAT _BumpScale _SecondNormalValue
+	Material COPY_TEX _MainMaskTex _SecondMaskTex
+	Material SET_FLOAT _SecondMetallicValue 0
+	Material COPY_FLOAT _Glossiness _SecondSmoothnessValue
+
+	Material SET_FLOAT _DetailMode 1
+	Material SET_FLOAT _DetailBlendMode 1
+	Material SET_FLOAT _DetailCoordMode 1
+	Material SET_FLOAT _DetailMaskMode 0
+
+	Material SET_FLOAT _DetailBlendMinValue 0
+	Material SET_FLOAT _DetailBlendMaxValue 1
+}
+
+if SHADER_NAME_CONTAINS Props
+{
+	Material SET_SHADER SHADER_DEFAULT_PROP
+	Material SET_FLOAT _RenderCull 2
+	Material SET_FLOAT _RenderClip 0
+
+	Material COPY_COLOR _BaseColor _MainColor
+	Material COPY_TEX _BaseAlbedoASmoothness _MainAlbedoTex
+	Material COPY_ST_AS_VECTOR _BaseAlbedoASmoothness _MainUVs
+	Material COPY_TEX _BaseNormalMap _MainNormalTex
+	Material COPY_FLOAT _BumpScale _MainNormalValue
+	Material SET_FLOAT _MainMetallicValue 0
+	Material COPY_FLOAT _BaseSmoothness _MainSmoothnessValue
+
+	Texture PropName _MainMaskTex
+	Texture SetRed NONE
+	Texture SetGreen GET_GREEN _BaseAOANoiseMask
+	Texture SetBlue GET_ALPHA _BaseAOANoiseMask
+	Texture SetAlpha NONE
+
+	Utility START_TEXTURE_PACKING
+	
+	if MATERIAL_NAME_CONTAINS Moss
+	{
+		Material COPY_VECTOR _TopColor _SecondColor
+		Material COPY_TEX _TopAlbedoASmoothness _SecondAlbedoTex
+		Material COPY_TEX _TopNormalMap _SecondNormalTex
+		Material COPY_FLOAT _TopNormalIntensity _SecondNormalValue
+		Material COPY_FLOAT _TopSmoothness _SecondSmoothnessValue
+
+		Material SET_FLOAT _DetailNormalValue 1
+
+		Material SET_FLOAT _DetailMode 1
+		Material SET_FLOAT _DetailBlendMode 1
+		Material SET_FLOAT _DetailTypeMode 1
+		Material SET_FLOAT _DetailCoordMode 0
+		Material SET_FLOAT _DetailMaskMode 0
+		Material SET_FLOAT _DetailMaskInvertMode 1
+
+		Material SET_FLOAT _DetailBlendMinValue 0.7
+		Material SET_FLOAT _DetailBlendMaxValue 0.75
+		
+		Texture PropName _SecondMaskTex
+		Texture SetRed NONE
+		Texture SetGreen NONE
+		Texture SetBlue NONE
+		Texture SetAlpha GET_ALPHA _TopAlbedoASmoothness
+
+		Utility START_TEXTURE_PACKING
+	}
+	
+	if MATERIAL_NAME_CONTAINS Sand
+	{
+		Material SET_VECTOR _SecondColor 0.5 0.5 0.5 0
+		Material COPY_TEX _TopAlbedoASmoothness _SecondAlbedoTex
+		Material SET_FLOAT _SecondAlbedoValue 0.5
+		Material COPY_TEX _TopNormalMap _SecondNormalTex
+		Material COPY_FLOAT _TopNormalIntensity _SecondNormalValue
+		Material COPY_FLOAT _TopSmoothness _SecondSmoothnessValue
+
+		Material SET_FLOAT _DetailNormalValue 1
+
+		Material SET_FLOAT _DetailMode 1
+		Material SET_FLOAT _DetailBlendMode 0
+		Material SET_FLOAT _DetailTypeMode 1
+		Material SET_FLOAT _DetailCoordMode 0
+		Material SET_FLOAT _DetailMaskMode 0
+		Material SET_FLOAT _DetailMaskInvertMode 1
+
+		Material SET_FLOAT _DetailBlendMinValue 0.5
+		Material SET_FLOAT _DetailBlendMaxValue 1
+		
+		Texture PropName _SecondMaskTex
+		Texture SetRed NONE
+		Texture SetGreen NONE
+		Texture SetBlue NONE
+		Texture SetAlpha GET_ALPHA _TopAlbedoASmoothness
+
+		Utility START_TEXTURE_PACKING
+	}
+	
+    // if SHADER_NAME_CONTAINS DetailUnused
+	// {
+		// Material COPY_TEX _DetailAlbedo _SecondAlbedoTex
+		// Material COPY_FLOAT_AS_VECTOR_X _DetailUVScale _SecondUVs
+		// Material COPY_FLOAT_AS_VECTOR_Y _DetailUVScale _SecondUVs
+		// Material COPY_TEX _DetailNormalMap _SecondNormalTex
+		// Material COPY_FLOAT _DetailNormalMapIntensity _SecondNormalValue
+
+		// Material SET_FLOAT _DetailNormalValue 1
+
+		// Material SET_FLOAT _DetailMode 1
+		// Material SET_FLOAT _DetailBlendMode 0
+		// Material SET_FLOAT _DetailCoordMode 0
+		// Material SET_FLOAT _DetailMaskMode 1
+
+		// Material SET_FLOAT _DetailBlendMinValue 0.97
+		// Material SET_FLOAT _DetailBlendMaxValue 1
+	// }
+
+}
+
+if SHADER_NAME_CONTAINS Cross
+{
+	Include Use Default Cross Settings
+}
+
+if OUTPUT_OPTION_CONTAINS Grass
+{
+	Include Use Default Grass Settings
+}

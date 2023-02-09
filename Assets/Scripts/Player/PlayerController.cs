@@ -46,6 +46,7 @@ namespace MainLeaf.OcarinaOfTime.Player
           //  m_animator.SetBool("OnGround", m_isGrounded);
 
             UpdateMovement();
+            //ThirdPersonMovement();
         }
 
         private void UpdateMovement()
@@ -57,7 +58,7 @@ namespace MainLeaf.OcarinaOfTime.Player
 
             if (v < 0)
             {
-                transform.Rotate(Vector3.up, 360F * Time.deltaTime);
+                //transform.Rotate(Vector3.up, 360F * Time.deltaTime);
 
                 if (walk)
                 {
@@ -81,6 +82,26 @@ namespace MainLeaf.OcarinaOfTime.Player
 
             m_animator.SetFloat("Forward", m_currentV);
             m_animator.SetFloat("Turn", m_currentH);
+        }
+
+        private void ThirdPersonMovement()
+        {
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+
+            var moveDirection = new Vector3();
+
+            moveDirection = new Vector3(horizontal, 0f, vertical);
+           // moveDirection = Camera.main.transform.TransformDirection(moveDirection);
+            moveDirection.y = 0f;
+            moveDirection.Normalize();
+            
+            m_animator.SetFloat("Forward", moveDirection.magnitude);
+            m_animator.SetFloat("Turn", horizontal);
+
+            
+            m_rigidBody.MovePosition(transform.position + moveDirection * m_moveSpeed * Time.deltaTime);
+
         }
     }
 }

@@ -1,0 +1,48 @@
+// 07.04.2022 - Last checked in BIRP
+
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Pure Nature Ivy
+InfoPreset Use this preset to convert BK Prod - Pure Nature assets. Matching colors is not possible with the current preset, generic colors are added!
+InfoStatus InfoStatus ● ● ● ● ○
+InfoOnline https://assetstore.unity.com/packages/3d/environments/pure-nature-188246
+InfoWarning The BK Billboards are not supported and they will be disabled after conversion! Amplify Impostors can be used as an alternative!
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Mesh SetVariation GET_MASK_PROCEDURAL 3
+Mesh SetOcclusion NONE
+
+Mesh SetHeight GET_MASK_PROCEDURAL 1
+Mesh SetMotion2 GET_MASK_PROCEDURAL 1
+Mesh SetMotion3 GET_MASK_FROM_CHANNEL 0 ACTION_ONE_MINUS
+
+Mesh SetPivots NONE
+
+*******************************************************************
+
+Material SET_FLOAT _RenderCull 2
+Material SET_FLOAT _RenderNormals 0
+Material SET_FLOAT _AlphaClipValue 0.25
+Material SET_FLOAT _FadeGlancingValue 1
+
+Material COPY_TEX _Diffuse _MainAlbedoTex
+Material COPY_TEX _Normal _MainNormalTex
+Material COPY_TEX _MetallicROcclusionGSmoothnessA _MainMaskTex
+Material COPY_ST_AS_VECTOR _Diffuse _MainUVs
+
+Material COPY_FLOAT _NormalPower _MainNormalValue
+Material SET_FLOAT _MainSmoothnessValue 0
+
+// Set Subsurface
+Material SET_VECTOR _SubsurfaceColor 0.38 0.60 0 1
+
+// Set dual color
+Material SET_VECTOR _GradientColorOne 0.38 0.60 0 1
+Material SET_VECTOR _GradientColorTwo 0.03 0.18 0 1
+Material SET_FLOAT _GradientMinValue 0.5
+Material SET_FLOAT _GradientMaxValue 1

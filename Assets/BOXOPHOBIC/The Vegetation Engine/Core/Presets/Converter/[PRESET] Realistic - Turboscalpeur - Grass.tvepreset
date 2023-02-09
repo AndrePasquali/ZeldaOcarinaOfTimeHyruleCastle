@@ -1,0 +1,25 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Turboscalpeur
+InfoPreset Use this preset to convert Turboscalpeur Grass prefabs.
+InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/publishers/12027
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Include Unity Lit Commons
+
+Include Use Default Grass Masks
+Include Use Default Grass Settings
+
+// Use Thickness Map
+Material SET_FLOAT _MainMaskMinValue 1
+Material SET_FLOAT _MainMaskMaxValue 0
+
+// Set Defaults
+Material SET_VECTOR _VertexOcclusionColor 0 0 0 0
+

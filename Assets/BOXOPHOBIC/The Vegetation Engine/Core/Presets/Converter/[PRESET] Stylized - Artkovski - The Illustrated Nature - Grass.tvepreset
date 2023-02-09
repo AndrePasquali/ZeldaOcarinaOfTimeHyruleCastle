@@ -1,0 +1,35 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Illustrated Nature Grass
+InfoPreset Use this preset to convert Artkovski - The Illustrated Nature assets.
+InfoStatus InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/publishers/44640
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Include Use Default Grass Masks
+Include Use Default Grass Settings
+
+*******************************************************************
+
+Material COPY_FLOAT _AlphaCutoff _AlphaClipValue
+
+Material SET_FLOAT _RenderNormals 2
+Material SET_FLOAT _FadeGlancingValue 1
+
+Material COPY_COLOR _Color _MainColor
+Material COPY_TEX _MainTex _MainAlbedoTex
+Material COPY_ST_AS_VECTOR _MainTex _MainUVs
+
+Material SET_FLOAT _MainOcclusionValue 0
+Material SET_FLOAT _MainSmoothnessValue 0
+
+Material COPY_COLOR _Color _SubsurfaceColor
+
+*******************************************************************
+
+Material SET_FLOAT _GlobalOverlay 0.5

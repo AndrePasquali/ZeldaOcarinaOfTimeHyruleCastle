@@ -1,0 +1,10 @@
+Mesh SetVariation NONE
+Mesh SetOcclusion NONE
+Mesh SetDetailMask NONE
+Mesh SetDetailCoord NONE
+
+Mesh SetHeight NONE
+Mesh SetMotion2 NONE
+Mesh SetMotion3 NONE
+
+Mesh SetPivots NONE

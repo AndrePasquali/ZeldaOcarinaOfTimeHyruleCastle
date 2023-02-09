@@ -1,0 +1,124 @@
+// 07.04.2022 - Last checked in BIRP
+
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Pure Nature Birch
+InfoPreset Use this preset to convert BK Prod - Pure Nature assets. Matching colors is not possible with the current preset, generic colors are added! The Details blending can be adjusted using the Detail Mask sliders!
+InfoStatus InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/packages/3d/environments/pure-nature-188246
+InfoWarning The BK Billboards are not supported and they will be disabled after conversion! Amplify Impostors can be used as an alternative!
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Mesh SetVariation GET_MASK_PROCEDURAL 3
+Mesh SetOcclusion GET_MASK_PROCEDURAL 6
+Mesh SetDetailMask GET_MASK_PROCEDURAL 8
+Mesh SetDetailCoord GET_COORD_FROM_CHANNEL 0
+
+Mesh SetHeight GET_MASK_PROCEDURAL 4
+Mesh SetMotion2 GET_MASK_PROCEDURAL 16
+Mesh SetMotion3 GET_MASK_PROCEDURAL 1
+
+Mesh SetPivots NONE
+
+*******************************************************************
+
+if SHADER_NAME_CONTAINS Leaves
+{
+	Material SET_FLOAT _RenderCull 2
+	Material SET_FLOAT _RenderNormals 0
+	Material SET_FLOAT _RenderSpecular 0
+	Material SET_FLOAT _AlphaClipValue 0.25
+	Material SET_FLOAT _FadeGlancingValue 1
+
+	Material COPY_TEX _Diffuse _MainAlbedoTex
+	Material COPY_TEX _Normal _MainNormalTex
+	Material COPY_TEX _MetallicROcclusionGSmoothnessA _MainMaskTex
+	Material COPY_ST_AS_VECTOR _Diffuse _MainUVs
+
+	Material COPY_FLOAT _NormalPower _MainNormalValue
+	Material SET_FLOAT _MainSmoothnessValue 0
+
+	// Set Tinting Settings
+	Material SET_VECTOR _SubsurfaceColor 0.1098039 0.1803922 0 1
+
+	Material SET_VECTOR _GradientColorOne 0.266672 0.6603774 0 1
+	Material SET_VECTOR _GradientColorTwo 0.1635676 0.4823529 0 1
+	Material SET_FLOAT _GradientMinValue 0.5
+	Material SET_FLOAT _GradientMaxValue 1
+	
+	// Pack textures for mask
+	Texture PropName _MainMaskTex
+	Texture SetRed NONE
+	Texture SetGreen NONE
+	Texture SetBlue GET_GREEN _Diffuse
+	Texture SetAlpha GET_GREEN _Diffuse
+	Utility START_TEXTURE_PACKING
+}
+
+*******************************************************************
+
+if SHADER_NAME_CONTAINS Trunk
+{
+	Material SET_SHADER SHADER_DEFAULT_BARK
+	Material SET_FLOAT _RenderCull 2
+	Material SET_FLOAT _RenderClip 0
+
+	Material COPY_VECTOR _Color _MainColor
+	Material COPY_TEX _MainTex _MainAlbedoTex
+	Material COPY_TEX _BumpMap _MainNormalTex
+	Material COPY_TEX _MetallicROcclusionGSmoothnessA _MainMaskTex
+	Material COPY_ST_AS_VECTOR _MainTex _MainUVs
+
+	Material COPY_FLOAT _NormalPower _MainNormalValue
+	Material COPY_FLOAT _OcclusionPower _MainOcclusionValue
+	Material COPY_FLOAT _SmoothnessPower _MainSmoothnessValue
+	
+	// Set Detail properties
+	Material SET_FLOAT _DetailMode 1
+	Material SET_FLOAT _DetailBlendMode 1
+	Material SET_FLOAT _DetailCoordMode 1
+	Material SET_FLOAT _DetailMaskMode 1
+
+	Material SET_FLOAT _DetailMeshValue 0
+	Material SET_FLOAT _DetailBlendMinValue 0.4
+	Material SET_FLOAT _DetailBlendMaxValue 0.6
+
+	// Copy Detail properties
+	Material SET_VECTOR _SecondColor 0.5 0.5 0.5 1
+	Material COPY_TEX _DetailAlbedoMap _SecondAlbedoTex
+	Material COPY_TEX _DetailNormalMap _SecondNormalTex
+
+	Material SET_VECTOR _SecondUVs 30 30 0 0
+
+	Material COPY_FLOAT _2ndNormalPower _SecondNormalValue
+	Material COPY_FLOAT _LayerOcclusionPower _SecondOcclusionValue
+	Material COPY_FLOAT _LayerSmoothnessPower _SecondSmoothnessValue	
+	
+	// Pack textures for mask
+	Texture PropName _MainMaskTex
+	Texture SetRed GET_RED _MetallicROcclusionGSmoothnessA
+	Texture SetGreen GET_GREEN _MetallicROcclusionGSmoothnessA
+	Texture SetBlue GET_GREEN _MetallicROcclusionGSmoothnessA ACTION_ONE_MINUS
+	Texture SetAlpha GET_ALPHA _MetallicROcclusionGSmoothnessA
+	Utility START_TEXTURE_PACKING
+	
+	// Pack textures for mask
+	Texture PropName _SecondMaskTex
+	Texture SetRed GET_RED _DetailMetallicGlossMap
+	Texture SetGreen GET_GREEN _DetailMetallicGlossMap
+	Texture SetBlue GET_GREEN _LayerMask ACTION_ONE_MINUS
+	Texture SetAlpha GET_ALPHA _DetailMetallicGlossMap
+	Utility START_TEXTURE_PACKING
+}
+
+*******************************************************************
+
+if PREFAB_PATH_CONTAINS Dead
+{
+	Material SET_SHADER SHADER_DEFAULT_PROP
+}

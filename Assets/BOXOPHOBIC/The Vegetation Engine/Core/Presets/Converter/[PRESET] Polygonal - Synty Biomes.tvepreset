@@ -1,0 +1,189 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Synty Biomes
+InfoPreset Use this preset to convert Synty Biomes assets.
+InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/publishers/5217
+//InfoMessage The bark conversion cannot be detected properly! If the bark is becoming white, set the Detail Mode to Off on the bark material!
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+OutputOptions Props/Grass/Flowers/Vegetation 3
+OutputPipelines Standard/Universal
+
+*******************************************************************
+
+if OUTPUT_OPTION_CONTAINS Props
+{
+	InfoWarning Please note, the Triplanar shaders are not supported. The converter will simply transfer the textures to the UVs!
+}
+
+if OUTPUT_OPTION_CONTAINS Flowers
+{
+	InfoMessage Please note, the converter will use the Albedo texture instead of Synty's flat shading and the color will be different!
+}
+
+if OUTPUT_OPTION_CONTAINS Vegetation
+{
+	InfoMessage Please note, the converter will use the Albedo texture instead of Synty's flat shading. In order to achieve a similar result, set the Main Albedo to 0 and adjust the Main Color.
+}
+
+*******************************************************************
+
+if OUTPUT_OPTION_CONTAINS Props
+{
+	Include Use Default Props Masks
+}
+
+if OUTPUT_OPTION_CONTAINS Grass
+{
+	Mesh SetVariation GET_MASK_PROCEDURAL 3
+	Mesh SetOcclusion GET_MASK_FROM_CHANNEL 0
+	Mesh SetDetailMask GET_MASK_FROM_CHANNEL 2 ACTION_ONE_MINUS
+	Mesh SetDetailCoord NONE
+
+	Mesh SetHeight GET_MASK_FROM_CHANNEL 0
+	Mesh SetMotion2 GET_MASK_FROM_CHANNEL 0
+	Mesh SetMotion3 GET_MASK_FROM_CHANNEL 0
+
+	Mesh SetPivots GET_PIVOTS_PROCEDURAL 0
+}
+
+if OUTPUT_OPTION_CONTAINS Flowers
+{
+	Mesh SetVariation GET_MASK_PROCEDURAL 3
+	Mesh SetOcclusion GET_MASK_FROM_CHANNEL 0
+	Mesh SetDetailMask GET_MASK_FROM_CHANNEL 2 ACTION_ONE_MINUS
+	Mesh SetDetailCoord NONE
+
+	Mesh SetHeight GET_MASK_FROM_CHANNEL 0
+	Mesh SetMotion2 GET_MASK_FROM_CHANNEL 0
+	Mesh SetMotion3 GET_MASK_FROM_CHANNEL 0
+
+	Mesh SetPivots GET_PIVOTS_PROCEDURAL 0
+}
+
+if OUTPUT_OPTION_CONTAINS Vegetation
+{
+	Mesh SetVariation GET_MASK_PROCEDURAL 3
+	Mesh SetOcclusion GET_MASK_FROM_CHANNEL 1
+	Mesh SetDetailMask GET_MASK_FROM_CHANNEL 2 ACTION_ONE_MINUS
+	Mesh SetDetailCoord NONE
+
+	Mesh SetHeight GET_MASK_PROCEDURAL 4
+	Mesh SetMotion2 GET_MASK_PROCEDURAL 16
+	Mesh SetMotion3 GET_MASK_FROM_CHANNEL 1
+
+	Mesh SetPivots NONE
+}
+
+*******************************************************************
+
+if SHADER_IS_UNITY_LIT
+{
+	Include Try Get Bark Shaders
+	Include Unity Lit Commons
+	Include Unity Lit Packer
+}
+
+if SHADER_NAME_CONTAINS Basic_LOD_Shader
+{
+	Include Use Default Props Settings
+
+
+	Material COPY_TEX _Albedo _MainAlbedoTex
+	Material COPY_TEX _NormalMap _MainNormalTex
+
+	Material COPY_VECTOR _AlbedoColour _MainColor	
+	Material COPY_FLOAT _NormalAmount _MainNormalValue
+	Material COPY_FLOAT _Metallic _MainMetallicValue
+	Material COPY_FLOAT _Smoothness _MainSmoothnessValue
+}
+
+if SHADER_NAME_CONTAINS Triplanar
+{
+	Include Use Default Props Settings
+
+	Material COPY_TEX _Sides _MainAlbedoTex
+	Material COPY_TEX _SidesNormal _MainNormalTex	
+
+	Material COPY_TEX _Top _SecondAlbedoTex
+	Material COPY_TEX _TopNormal _SecondNormalTex
+
+	Material SET_FLOAT _DetailMode 1
+	Material SET_FLOAT _DetailBlendMode 1
+	Material SET_FLOAT _DetailCoordMode 0
+	Material SET_FLOAT _DetailTypeMode 1
+	
+	Material SET_FLOAT _DetailMaskMode 0
+	Material SET_FLOAT _DetailMaskInvertMode 0
+	Material SET_FLOAT _DetailBlendMinValue 0.7
+	Material SET_FLOAT _DetailBlendMaxValue 0.8
+}
+
+if SHADER_NAME_CONTAINS VegitationShader
+{
+	Material SET_SHADER SHADER_DEFAULT_UBER
+
+	Material SET_FLOAT _FadeCameraValue 1
+
+	Material COPY_TEX _LeafTex _MainAlbedoTex
+	Material COPY_TEX _LeafNormalMap _MainNormalTex	
+	Material COPY_ST_AS_VECTOR _LeafTex _MainUVs
+
+	Material COPY_FLOAT _LeafNormalScale _MainNormalValue
+	Material COPY_FLOAT _LeafMetallic _MainMetallicValue
+	Material COPY_FLOAT _LeafSmoothness _MainSmoothnessValue
+
+	Material COPY_TEX _TunkTex _SecondAlbedoTex
+	Material COPY_TEX _TrunkNormalMap _SecondNormalTex
+	Material COPY_TEX _CoverMaskMap _SecondMaskTex
+	Material COPY_ST_AS_VECTOR _TunkTex _SecondUVs
+
+	Material COPY_FLOAT _TrunkNormalScale _SecondNormalValue
+	Material COPY_FLOAT _TrunkMetallic _SecondMetallicValue
+	Material COPY_FLOAT _TrunkSmoothness _SecondSmoothnessValue
+
+	Material SET_FLOAT _SecondMaskMinValue 1
+	Material SET_FLOAT _SecondMaskMaxValue 1
+
+	Material SET_FLOAT _DetailMode 1
+	Material SET_FLOAT _DetailBlendMode 1
+	Material SET_FLOAT _DetailCoordMode 0
+	Material SET_FLOAT _DetailOpaqueMode 1
+
+	Material SET_FLOAT _DetailNormalValue 0
+	
+	Material SET_FLOAT _DetailMaskMode 0
+	Material SET_FLOAT _DetailMaskInvertMode 0
+	Material SET_FLOAT _DetailMeshValue 0
+	Material SET_FLOAT _DetailBlendMinValue 0.4
+	Material SET_FLOAT _DetailBlendMaxValue 0.6
+	
+	if MATERIAL_NAME_CONTAINS Card
+	{
+		Material SET_SHADER SHADER_DEFAULT_CROSS
+	}
+}
+
+
+if OUTPUT_OPTION_CONTAINS Props
+{
+	Include Use Default Props Settings
+}
+
+if OUTPUT_OPTION_CONTAINS Grass
+{
+	Include Use Default Grass Settings
+	
+	Material SET_FLOAT _RenderNormals 2
+}
+
+if OUTPUT_OPTION_CONTAINS Flowers
+{
+	Include Use Default Flowers Settings
+}

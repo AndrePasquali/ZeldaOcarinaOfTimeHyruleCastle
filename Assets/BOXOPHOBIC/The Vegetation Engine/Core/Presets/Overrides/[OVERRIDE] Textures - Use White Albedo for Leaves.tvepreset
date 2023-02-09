@@ -1,0 +1,16 @@
+*******************************************************************
+*                             INCLUDE                             *
+*******************************************************************
+
+Utility USE_CONVERTED_MATERIAL_AS_BASE
+
+if SHADER_NAME_CONTAINS Leaf
+{
+	Texture PropName _MainAlbedoTex
+	Texture SetRed NONE
+	Texture SetGreen NONE
+	Texture SetBlue NONE
+	Texture SetAlpha GET_ALPHA _MainAlbedoTex
+	Utility START_TEXTURE_PACKING
+}
+

@@ -1,0 +1,339 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Nature Manufacture
+InfoPreset Use this preset to convert Nature Manufacture assets.
+InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/publishers/6887
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+OutputOptions Props/Branches/Grass/Flowers/Vegetation 4
+OutputPipelines Universal/HD
+
+*******************************************************************
+
+if OUTPUT_OPTION_CONTAINS Vegetation
+{
+	InfoMessage The bark conversion cannot be detected properly! If the bark is becoming white, set the Detail Mode to Off on the bark material!
+}
+
+*******************************************************************
+
+if OUTPUT_OPTION_CONTAINS Props
+{
+	Include Use Default Props Masks
+}
+
+if OUTPUT_OPTION_CONTAINS Branches
+{
+	Mesh SetVariation NONE
+	Mesh SetOcclusion NONE
+	Mesh SetDetailMask NONE
+	Mesh SetDetailCoord GET_COORD_3RD_PARTY 0
+
+	Mesh SetHeight GET_MASK_PROCEDURAL 0
+	Mesh SetMotion2 GET_MASK_PROCEDURAL 0
+	Mesh SetMotion3 GET_MASK_FROM_CHANNEL 0
+
+	Mesh SetPivots NONE
+}
+
+if OUTPUT_OPTION_CONTAINS Grass
+{
+	Include Use Default Grass Masks
+}
+
+if OUTPUT_OPTION_CONTAINS Flowers
+{
+	Include Use Default Flowers Masks
+}
+
+if OUTPUT_OPTION_CONTAINS Vegetation
+{
+	Mesh SetVariation GET_MASK_PROCEDURAL 3
+	Mesh SetOcclusion GET_MASK_PROCEDURAL 6
+	Mesh SetDetailMask NONE
+	Mesh SetDetailCoord GET_COORD_3RD_PARTY 0
+
+	Mesh SetHeight GET_MASK_PROCEDURAL 4
+	Mesh SetMotion2 GET_MASK_PROCEDURAL 16
+	Mesh SetMotion3 GET_MASK_3RD_PARTY 3
+
+	Mesh SetPivots NONE
+}
+
+*******************************************************************
+
+// Set Default values
+Material SET_FLOAT _RenderNormals 2
+Material SET_FLOAT _RenderSpecular 0
+
+Material SET_FLOAT _MainOcclusionValue 1
+Material SET_FLOAT _MainSmoothnessValue 0
+
+*******************************************************************
+
+// Copy HDRP settings
+Material COPY_FLOAT _DoubleSidedNormalMode _RenderNormals
+Material COPY_FLOAT _DiffusionProfileHash _SubsurfaceDiffusion
+Material COPY_VECTOR _DiffusionProfileAsset _SubsurfaceDiffusion_asset
+Material COPY_VECTOR _DiffusionProfileAsset _SubsurfaceDiffusion_Asset
+
+*******************************************************************
+
+if MATERIAL_FLOAT_EQUALS _DoubleSidedEnable 1
+{
+	Material SET_FLOAT _RenderCull 0
+}
+
+*******************************************************************
+
+if SHADER_IS_UNITY_LIT
+{
+	Include Try Get Bark Shaders
+	Include Unity Lit Commons
+	Include Unity Lit Packer
+}
+
+if SHADER_NAME_CONTAINS Foliage/Foliage
+{
+	Material COPY_TEX _BaseColorMap _MainAlbedoTex
+	Material COPY_TEX _NormalMap _MainNormalTex
+	Material COPY_TEX _MaskMap _MainMaskTex
+	Material COPY_VECTOR _Tiling_and_Offset _MainUVs
+
+	Material COPY_FLOAT _AlphaCutoff _AlphaClipValue
+	Material COPY_COLOR _HealthyColor _MainColor
+	
+	//Texture SetGreen GET_GREEN _MaskMap 
+	//Texture SetBlue GET_ALPHA _MaskMap 
+	//Texture SetAlpha GET_ALPHA _MaskMap 
+	//Utility START_TEXTURE_PACKING
+}
+
+if SHADER_NAME_CONTAINS Foliage/Bark
+{
+	Material SET_SHADER SHADER_DEFAULT_BARK
+	Material SET_FLOAT _RenderCull 2
+	Material SET_FLOAT _RenderClip 0
+
+	Material COPY_TEX _TrunkBaseColorMap _MainAlbedoTex
+	Material COPY_TEX _TrunkNormalMap _MainNormalTex
+	Material COPY_TEX _TrunkMaskMap _MainMaskTex
+	Material COPY_VECTOR _TrunkTilingOffset _MainUVs
+
+	Material COPY_COLOR _TrunkBaseColor _MainColor
+	Material COPY_FLOAT _TrunkNormalScale _MainNormalValue
+	
+	//Enable Betail shading
+	if MATERIAL_FLOAT_EQUALS _BarkUseUV3 1
+	{
+		Material SET_FLOAT _DetailMode 1
+		Material SET_FLOAT _DetailBlendMode 1
+		Material SET_FLOAT _DetailCoordMode 1
+		Material SET_FLOAT _DetailMaskMode 0
+
+		Material SET_FLOAT _DetailMeshValue 0
+		Material SET_FLOAT _DetailBlendMinValue 0.4
+		Material SET_FLOAT _DetailBlendMaxValue 0.6
+		
+		Material COPY_TEX _BarkBaseColorMap _SecondAlbedoTex
+		Material COPY_TEX _BarkNormalMap _SecondNormalTex
+		Material COPY_TEX _BarkMaskMap _SecondMaskTex
+		Material COPY_VECTOR _BarkTilingOffset _SecondUVs
+
+		Material COPY_COLOR _BarkBaseColor _SecondColor
+		Material COPY_FLOAT _BarkNormalScale _SecondNormalValue
+		
+		Texture SetRed GET_RED _TrunkMaskMap
+		Texture SetGreen GET_GREEN _TrunkMaskMap
+		Texture SetBlue GET_GREEN _LayerMask
+		Texture SetAlpha GET_ALPHA _TrunkMaskMap
+
+		Utility START_TEXTURE_PACKING
+	}
+}
+
+if SHADER_NAME_CONTAINS Foliage/Cross
+{
+	Include Use Default Cross Settings
+	Material SET_FLOAT _RenderCull 1
+
+	Material SET_FLOAT _FadeHorizontalValue 1
+
+	Material COPY_TEX _BaseColorMap _MainAlbedoTex
+	Material COPY_TEX _NormalMap _MainNormalTex
+	Material COPY_VECTOR _Tiling_and_Offset _MainUVs
+
+	Material COPY_FLOAT _AlphaCutoff _AlphaClipValue
+	Material SET_COLOR _MainColor 0.4 0.4 0.4 1
+}
+
+if SHADER_NAME_CONTAINS Top Cover
+{
+	Material SET_SHADER SHADER_DEFAULT_PROP
+	Material SET_FLOAT _RenderCull 2
+	Material SET_FLOAT _RenderClip 0
+
+	if SHADER_NAME_CONTAINS CutOut
+	{
+		Material SET_FLOAT _RenderCull 2
+		Material SET_FLOAT _RenderClip 1
+	}
+
+	Material COPY_TEX _BaseColorMap _MainAlbedoTex
+	Material COPY_TEX _BaseNormalMap _MainNormalTex
+	Material COPY_TEX _BaseMaskMap _MainMaskTex
+
+	Material COPY_VECTOR _BaseTillingOffset _MainUVs
+
+	Material COPY_VECTOR _BaseColor _MainColor
+	Material COPY_FLOAT _BaseNormalScale _MainNormalValue
+	Material COPY_FLOAT _BaseMetallic _MainMetallicValue
+
+	Material SET_FLOAT _MainOcclusionValue 1
+	Material SET_FLOAT _MainSmoothnessValue 1
+
+	if MATERIAL_HAS_TEX _CoverBaseColorMap
+	{
+		Material SET_FLOAT _DetailMode 1
+		Material SET_FLOAT _DetailBlendMode 1
+		Material SET_FLOAT _DetailCoordMode 1
+
+		Material SET_FLOAT _DetailNormalValue 0
+		Material SET_FLOAT _DetailMaskMode 1
+		Material SET_FLOAT _DetailMaskInvertMode 0
+
+		if MATERIAL_FLOAT_EQUALS _CoverUsePlanarUV 1
+		{
+			Material SET_FLOAT _DetailTypeMode 1
+		}
+
+		Material SET_FLOAT _DetailMeshValue 0.2
+		Material SET_FLOAT _DetailBlendMinValue 0.88
+		Material SET_FLOAT _DetailBlendMaxValue 0.90
+		
+		Material COPY_TEX _CoverBaseColorMap _SecondAlbedoTex
+		Material COPY_TEX _CoverNormalMap _SecondNormalTex
+		Material COPY_TEX _CoverMaskMap _SecondMaskTex
+
+		Material SET_VECTOR _SecondUVs 0.5 0.5 0 0
+
+		Material COPY_VECTOR _CoverBaseColor _SecondColor
+		Material COPY_FLOAT _CoverNormalScale _SecondNormalValue
+		Material COPY_FLOAT _CoverMetallic _SecondMetallicValue
+		
+		Material SET_FLOAT _SecondOcclusionValue 1
+		Material SET_FLOAT _SecondSmoothnessValue 1
+	}
+}
+
+if SHADER_NAME_CONTAINS HDRP/LayeredLit
+{
+	Material SET_SHADER SHADER_DEFAULT_PROP
+
+	Material COPY_VECTOR _BaseColor0 _MainColor
+	Material COPY_TEX _BaseColorMap0 _MainAlbedoTex
+	Material COPY_ST_AS_VECTOR _BaseColorMap0 _MainUVs
+	Material COPY_TEX _NormalMap0 _MainNormalTex
+	Material COPY_FLOAT _NormalScale0 _MainNormalValue
+	Material COPY_TEX _MaskMap0 _MainMaskTex
+
+	Material COPY_VECTOR _BaseColor1 _SecondColor
+	Material COPY_TEX _BaseColorMap1 _SecondAlbedoTex
+	Material COPY_ST_AS_VECTOR _BaseColorMap1 _SecondUVs
+	Material COPY_TEX _NormalMap1 _SecondNormalTex
+	Material COPY_FLOAT _NormalScale1 _SecondNormalValue	
+	Material COPY_TEX _MaskMap1 _SecondMaskTex
+	
+	Material SET_FLOAT _DetailMode 1
+	Material SET_FLOAT _DetailBlendMode 1
+	
+	if MATERIAL_FLOAT_EQUALS _Base2UsePlanarUV 1
+	{
+		Material SET_FLOAT _DetailTypeMode 1
+	}
+
+	Material SET_FLOAT _DetailNormalValue 0
+	Material SET_FLOAT _DetailMaskMode 0
+	Material SET_FLOAT _DetailMaskInvertMode 0
+
+	Material SET_FLOAT _DetailMeshValue 0.0
+	Material SET_FLOAT _DetailBlendMinValue 0.45
+	Material SET_FLOAT _DetailBlendMaxValue 0.55
+	
+	Texture PropName _MainMaskTex
+	Texture ImportType DEFAULT
+	Texture SetRed GET_RED _MaskMap0
+	Texture SetGreen GET_GREEN _MaskMap0
+	Texture SetBlue GET_RED _LayerMaskMap
+	Texture SetAlpha GET_ALPHA _MaskMap0
+	Utility START_TEXTURE_PACKING
+}
+
+if SHADER_NAME_CONTAINS Layered/Layered
+{
+	Material SET_SHADER SHADER_DEFAULT_PROP
+
+	Material COPY_VECTOR _BaseColor _MainColor
+	Material COPY_TEX _BaseColorMap _MainAlbedoTex
+	Material COPY_ST_AS_VECTOR _BaseColorMap _MainUVs
+	Material COPY_TEX _BaseNormalMap _MainNormalTex
+	Material COPY_FLOAT _BaseNormalScale _MainNormalValue
+	Material COPY_TEX _BaseMaskMap _MainMaskTex
+
+	Material COPY_VECTOR _Base2Color _SecondColor
+	Material COPY_TEX _Base2ColorMap _SecondAlbedoTex
+	//Material COPY_VECTOR _Base2TilingOffset _SecondUVs
+	Material SET_VECTOR _SecondUVs 0.5 0.5 0 0
+	Material COPY_TEX _Base2NormalMap _SecondNormalTex
+	Material COPY_FLOAT _Base2NormalScale _SecondNormalValue	
+	Material COPY_TEX _Base2MaskMap _SecondMaskTex
+	
+	Material SET_FLOAT _DetailMode 1
+	Material SET_FLOAT _DetailBlendMode 1
+	Material SET_FLOAT _DetailTypeMode 1
+
+	Material SET_FLOAT _DetailNormalValue 0
+	Material SET_FLOAT _DetailMaskMode 0
+	Material SET_FLOAT _DetailMaskInvertMode 0
+
+	Material SET_FLOAT _DetailMeshValue 0.0
+	Material SET_FLOAT _DetailBlendMinValue 0.45
+	Material SET_FLOAT _DetailBlendMaxValue 0.55
+	
+	Texture PropName _MainMaskTex
+	Texture ImportType DEFAULT
+	Texture SetRed GET_RED _BaseMaskMap
+	Texture SetGreen GET_GREEN _BaseMaskMap
+	Texture SetBlue GET_RED _LayerMask
+	Texture SetAlpha GET_ALPHA _BaseMaskMap
+	Utility START_TEXTURE_PACKING
+}
+
+if OUTPUT_OPTION_CONTAINS Props
+{
+	Material SET_SHADER SHADER_DEFAULT_PROP
+}
+
+if OUTPUT_OPTION_CONTAINS Branches
+{
+	if SHADER_NAME_CONTAINS Bark
+	{
+		Material SET_SHADER SHADER_DEFAULT_PROP
+	}
+}
+
+if OUTPUT_OPTION_CONTAINS Grass
+{
+	Include Use Default Grass Settings
+}
+
+if OUTPUT_OPTION_CONTAINS Flowers
+{
+	Include Use Default Flowers Settings
+}

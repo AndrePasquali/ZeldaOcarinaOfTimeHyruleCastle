@@ -58,7 +58,7 @@ namespace MainLeaf.OcarinaOfTime
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space)) CurrentCommand = CommandState.Jump;
-            else if (Input.GetButtonDown("Push")) CurrentCommand = CommandState.Push;
+            else if (Input.GetKeyDown(KeyCode.F)) CurrentCommand = CommandState.Push;
             else CurrentCommand = CommandState.Default;
         }
     }

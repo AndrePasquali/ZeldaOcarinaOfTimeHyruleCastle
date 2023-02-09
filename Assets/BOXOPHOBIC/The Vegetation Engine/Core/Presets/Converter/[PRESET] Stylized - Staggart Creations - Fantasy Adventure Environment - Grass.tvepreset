@@ -1,0 +1,32 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Staggart Fantasy Grass
+InfoPreset Use this preset to convert Staggart Creations' FAE prefabs!
+InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/packages/3d/environments/fantasy/fantasy-adventure-environment-70354
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Include Use Default Grass Masks
+Include Use Default Grass Settings
+
+*******************************************************************
+
+//Set default properties
+Material SET_FLOAT _RenderNormals 2
+Material SET_FLOAT _MainSmoothnessValue 0
+Material SET_VECTOR _VertexOcclusionColor 0.5 0.5 0.5 1.0
+
+*******************************************************************
+
+// Copy Default properties
+Material COPY_TEX _MainTex _MainAlbedoTex
+Material COPY_ST_AS_VECTOR _MainTex _MainUVs
+Material COPY_TEX _BumpMap _MainNormalTex
+
+Material COPY_VECTOR _ColorTop _MainColor
+Material COPY_VECTOR _ColorTop _SubsurfaceColor

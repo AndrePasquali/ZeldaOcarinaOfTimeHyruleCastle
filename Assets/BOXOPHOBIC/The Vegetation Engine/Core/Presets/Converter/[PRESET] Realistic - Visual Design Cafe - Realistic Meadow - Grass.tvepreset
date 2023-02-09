@@ -1,0 +1,18 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Visual Design Cafe
+InfoPreset Use this preset to convert Visual Design Cafe's Realsitic Meadow Grass!
+InfoStatus ● ● ● ● ●
+InfoOnline https://assetstore.unity.com/packages/3d/vegetation/plants/realistic-meadow-ground-vegetation-204999#description
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Include Visual Design Cafe Commons
+
+Include Use Default Grass Masks
+Include Use Default Grass Settings
+

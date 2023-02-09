@@ -1,0 +1,45 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle I Made It
+InfoPreset Use this preset to convert custom made vegetation. Check the documentation for more details! The preset will convert the materials only if the Standard/Lit shaders are used!
+InfoStatus ○ ○ ○ ○ ○
+InfoOnline https://docs.google.com/document/d/145JOVlJ1tE-WODW45YoJ6Ixg23mFc56EnB_8Tbwloz8/edit#heading=h.ltnk8tq0d4cg
+InfoWarning The automatic conversion might not work as expected! The preset will convert the materials only if the Standard/Lit shaders are used!
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+OutputMesh DEFAULT
+OutputMaterial DEFAULT
+
+// Get the variation mask from Vertex Color R
+Mesh SetVariation GET_MASK_FROM_CHANNEL 0
+
+// Get the occlusion mask from Vertex Color A
+Mesh SetOcclusion GET_MASK_FROM_CHANNEL 3
+
+// Set a procedural height mask for detail blending
+Mesh SetDetailMask GET_MASK_PROCEDURAL 8
+
+// Use UV0 texture coord as detail UVs
+Mesh SetDetailCoord GET_COORD_FROM_CHANNEL 0
+
+Mesh SetHeight GET_MASK_PROCEDURAL 4
+
+// Get the squash motion mask from Vertex Color G
+Mesh SetMotion2 GET_MASK_FROM_CHANNEL 1
+
+// Get the flutter motion mask from Vertex Color B
+Mesh SetMotion3 GET_MASK_FROM_CHANNEL 2
+
+Mesh SetPivots NONE
+
+*******************************************************************
+
+// Include Unity Default Features
+Include Try Get Bark Shaders
+Include Unity Lit Commons
+Include Unity Lit Packer

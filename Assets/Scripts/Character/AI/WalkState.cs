@@ -32,7 +32,7 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
             {
                 _agent.isStopped = true;
                 _timeCounter += Time.deltaTime;
-                if(_timeCounter <= 5F) return;
+                if(_timeCounter <= 3F) return;
                 _timeCounter = 0;
                 _agent.isStopped = false;
                 
@@ -42,7 +42,7 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
 
         private bool DestinationIsReached()
         {
-            var isNear = Vector3.Distance(_agent.transform.position, _currentDestination.position) <= 3F;
+            var isNear = Vector3.Distance(_agent.transform.position, _currentDestination.position) <= 1.5F;
 
             return isNear;        
         }

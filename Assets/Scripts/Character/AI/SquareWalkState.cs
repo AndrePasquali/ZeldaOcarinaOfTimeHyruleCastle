@@ -30,7 +30,6 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
                 _currentPoint = (_currentPoint + 1) % _points.Length;
                 _stateMachine.ChangeState(_stateMachine.PauseState);
             }
-
         }
     }
 }

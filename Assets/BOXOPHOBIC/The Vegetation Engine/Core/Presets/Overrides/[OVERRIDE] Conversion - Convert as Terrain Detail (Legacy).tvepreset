@@ -1,0 +1,18 @@
+*******************************************************************
+*                            OVERRIDE                             *
+*******************************************************************
+
+InfoStatus Convert the mesh to be compatible with legacy terrain detail system (no GPU Instancing used)
+
+*******************************************************************
+
+Mesh SetVariation GET_MASK_PROCEDURAL 1
+Mesh SetOcclusion GET_MASK_PROCEDURAL 1
+Mesh SetDetailMask GET_MASK_PROCEDURAL 1
+Mesh SetDetailCoord NONE
+
+Mesh SetHeight GET_MASK_PROCEDURAL 4
+Mesh SetMotion2 GET_MASK_PROCEDURAL 4
+Mesh SetMotion3 GET_MASK_PROCEDURAL 4
+
+Mesh SetPivots NONE

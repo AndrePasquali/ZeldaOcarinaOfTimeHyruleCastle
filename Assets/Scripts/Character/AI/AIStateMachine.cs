@@ -1,5 +1,8 @@
+using MainLeaf.OcarinaOfTime.Character.Physics;
+using MainLeaf.OcarinaOfTime.Services;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 namespace MainLeaf.OcarinaOfTime.Character.AI
 {
@@ -18,13 +21,21 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
         public NavMeshAgent Agent => _agent ?? (_agent = GetComponent<NavMeshAgent>());
         private NavMeshAgent _agent;
 
+        public CharacterPhysics CharacterPhysics =>
+            _characterPhysics ?? (_characterPhysics = GetComponent<CharacterPhysics>());
+        private CharacterPhysics _characterPhysics;
+
         [SerializeField] private Animator _animator;
+
+        [SerializeField] private float _detectPlayerDistanceView = 5F;
+        [SerializeField] private float _detectPlayerDistance = 2.5F;
 
         public IAIState CurrentState;
         public FollowPlayerState FollowPlayerState;
         public SquareWalkState SquareWalkState;
         public WalkState WalkState;
         public PauseState PauseState;
+        private bool _playerDetected;
 
         public Transform[] Waypoints;
 
@@ -41,20 +52,17 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
         {
             CurrentState.UpdateState();
             
-            UpdateAnimator();
+            CheckPlayerByView();
+            CheckPlayerByDistance();
         }
 
-        private void UpdateAnimator()
+        private void OnAnimatorMove()
         {
-            Vector3 velocity = Agent.velocity;
-            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+            var velocity = Agent.velocity.magnitude;
             
-            Vector3 direction = _agent.steeringTarget - transform.position;
-            var rotateAngle = Vector3.SignedAngle(transform.forward, direction, transform.up) / 180f;
+            _animator.SetFloat("Forward", velocity > 0 ? 0.5F : 0);
             
-            _animator.SetFloat("Foward", localVelocity.z);
-            _animator.SetFloat("Turn", rotateAngle);
-            
+            //_animator.SetFloat("Turn", Agent.transform.rotation.eulerAngles.magnitude);
         }
 
         public void ChangeState(IAIState newState)
@@ -68,6 +76,39 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
                 transform.LookAt(Player);
                 CurrentAIState = AIState.WALK;
             }
+        }
+
+        private void CheckPlayerByView()
+        {
+            var rayForward = CharacterPhysics.RayToDirection(CharacterPhysics.RayDirection.Front, _detectPlayerDistanceView);
+            
+            if(!rayForward || _playerDetected) return;
+            
+            var hit = CharacterPhysics.GetHit();
+
+            if (hit.transform.gameObject.tag.Equals("Player")) OnPlayerBusted();
+        }
+
+        public void CheckPlayerByDistance()
+        {
+            if(_playerDetected) return;
+            
+            var playerIsNear = Vector3.Distance(transform.position, Player.transform.position) < _detectPlayerDistance;
+            
+            if(playerIsNear) OnPlayerBusted();
+            
+        }
+
+        private void OnPlayerBusted()
+        {
+            _playerDetected = true;
+
+            Time.timeScale = 0;
+
+            var popup = ServiceLocator.Get<PopupController>();
+                
+            popup.ShowPopup("ALERT", "Hey You! Stop! \n You. kid. over there!",
+                () => SceneManager.LoadScene(1));
         }
 
         public void OnDestroy()

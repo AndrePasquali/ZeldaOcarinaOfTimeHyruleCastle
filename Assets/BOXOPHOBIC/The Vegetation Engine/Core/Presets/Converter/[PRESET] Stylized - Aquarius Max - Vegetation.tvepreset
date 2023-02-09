@@ -1,0 +1,59 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Aquarius Stylized Vegetation
+InfoPreset Use this preset to convert Aquarius Max Stylized Trees assets.
+InfoStatus InfoStatus ● ● ● ● ○
+InfoOnline https://assetstore.unity.com/packages/3d/vegetation/trees/stylized-trees-and-foliage-190601
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Mesh SetVariation GET_MASK_PROCEDURAL 3
+Mesh SetOcclusion GET_MASK_PROCEDURAL 6
+
+Mesh SetHeight GET_MASK_PROCEDURAL 4
+Mesh SetMotion2 GET_MASK_PROCEDURAL 16
+Mesh SetMotion3 GET_MASK_FROM_CHANNEL 5
+
+Mesh SetPivots NONE
+
+*******************************************************************
+
+if SHADER_NAME_CONTAINS Leaves
+{
+	Material SET_FLOAT _RenderCull 0
+	Material SET_FLOAT _RenderNormals 2
+	Material SET_FLOAT _RenderSpecular 0
+	Material SET_FLOAT _AlphaClipValue 0.2
+
+	Material SET_FLOAT _FadeGlancingValue 0
+
+	Material COPY_TEX _MainTex _MainAlbedoTex
+	Material SET_FLOAT _MainSmoothnessValue 0
+
+	// Set Subsurface Settings
+	Material COPY_COLOR _Color2 _SubsurfaceColor
+
+	// Set Gradient Colors
+	Material COPY_COLOR _Color2 _GradientColorOne
+	Material COPY_COLOR _Color _GradientColorTwo
+	Material SET_FLOAT _GradientMinValue 0
+	Material SET_FLOAT _GradientMaxValue 1
+}
+
+*******************************************************************
+
+if SHADER_NAME_CONTAINS Standard
+{
+	Material SET_SHADER SHADER_DEFAULT_BARK
+	Material SET_FLOAT _RenderCull 2
+	Material SET_FLOAT _RenderClip 0
+
+	Include Unity Lit Commons
+	Include Unity Lit Packer
+}
+
+

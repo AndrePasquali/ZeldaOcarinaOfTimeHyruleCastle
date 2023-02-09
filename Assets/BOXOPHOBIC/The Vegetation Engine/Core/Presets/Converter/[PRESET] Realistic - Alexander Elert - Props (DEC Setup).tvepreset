@@ -1,0 +1,18 @@
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+InfoTitle Alexander Elert
+InfoPreset Use this preset to convert prefabs using DE/DEC shaders.
+InfoStatus ○ ○ ○ ○ ○
+InfoOnline https://assetstore.unity.com/publishers/46732
+InfoWarning The DEC shaders are not fully transferable to the Vegetation Engine! Props using trimpanar shaders are not supported!
+
+*******************************************************************
+
+OutputMesh NONE
+
+Include DE Commons
+
+
+

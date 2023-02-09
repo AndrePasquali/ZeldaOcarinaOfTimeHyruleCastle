@@ -1,0 +1,10 @@
+//Created: 10.11.2022
+//Tested: Toon Fantasy Nature / Toon Gas Station
+//Pipeline: BIRP
+
+*******************************************************************
+*                             DETECT                              *
+*******************************************************************
+
+Detect PolygonNatureBiomes
+Preset Polygonal - Synty Biomes

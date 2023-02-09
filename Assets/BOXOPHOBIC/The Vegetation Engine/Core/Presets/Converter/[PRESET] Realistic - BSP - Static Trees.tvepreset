@@ -1,0 +1,36 @@
+*******************************************************************
+*                             INFO                                *
+*******************************************************************
+
+InfoTitle Procedural
+InfoPreset Use this preset to convert BSP's animated trees. Make sure to use the static prefab for conversion, the animated ones are using skinned meshes which are not supported!
+InfoStatus ● ● ● ○ ○
+InfoOnline https://assetstore.unity.com/publishers/24828
+
+*******************************************************************
+*                             PRESET                              *
+*******************************************************************
+
+Mesh SetVariation GET_MASK_PROCEDURAL 3
+Mesh SetOcclusion GET_MASK_PROCEDURAL 6
+Mesh SetDetailMask GET_MASK_PROCEDURAL 8
+Mesh SetDetailCoord GET_COORD_FROM_CHANNEL 0
+
+Mesh SetHeight GET_MASK_PROCEDURAL 4
+Mesh SetMotion2 GET_MASK_PROCEDURAL 16
+Mesh SetMotion3 GET_MASK_FROM_CHANNEL 5
+
+Mesh SetPivots NONE
+
+*******************************************************************
+
+// Enable Material Features
+Material SET_FLOAT _GlobalSize 0
+Material SET_FLOAT _SizeFadeMode 0
+
+*******************************************************************
+
+// Include Unity Default Features
+Include Try Get Bark Shaders
+Include Unity Lit Commons
+Include Unity Lit Packer

@@ -1,0 +1,81 @@
+*******************************************************************
+*                             INCLUDE                             *
+*******************************************************************
+
+// Combine Texture Channels for Standard
+if SHADER_NAME_CONTAINS Standard
+{
+	Texture PropName _MainMaskTex
+	Texture ImportType DEFAULT
+	Texture SetRed GET_RED _MetallicGlossMap
+	Texture SetGreen GET_GRAY _OcclusionMap
+	Texture SetBlue GET_GRAY _ParallaxMap
+	Texture SetBlue GET_GRAY _DetailMask
+	Texture SetAlpha GET_ALPHA _MetallicGlossMap
+
+	if MATERIAL_KEYWORD_ENABLED _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+	{
+		Texture SetAlpha GET_ALPHA _MainTex
+	}	
+	
+	Utility START_TEXTURE_PACKING
+}
+
+*******************************************************************
+
+// Combine Texture Channels for URP
+if SHADER_NAME_CONTAINS Universal
+{
+	Texture PropName _MainMaskTex
+	Texture ImportType DEFAULT
+	Texture SetRed GET_RED _MetallicGlossMap
+	Texture SetGreen GET_GRAY _OcclusionMap
+	Texture SetBlue GET_GRAY _ParallaxMap
+	Texture SetBlue GET_GRAY _DetailMask
+	Texture SetAlpha GET_ALPHA _MetallicGlossMap
+
+	if MATERIAL_KEYWORD_ENABLED _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
+	{
+		Texture SetAlpha GET_ALPHA _BaseColor
+	}
+	
+	Utility START_TEXTURE_PACKING
+}
+
+*******************************************************************
+
+// Combine Texture Channels fot HD
+if SHADER_NAME_CONTAINS HDRP
+{
+	Texture PropName _MainMaskTex
+	Texture ImportType DEFAULT
+	Texture SetRed GET_RED _MaskMap
+	Texture SetGreen GET_GREEN _MaskMap
+	Texture SetBlue GET_GRAY _ThicknessMap
+	Texture SetBlue GET_GRAY _HeightMap
+	Texture SetAlpha GET_ALPHA _MaskMap
+	Utility START_TEXTURE_PACKING
+
+	if MATERIAL_KEYWORD_ENABLED _DETAIL_MAP
+	{
+		Texture PropName _SecondAlbedoTex
+		Texture ImportType DEFAULT
+		Texture SetRed GET_RED _DetailMap
+		Texture SetGreen GET_RED _DetailMap
+		Texture SetBlue GET_RED _DetailMap
+		Utility START_TEXTURE_PACKING
+		
+		Texture PropName _SecondNormalTex
+		Texture ImportType NORMALMAP
+		Texture SetRed GET_ALPHA _DetailMap
+		Texture SetGreen GET_GREEN _DetailMap
+		Utility START_TEXTURE_PACKING
+		
+		Texture PropName _SecondMaskTex
+		Texture ImportType DEFAULT
+		Texture SetAlpha GET_BLUE _DetailMap
+		Utility START_TEXTURE_PACKING
+	}
+
+}
+
