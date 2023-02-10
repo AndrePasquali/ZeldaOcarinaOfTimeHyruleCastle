@@ -1,23 +1,32 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+using MainLeaf.OcarinaOfTime.Game;
+using MainLeaf.OcarinaOfTime.Scenes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Loading : MonoBehaviour
 {
-    [SerializeField] private float _loadingDuration = 3.0F;
+    private void Start() => LoadNextScene();
 
-    private void Start()
+    private void LoadNextScene()
     {
-        LoadNextScene();
+        var targetScene = GetNextScene();
+        SceneManager.LoadScene((int)targetScene);
     }
-
-    private async void LoadNextScene()
+    
+    public SceneName GetNextScene()
     {
-        await UniTask.Delay(TimeSpan.FromSeconds(_loadingDuration));
-
-        SceneManager.LoadScene(3);
+        var currentScene = GameRuntimeStateHolder.GetCurrentScene();
+        var currentGameState = GameRuntimeStateHolder.GetGameState();
+        switch (currentScene)
+        {
+            case SceneName.LOADING: return SceneName.MAIN;
+            case SceneName.HYRULE_CASTLE: return SceneName.COURTYARD;
+            case SceneName.COURTYARD:
+                if (currentGameState == GameRuntimeStateHolder.GameState.GAMEOVER)
+                    return SceneName.HYRULE_CASTLE;
+                return SceneName.MAIN;
+            case SceneName.MAIN: return SceneName.HYRULE_CASTLE;
+            default: return SceneName.MAIN;
+        }
     }
 }

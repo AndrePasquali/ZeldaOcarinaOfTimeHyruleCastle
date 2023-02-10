@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: cd337d897c79b46a994206f336cfbcbb
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 4466a731adb7442f19859706f69034d0
   - enabled: 1
     path: Assets/Scenes/HyruleCastle.unity
     guid: 864ae45f966784bfb9c1229b4220ac52
-  - enabled: 1
-    path: Assets/Scenes/Loading.unity
-    guid: cd337d897c79b46a994206f336cfbcbb
   - enabled: 1
     path: Assets/Scenes/CourtYard.unity
     guid: 916e48eeca4544424b09d85804b148ab

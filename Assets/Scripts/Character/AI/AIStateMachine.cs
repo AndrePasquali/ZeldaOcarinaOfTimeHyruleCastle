@@ -1,4 +1,6 @@
 using MainLeaf.OcarinaOfTime.Character.Physics;
+using MainLeaf.OcarinaOfTime.Game;
+using MainLeaf.OcarinaOfTime.Scenes;
 using MainLeaf.OcarinaOfTime.Services;
 using UnityEngine;
 using UnityEngine.AI;
@@ -104,11 +106,14 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
             _playerDetected = true;
 
             Time.timeScale = 0;
+            
+            GameRuntimeStateHolder.SaveScene(SceneName.COURTYARD);
+            GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.GAMEOVER);
 
             var popup = ServiceLocator.Get<PopupController>();
                 
             popup.ShowPopup("ALERT", "Hey You! Stop! \n You. kid. over there!",
-                () => SceneManager.LoadScene(1));
+                () => SceneManager.LoadScene(0));
         }
 
         public void OnDestroy()

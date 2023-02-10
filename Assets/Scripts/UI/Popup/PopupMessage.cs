@@ -13,6 +13,6 @@ public class PopupMessage : MonoBehaviour
 
     public void SetBody(string newBody) => _body.text = newBody;
 
-    public void SetCallBack(Action callback) => _button.onClick.AddListener(() => callback.Invoke());
+    public async void SetCallBack(Action callback) => _button.onClick.AddListener(() => callback.Invoke());
 
 }

@@ -12,8 +12,9 @@ namespace MainLeaf.OcarinaOfTime.UI.HUD
         public void Start()
         {
             ServiceLocator.Register(this);
-            
             UpdatePoints();
+
+            Time.timeScale = 1;
         }
 
         public void UpdatePoints() => _points.text = PlayerProgress.GetPoints().ToString();
