@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>ziell</author>
+      <authoring_tool>OpenCOLLADA for 3ds Max;  Version: 1.6;  Revision: 63</authoring_tool>
+    </contributor>
+    <created>2018-12-14T12:25:08</created>
+    <modified>2018-12-14T12:25:08</modified>
+    <unit name="inch" meter="0.0254"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="phong0_sfx_0x92001001___CULLNONE_A_AB_AT_ZWRITE_OFF__NORMEXP16___VTC_">
+      <profile_COMMON>
+        <newparam sid="alp_navy_001_col_png-surface">
+          <surface type="2D">
+            <init_from>alp_navy_001_col_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="alp_navy_001_col_png-sampler">
+          <sampler2D>
+            <source>alp_navy_001_col_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <blinn>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0.588 0.588 0.588 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="alp_navy_001_col_png-sampler" texcoord="CHANNEL1"/>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>10</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <texture texture="alp_navy_001_col_png-sampler" texcoord="CHANNEL1"/>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </blinn>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <opacity_type sid="opacity_type" type="int">0</opacity_type>
+            <falloff_type sid="falloff_type" type="int">0</falloff_type>
+            <falloff sid="falloff" type="float">0</falloff>
+            <index_of_refraction sid="index_of_refraction" type="float">1.5</index_of_refraction>
+            <wire_size sid="wire_size" type="float">1</wire_size>
+            <wire_units sid="wire_units" type="int">0</wire_units>
+            <apply_reflection_dimming sid="apply_reflection_dimming" type="bool">0</apply_reflection_dimming>
+            <dim_level sid="dim_level" type="float">0</dim_level>
+            <reflection_level sid="reflection_level" type="float">3</reflection_level>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_texture_lock sid="ambient_diffuse_texture_lock" type="bool">1</ambient_diffuse_texture_lock>
+            <ambient_diffuse_lock sid="ambient_diffuse_lock" type="bool">1</ambient_diffuse_lock>
+            <diffuse_specular_lock sid="diffuse_specular_lock" type="bool">0</diffuse_specular_lock>
+            <use_self_illum_color sid="use_self_illum_color" type="bool">0</use_self_illum_color>
+            <self_illumination sid="self_illumination" type="float">0</self_illumination>
+            <specular_level sid="specular_level" type="float">0</specular_level>
+            <soften sid="soften" type="float">0.1</soften>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+    <effect id="phong1_sfx_0x92001001___AT_ZWRITE_OFF__NORMEXP16___VTC__A_AB">
+      <profile_COMMON>
+        <newparam sid="alp_navy_002_col_png-surface">
+          <surface type="2D">
+            <init_from>alp_navy_002_col_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="alp_navy_002_col_png-sampler">
+          <sampler2D>
+            <source>alp_navy_002_col_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <blinn>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0.588 0.588 0.588 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="alp_navy_002_col_png-sampler" texcoord="CHANNEL1"/>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>10</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <texture texture="alp_navy_002_col_png-sampler" texcoord="CHANNEL1"/>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </blinn>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <opacity_type sid="opacity_type" type="int">0</opacity_type>
+            <falloff_type sid="falloff_type" type="int">0</falloff_type>
+            <falloff sid="falloff" type="float">0</falloff>
+            <index_of_refraction sid="index_of_refraction" type="float">1.5</index_of_refraction>
+            <wire_size sid="wire_size" type="float">1</wire_size>
+            <wire_units sid="wire_units" type="int">0</wire_units>
+            <apply_reflection_dimming sid="apply_reflection_dimming" type="bool">0</apply_reflection_dimming>
+            <dim_level sid="dim_level" type="float">0</dim_level>
+            <reflection_level sid="reflection_level" type="float">3</reflection_level>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_texture_lock sid="ambient_diffuse_texture_lock" type="bool">1</ambient_diffuse_texture_lock>
+            <ambient_diffuse_lock sid="ambient_diffuse_lock" type="bool">1</ambient_diffuse_lock>
+            <diffuse_specular_lock sid="diffuse_specular_lock" type="bool">0</diffuse_specular_lock>
+            <use_self_illum_color sid="use_self_illum_color" type="bool">0</use_self_illum_color>
+            <self_illumination sid="self_illumination" type="float">0</self_illumination>
+            <specular_level sid="specular_level" type="float">0</specular_level>
+            <soften sid="soften" type="float">0.1</soften>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="phong0_sfx_0x92001001___CULLNONE_A_AB_AT_ZWRITE_OFF__NORMEXP16___VTC_-material" name="phong0_sfx_0x92001001___CULLNONE_A_AB_AT_ZWRITE_OFF__NORMEXP16___VTC_">
+      <instance_effect url="#phong0_sfx_0x92001001___CULLNONE_A_AB_AT_ZWRITE_OFF__NORMEXP16___VTC_"/>
+    </material>
+    <material id="phong1_sfx_0x92001001___AT_ZWRITE_OFF__NORMEXP16___VTC__A_AB-material" name="phong1_sfx_0x92001001___AT_ZWRITE_OFF__NORMEXP16___VTC__A_AB">
+      <instance_effect url="#phong1_sfx_0x92001001___AT_ZWRITE_OFF__NORMEXP16___VTC__A_AB"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="geom-GamemodelShape" name="GamemodelShape">
+      <mesh>
+        <source id="geom-GamemodelShape-positions">
+          <float_array id="geom-GamemodelShape-positions-array" count="96">1.91254 0.796864 -1.38456 1.41084 1.79279 -1.17776 0.143701 -0.344025 -0.181365 -0.357993 0.651902 0.0254381 1.28362 -0.438232 -0.860735 0.195024 0.32306 -0.269373 0.915831 -1.08589 -0.568731 -0.126794 -0.243643 -0.0138694 -1.91254 0.796864 -1.38456 -0.143701 -0.344025 -0.181365 -1.41084 1.79279 -1.17776 0.357993 0.651902 0.0254381 0.126794 -0.243643 -0.0138694 -0.195024 0.32306 -0.269373 -0.915831 -1.08589 -0.568731 -1.28362 -0.438232 -0.860735 1.91254 0.796864 -1.38456 0.143701 -0.344025 -0.181365 1.41084 1.79279 -1.17776 -0.357993 0.651902 0.0254381 -0.126794 -0.243643 -0.0138694 0.195024 0.32306 -0.269373 0.915831 -1.08589 -0.568731 1.28362 -0.438232 -0.860735 -1.91254 0.796864 -1.38456 -1.41084 1.79279 -1.17776 -0.143701 -0.344025 -0.181365 0.357993 0.651902 0.0254381 -1.28362 -0.438232 -0.860735 -0.195024 0.32306 -0.269373 -0.915831 -1.08589 -0.568731 0.126794 -0.243643 -0.0138694</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape-positions-array" count="32" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape-normals">
+          <float_array id="geom-GamemodelShape-normals-array" count="96">0.5215877 0.08650396 0.8488011 0.5215877 0.08650396 0.8488011 0.5215877 0.08650396 0.8488011 0.5215877 0.08650396 0.8488011 0.5215877 0.08650396 0.8488011 0.5215877 0.08650396 0.8488011 0.5215877 0.08650396 0.8488011 0.5215877 0.08650396 0.8488011 -0.5215877 0.08650396 0.8488011 -0.5215877 0.08650396 0.8488011 -0.5215877 0.08650396 0.8488011 -0.5215877 0.08650396 0.8488011 -0.5215877 0.08650396 0.8488011 -0.5215877 0.08650396 0.8488011 -0.5215877 0.08650396 0.8488011 -0.5215877 0.08650396 0.8488011 -0.5215877 -0.08650396 -0.8488011 -0.5215877 -0.08650396 -0.8488011 -0.5215877 -0.08650396 -0.8488011 -0.5215877 -0.08650396 -0.8488011 -0.5215877 -0.08650396 -0.8488011 -0.5215877 -0.08650396 -0.8488011 -0.5215877 -0.08650396 -0.8488011 -0.5215877 -0.08650396 -0.8488011 0.5215877 -0.08650396 -0.8488011 0.5215877 -0.08650396 -0.8488011 0.5215877 -0.08650396 -0.8488011 0.5215877 -0.08650396 -0.8488011 0.5215877 -0.08650396 -0.8488011 0.5215877 -0.08650396 -0.8488011 0.5215877 -0.08650396 -0.8488011 0.5215877 -0.08650396 -0.8488011</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape-normals-array" count="32" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape-map-2">
+          <float_array id="geom-GamemodelShape-map-2-array" count="96">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape-map-2-array" count="32" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape-map0">
+          <float_array id="geom-GamemodelShape-map0-array" count="96">0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape-map0-array" count="32" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape-map1">
+          <float_array id="geom-GamemodelShape-map1-array" count="96">1 0 0 1 0.9999695 0 3.05176e-5 0 0 3.05176e-5 0.9999695 0 1 0.9999695 0 3.05176e-5 0.9999695 0 1 0 0 3.05176e-5 0 0 1 0 0 3.05176e-5 0 0 1 0.9999695 0 3.05176e-5 0.9999695 0 3.05176e-5 0 0 3.05176e-5 0.9999695 0 1 0 0 1 0.9999695 0 1 0 0 3.05176e-5 0 0 1 0.9999695 0 3.05176e-5 0.9999695 0 3.05176e-5 0 0 3.05176e-5 0.9999695 0 1 0 0 1 0.9999695 0 1 0 0 1 0.9999695 0 3.05176e-5 0 0 3.05176e-5 0.9999695 0 1 0.9999695 0 3.05176e-5 0.9999695 0 1 0 0 3.05176e-5 0 0</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape-map1-array" count="32" stride="3">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+              <param name="P" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-GamemodelShape-vertices">
+          <input semantic="POSITION" source="#geom-GamemodelShape-positions"/>
+        </vertices>
+        <triangles material="phong0_sfx_0x92001001___CULLNONE_A_AB_AT_ZWRITE_OFF__NORMEXP16___VTC_" count="16">
+          <input semantic="VERTEX" source="#geom-GamemodelShape-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-GamemodelShape-normals" offset="1"/>
+          <input semantic="COLOR" source="#geom-GamemodelShape-map0" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#geom-GamemodelShape-map1" offset="3" set="0"/>
+          <p>0 0 0 0 1 1 1 1 2 2 2 2 2 2 2 2 1 1 1 1 3 3 3 3 4 4 4 4 5 5 5 5 6 6 6 6 6 6 6 6 5 5 5 5 7 7 7 7 8 8 8 8 9 9 9 9 10 10 10 10 10 10 10 10 9 9 9 9 11 11 11 11 12 12 12 12 13 13 13 13 14 14 14 14 14 14 14 14 13 13 13 13 15 15 15 15 16 16 16 16 17 17 17 17 18 18 18 18 18 18 18 18 17 17 17 17 19 19 19 19 20 20 20 20 21 21 21 21 22 22 22 22 22 22 22 22 21 21 21 21 23 23 23 23 24 24 24 24 25 25 25 25 26 26 26 26 26 26 26 26 25 25 25 25 27 27 27 27 28 28 28 28 29 29 29 29 30 30 30 30 30 30 30 30 29 29 29 29 31 31 31 31</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="geom-GamemodelShape_1" name="GamemodelShape">
+      <mesh>
+        <source id="geom-GamemodelShape_1-positions">
+          <float_array id="geom-GamemodelShape_1-positions-array" count="63">-0.759395 -0.246742 0 0 0 0 -0.798475 0 0 0.798475 0 0 0.759395 0.246742 0 0.64598 0.469332 0 0.469332 0.64598 0 0.246742 0.759395 0 0 0.798475 0 -0.246742 0.759395 0 -0.469332 0.64598 0 -0.64598 0.469332 0 -0.759395 0.246742 0 -0.64598 -0.469332 0 -0.469332 -0.64598 0 -0.246742 -0.759395 0 0 -0.798475 0 0.246742 -0.759395 0 0.469331 -0.64598 0 0.64598 -0.469332 0 0.759394 -0.246742 0</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape_1-positions-array" count="21" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape_1-normals">
+          <float_array id="geom-GamemodelShape_1-normals-array" count="63">3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1 3.05176e-5 3.05176e-5 1</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape_1-normals-array" count="21" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape_1-map-2">
+          <float_array id="geom-GamemodelShape_1-map-2-array" count="63">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape_1-map-2-array" count="21" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape_1-map0">
+          <float_array id="geom-GamemodelShape_1-map0-array" count="63">0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608 0.5019608</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape_1-map0-array" count="21" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape_1-map1">
+          <float_array id="geom-GamemodelShape_1-map1-array" count="63">0.01628113 0.3427734 0 0.5 0.5 0 -0.008598328 0.5 0 1.008789 0.5 0 0.9838867 0.6569824 0 0.9116211 0.7988281 0 0.7988281 0.9113159 0 0.6572266 0.9835663 0 0.5 1.008461 0 0.3427734 0.9835663 0 0.2010498 0.9113159 0 0.08850098 0.7988281 0 0.01628113 0.6569824 0 0.08850098 0.2011719 0 0.2010498 0.08837891 0 0.3427734 0.01611328 0 0.5 -0.008789062 0 0.6572266 0.01611328 0 0.7988281 0.08837891 0 0.9116211 0.2011719 0 0.9838867 0.3427734 0</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape_1-map1-array" count="21" stride="3">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+              <param name="P" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-GamemodelShape_1-vertices">
+          <input semantic="POSITION" source="#geom-GamemodelShape_1-positions"/>
+        </vertices>
+        <triangles material="phong1_sfx_0x92001001___AT_ZWRITE_OFF__NORMEXP16___VTC__A_AB" count="20">
+          <input semantic="VERTEX" source="#geom-GamemodelShape_1-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-GamemodelShape_1-normals" offset="1"/>
+          <input semantic="COLOR" source="#geom-GamemodelShape_1-map0" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#geom-GamemodelShape_1-map1" offset="3" set="0"/>
+          <p>13 0 13 13 1 1 1 1 0 2 0 0 0 2 0 0 1 1 1 1 2 3 2 2 14 4 14 14 1 1 1 1 13 0 13 13 15 5 15 15 1 1 1 1 14 4 14 14 16 6 16 16 1 1 1 1 15 5 15 15 17 7 17 17 1 1 1 1 16 6 16 16 18 8 18 18 1 1 1 1 17 7 17 17 19 9 19 19 1 1 1 1 18 8 18 18 3 10 3 3 1 1 1 1 20 11 20 20 20 11 20 20 1 1 1 1 19 9 19 19 1 1 1 1 12 12 12 12 2 3 2 2 1 1 1 1 11 13 11 11 12 12 12 12 1 1 1 1 10 14 10 10 11 13 11 11 1 1 1 1 9 15 9 9 10 14 10 10 1 1 1 1 8 16 8 8 9 15 9 9 1 1 1 1 7 17 7 7 8 16 8 8 1 1 1 1 6 18 6 6 7 17 7 7 1 1 1 1 5 19 5 5 6 18 6 6 1 1 1 1 4 20 4 4 5 19 5 5 3 10 3 3 4 20 4 4 1 1 1 1</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers>
+    <controller id="geom-GamemodelShape-skin1">
+      <skin source="#geom-GamemodelShape">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="geom-GamemodelShape-skin1-joints">
+          <Name_array id="geom-GamemodelShape-skin1-joints-array" count="7">joint0 joint1 joint2 joint3 joint4 joint5 joint6</Name_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape-skin1-joints-array" count="7" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape-skin1-bind_poses">
+          <float_array id="geom-GamemodelShape-skin1-bind_poses-array" count="112">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0.7295742 0.4705704 -0.4962716 -0.2798021 0.523107 0.08346716 0.8481699 0.01060372 0.4405459 -0.8784055 -0.1852628 0.06484536 0 0 0 1 0.71874 -0.5806107 -0.3824973 -0.3633426 0.5133024 0.07203892 0.8551793 0.009675257 -0.4689707 -0.8109888 0.349806 -0.03964753 0 0 0 1 0.7295743 -0.4705704 0.4962717 0.2798026 0.5231067 -0.08346721 -0.84817 -0.01060462 0.4405463 0.8784058 0.1852628 -0.06484519 0 0 0 1 0.7187401 0.5806106 0.3824973 0.3633422 0.5133022 -0.07203906 -0.8551788 -0.009674408 -0.4689707 0.8109888 -0.349806 0.03964788 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape-skin1-bind_poses-array" count="7" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape-skin1-weights">
+          <float_array id="geom-GamemodelShape-skin1-weights-array" count="1">1</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape-skin1-weights-array" count="1" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#geom-GamemodelShape-skin1-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#geom-GamemodelShape-skin1-bind_poses"/>
+        </joints>
+        <vertex_weights count="32">
+          <input semantic="JOINT" source="#geom-GamemodelShape-skin1-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#geom-GamemodelShape-skin1-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</vcount>
+          <v>3 0 3 0 3 0 3 0 4 0 4 0 4 0 4 0 5 0 5 0 5 0 5 0 6 0 6 0 6 0 6 0 3 0 3 0 3 0 3 0 4 0 4 0 4 0 4 0 5 0 5 0 5 0 5 0 6 0 6 0 6 0 6 0</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="geom-GamemodelShape_1-skin1">
+      <skin source="#geom-GamemodelShape_1">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="geom-GamemodelShape_1-skin1-joints">
+          <Name_array id="geom-GamemodelShape_1-skin1-joints-array" count="7">joint0 joint1 joint2 joint3 joint4 joint5 joint6</Name_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape_1-skin1-joints-array" count="7" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape_1-skin1-bind_poses">
+          <float_array id="geom-GamemodelShape_1-skin1-bind_poses-array" count="112">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0.7295742 0.4705704 -0.4962716 -0.2798021 0.523107 0.08346716 0.8481699 0.01060372 0.4405459 -0.8784055 -0.1852628 0.06484536 0 0 0 1 0.71874 -0.5806107 -0.3824973 -0.3633426 0.5133024 0.07203892 0.8551793 0.009675257 -0.4689707 -0.8109888 0.349806 -0.03964753 0 0 0 1 0.7295743 -0.4705704 0.4962717 0.2798026 0.5231067 -0.08346721 -0.84817 -0.01060462 0.4405463 0.8784058 0.1852628 -0.06484519 0 0 0 1 0.7187401 0.5806106 0.3824973 0.3633422 0.5133022 -0.07203906 -0.8551788 -0.009674408 -0.4689707 0.8109888 -0.349806 0.03964788 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape_1-skin1-bind_poses-array" count="7" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-GamemodelShape_1-skin1-weights">
+          <float_array id="geom-GamemodelShape_1-skin1-weights-array" count="1">1</float_array>
+          <technique_common>
+            <accessor source="#geom-GamemodelShape_1-skin1-weights-array" count="1" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#geom-GamemodelShape_1-skin1-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#geom-GamemodelShape_1-skin1-bind_poses"/>
+        </joints>
+        <vertex_weights count="21">
+          <input semantic="JOINT" source="#geom-GamemodelShape_1-skin1-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#geom-GamemodelShape_1-skin1-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</vcount>
+          <v>2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0 2 0</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_lights>
+    <light id="EnvironmentAmbientLight" name="EnvironmentAmbientLight">
+      <technique_common>
+        <ambient>
+          <color>0 0 0</color>
+        </ambient>
+      </technique_common>
+    </light>
+  </library_lights>
+  <library_images>
+    <image id="alp_navy_001_col_png">
+      <init_from>./images/Navy/alp_navy_001_col.png</init_from>
+    </image>
+    <image id="alp_navy_002_col_png">
+      <init_from>./images/Navy/alp_navy_002_col.png</init_from>
+    </image>
+  </library_images>
+  <library_visual_scenes>
+    <visual_scene id="MaxScene">
+      <node name="EnvironmentAmbientLight">
+        <instance_light url="#EnvironmentAmbientLight"/>
+      </node>
+      <node id="node-Trans" name="Trans" sid="joint0" type="JOINT">
+        <rotate>-1 0 0 -90</rotate>
+        <node id="node-Rot" name="Rot" sid="joint1" type="JOINT">
+          <node id="node-Ball_BILLBOARD__O_OBJ_O_HIR" name="Ball_BILLBOARD__O_OBJ_O_HIR" sid="joint2" type="JOINT">
+            <extra>
+              <technique profile="OpenCOLLADA">
+                <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+                <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+                <primary_visibility sid="primary_visibility" type="int">1</primary_visibility>
+                <secondary_visibility sid="secondary_visibility" type="int">1</secondary_visibility>
+              </technique>
+            </extra>
+          </node>
+          <node id="node-FeatherLa" name="FeatherLa" sid="joint3" type="JOINT">
+            <translate>0.170022 0.187742 -0.135838</translate>
+            <rotate>-0.8786388 -0.4767379 0.02673547 -100.7259</rotate>
+            <extra>
+              <technique profile="OpenCOLLADA">
+                <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+                <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+                <primary_visibility sid="primary_visibility" type="int">1</primary_visibility>
+                <secondary_visibility sid="secondary_visibility" type="int">1</secondary_visibility>
+              </technique>
+            </extra>
+          </node>
+          <node id="node-FeatherLb" name="FeatherLb" sid="joint4" type="JOINT">
+            <translate>0.237589 -0.243811 -0.133383</translate>
+            <rotate>-0.8351496 0.0433438 0.5483124 -85.96921</rotate>
+            <extra>
+              <technique profile="OpenCOLLADA">
+                <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+                <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+                <primary_visibility sid="primary_visibility" type="int">1</primary_visibility>
+                <secondary_visibility sid="secondary_visibility" type="int">1</secondary_visibility>
+              </technique>
+            </extra>
+          </node>
+          <node id="node-FeatherRa" name="FeatherRa" sid="joint5" type="JOINT">
+            <translate>-0.170022 0.187742 -0.135839</translate>
+            <rotate>0.8663729 0.02796218 0.4986141 -94.83665</rotate>
+            <extra>
+              <technique profile="OpenCOLLADA">
+                <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+                <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+                <primary_visibility sid="primary_visibility" type="int">1</primary_visibility>
+                <secondary_visibility sid="secondary_visibility" type="int">1</secondary_visibility>
+              </technique>
+            </extra>
+          </node>
+          <node id="node-FeatherRb" name="FeatherRb" sid="joint6" type="JOINT">
+            <translate>-0.237589 -0.243811 -0.133382</translate>
+            <rotate>0.8898869 0.4547627 -0.03594871 -110.5823</rotate>
+            <extra>
+              <technique profile="OpenCOLLADA">
+                <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+                <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+                <primary_visibility sid="primary_visibility" type="int">1</primary_visibility>
+                <secondary_visibility sid="secondary_visibility" type="int">1</secondary_visibility>
+              </technique>
+            </extra>
+          </node>
+          <extra>
+            <technique profile="OpenCOLLADA">
+              <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+              <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+              <primary_visibility sid="primary_visibility" type="int">1</primary_visibility>
+              <secondary_visibility sid="secondary_visibility" type="int">1</secondary_visibility>
+            </technique>
+          </extra>
+        </node>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+            <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+            <primary_visibility sid="primary_visibility" type="int">1</primary_visibility>
+            <secondary_visibility sid="secondary_visibility" type="int">1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+      <node id="node-GamemodelShape" name="GamemodelShape">
+        <instance_controller url="#geom-GamemodelShape-skin1">
+          <skeleton>#node-Trans</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="phong0_sfx_0x92001001___CULLNONE_A_AB_AT_ZWRITE_OFF__NORMEXP16___VTC_" target="#phong0_sfx_0x92001001___CULLNONE_A_AB_AT_ZWRITE_OFF__NORMEXP16___VTC_-material">
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+            <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+            <primary_visibility sid="primary_visibility" type="int">1</primary_visibility>
+            <secondary_visibility sid="secondary_visibility" type="int">1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+      <node id="node-GamemodelShape_1" name="GamemodelShape">
+        <instance_controller url="#geom-GamemodelShape_1-skin1">
+          <skeleton>#node-Trans</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="phong1_sfx_0x92001001___AT_ZWRITE_OFF__NORMEXP16___VTC__A_AB" target="#phong1_sfx_0x92001001___AT_ZWRITE_OFF__NORMEXP16___VTC__A_AB-material">
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+            <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+            <primary_visibility sid="primary_visibility" type="int">1</primary_visibility>
+            <secondary_visibility sid="secondary_visibility" type="int">1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#MaxScene"/>
+  </scene>
+</COLLADA>

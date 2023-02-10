@@ -7,12 +7,25 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
     public class Box: MonoBehaviour, IPushable
     {
         [SerializeField] private Rigidbody _rigibody;
+        [SerializeField] private FixedJoint _joint;
+
+        public FixedJoint GetJoint()
+        {
+            if (_joint != null)
+                return _joint;
+
+            _joint = gameObject.AddComponent<FixedJoint>();
+
+            return _joint;
+        }
 
         private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.tag.Equals("Player"))
             {
-                _rigibody.isKinematic = false;
+                if (_joint == null)
+                    _joint = gameObject.AddComponent<FixedJoint>();
+
             }
         }
 
@@ -20,8 +33,7 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
         {
             if (other.gameObject.tag.Equals("Player"))
             {
-                await Task.Delay(TimeSpan.FromSeconds(2));
-                _rigibody.isKinematic = true;
+                if(_joint != null) Destroy(_joint);
             }
         }
     }

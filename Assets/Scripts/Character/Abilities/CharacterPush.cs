@@ -45,12 +45,15 @@ namespace MainLeaf.OcarinaOfTime.Character
                        var localVelocity = transform.InverseTransformDirection(velocity);
                        var movingForward = localVelocity.z > 0;
 
-                       var forceToApply = movingForward ? transform.forward * PushForce : -transform.forward * PushForce;
+                       hit.transform.GetComponent<Box>().GetJoint().connectedBody = Rigidbody;
+
+
+                     //  var forceToApply = movingForward ? transform.forward : transform.forward * -1;
 
                        
-                       if(rigidbody != null) rigidbody.AddForce(isStopped ? Vector3.zero : forceToApply, ForceMode.Impulse);
+                      // if(rigidbody != null) rigidbody.velocity = isStopped ? Vector3.zero : forceToApply * PushForce;
             
-                       Rigidbody.AddForce(isStopped ? Vector3.zero : forceToApply, ForceMode.VelocityChange);
+                       //Rigidbody.AddForce(isStopped ? Vector3.zero : forceToApply, ForceMode.VelocityChange);
                        
                        blackBars.ShowBlackBars();
                        OnStateStart();
@@ -65,7 +68,7 @@ namespace MainLeaf.OcarinaOfTime.Character
 
         protected override void UpdateAnimator(bool value)
         {
-            Animator.SetTrigger(AnimationName);
+            Animator.SetBool("Push", true);
         }
 
         public async void Push()
@@ -74,11 +77,16 @@ namespace MainLeaf.OcarinaOfTime.Character
             while (Input.GetKey(KeyCode.F))
             {
                 Execute();
-                await UniTask.Delay(TimeSpan.FromSeconds(1));
+                
+                await UniTask.Delay(TimeSpan.FromSeconds(0.5F));
             }
             
             var blackBars = ServiceLocator.Get<BlackBars>();
             blackBars.HideBlackBars();
+            if(_targetRigidbody != null) _targetRigidbody.GetComponent<Box>().GetJoint().connectedBody = null;
+            
+            Animator.SetBool("Push", false);
+
 
             ChangeMode(CameraController.CameraMode.FreeLook);
         }
@@ -86,7 +94,7 @@ namespace MainLeaf.OcarinaOfTime.Character
         public async void OnStateStart()
         {
             Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Pushing);
-            _targetRigidbody.isKinematic = false;
+           // _targetRigidbody.isKinematic = false;
             await Task.Delay(TimeSpan.FromSeconds(3.0F));
             OnStateFinish();
 

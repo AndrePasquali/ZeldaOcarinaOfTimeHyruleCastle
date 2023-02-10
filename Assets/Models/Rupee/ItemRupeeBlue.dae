@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Centrixe</author>
+      <authoring_tool>OpenCOLLADA for 3ds Max;  Version: 1.6;  Revision: 68</authoring_tool>
+    </contributor>
+    <created>2020-07-12T19:08:39</created>
+    <modified>2020-07-12T19:08:39</modified>
+    <unit name="inch" meter="0.0254"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="MI_rupee_Blue">
+      <profile_COMMON>
+        <newparam sid="MI_rupee_Blue_alb_png-surface">
+          <surface type="2D">
+            <init_from>MI_rupee_Blue_alb_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="MI_rupee_Blue_alb_png-sampler">
+          <sampler2D>
+            <source>MI_rupee_Blue_alb_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <blinn>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0.588 0.588 0.588 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="MI_rupee_Blue_alb_png-sampler" texcoord="CHANNEL1"/>
+            </diffuse>
+            <specular>
+              <color>0 0 0 1</color>
+            </specular>
+            <shininess>
+              <float>10</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <transparent opaque="A_ONE">
+              <texture texture="MI_rupee_Blue_alb_png-sampler" texcoord="CHANNEL1"/>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </blinn>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="OpenCOLLADA3dsMax">
+          <extended_shader>
+            <opacity_type sid="opacity_type" type="int">0</opacity_type>
+            <falloff_type sid="falloff_type" type="int">0</falloff_type>
+            <falloff sid="falloff" type="float">0</falloff>
+            <index_of_refraction sid="index_of_refraction" type="float">1.5</index_of_refraction>
+            <wire_size sid="wire_size" type="float">1</wire_size>
+            <wire_units sid="wire_units" type="int">0</wire_units>
+            <apply_reflection_dimming sid="apply_reflection_dimming" type="bool">0</apply_reflection_dimming>
+            <dim_level sid="dim_level" type="float">0</dim_level>
+            <reflection_level sid="reflection_level" type="float">3</reflection_level>
+          </extended_shader>
+          <shader>
+            <ambient_diffuse_texture_lock sid="ambient_diffuse_texture_lock" type="bool">1</ambient_diffuse_texture_lock>
+            <ambient_diffuse_lock sid="ambient_diffuse_lock" type="bool">1</ambient_diffuse_lock>
+            <diffuse_specular_lock sid="diffuse_specular_lock" type="bool">0</diffuse_specular_lock>
+            <use_self_illum_color sid="use_self_illum_color" type="bool">0</use_self_illum_color>
+            <self_illumination sid="self_illumination" type="float">0</self_illumination>
+            <specular_level sid="specular_level" type="float">0</specular_level>
+            <soften sid="soften" type="float">0.1</soften>
+          </shader>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="MI_rupee_Blue-material" name="MI_rupee_Blue">
+      <instance_effect url="#MI_rupee_Blue"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="geom-rupee_low__MI_rupee_Blue" name="rupee_low__MI_rupee_Blue">
+      <mesh>
+        <source id="geom-rupee_low__MI_rupee_Blue-positions">
+          <float_array id="geom-rupee_low__MI_rupee_Blue-positions-array" count="216">0 0 -0.4418945 -0.2205811 0 -0.2318115 -0.006958008 0.01817322 -0.4291992 0.006961823 0.01817322 -0.4291992 0.2205811 0 -0.2318115 -0.2120361 0.01817322 -0.2336426 -0.006786346 0.1292725 -0.2680664 -0.217041 0.01817322 -0.2208252 -0.2205811 0 0.2319336 -0.1281738 0.1292725 -0.1566162 0.007133484 0.1292725 -0.2680664 -0.1334229 0.1292725 -0.1453857 0.2120361 0.01817322 -0.2336426 -0.1225586 0.1334229 -0.1459961 0.217041 0.01817322 -0.2208252 1.75238e-4 0.1334229 -0.2546387 0.1274414 0.1292725 -0.1566162 -0.1334229 0.1292725 0.1451416 -0.1225586 0.1334229 0.1456299 -0.217041 0.01817322 0.2210693 -0.1274414 0.1292725 0.1563721 -0.2120361 0.01817322 0.2340088 -0.007038116 0.01817322 0.4289551 0 0 0.4421387 -0.007038116 0.1292725 0.2683105 0 0.1334229 0.2546387 0.007038116 0.1292725 0.2683105 0.007038116 0.01817322 0.4289551 0.2205811 0 0.2319336 0.2120361 0.01817322 0.2340088 0.1274414 0.1292725 0.1563721 0.217041 0.01817322 0.2210693 0.1225586 0.1334229 0.1456299 0.1333008 0.1292725 0.1451416 0.1225586 0.1334229 -0.1459961 0.1334229 0.1292725 -0.1453857 0 0 -0.4418945 -0.006958008 -0.01817322 -0.4291992 -0.2205811 0 -0.2318115 0.006961823 -0.01817322 -0.4291992 0.2205811 0 -0.2318115 -0.2120361 -0.01817322 -0.2336426 -0.006786346 -0.1292725 -0.2680664 -0.217041 -0.01817322 -0.2208252 -0.2205811 0 0.2319336 -0.1281738 -0.1292725 -0.1566162 0.007133484 -0.1292725 -0.2680664 -0.1334229 -0.1292725 -0.1453857 0.2120361 -0.01817322 -0.2336426 -0.1225586 -0.1334229 -0.1459961 0.217041 -0.01817322 -0.2208252 1.75238e-4 -0.1334229 -0.2546387 0.1274414 -0.1292725 -0.1566162 -0.1334229 -0.1292725 0.1451416 -0.1225586 -0.1334229 0.1456299 -0.217041 -0.01817322 0.2210693 -0.1274414 -0.1292725 0.1563721 -0.2120361 -0.01817322 0.2340088 -0.007038116 -0.01817322 0.4289551 0 0 0.4421387 -0.007038116 -0.1292725 0.2683105 0 -0.1334229 0.2546387 0.007038116 -0.1292725 0.2683105 0.007038116 -0.01817322 0.4289551 0.2205811 0 0.2319336 0.2120361 -0.01817322 0.2340088 0.1274414 -0.1292725 0.1563721 0.217041 -0.01817322 0.2210693 0.1225586 -0.1334229 0.1456299 0.1333008 -0.1292725 0.1451416 0.1225586 -0.1334229 -0.1459961 0.1334229 -0.1292725 -0.1453857</float_array>
+          <technique_common>
+            <accessor source="#geom-rupee_low__MI_rupee_Blue-positions-array" count="72" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-rupee_low__MI_rupee_Blue-normals">
+          <float_array id="geom-rupee_low__MI_rupee_Blue-normals-array" count="216">0 0 -1 -0.9416091 0 -0.3367082 -0.5008368 0.63974 -0.5830053 0.5014078 0.64047 -0.5817117 0.9416091 0 -0.3367082 -0.5261051 0.6571415 -0.5397949 -0.4441441 0.7415445 -0.5028398 -0.8535888 0.520767 -0.01370459 -0.9424477 0 0.3343537 -0.4717425 0.7399113 -0.479573 0.445711 0.7408995 -0.5024038 -0.7810354 0.6244376 -0.00783056 0.5266597 0.6578348 -0.5384078 -0.02152102 0.9997512 -0.005869573 0.853564 0.5207524 -0.01566112 0 0.9998086 -0.01956523 0.4717425 0.7399113 -0.479573 -0.7810354 0.6244376 0.00783056 -0.01956521 0.9997913 0.005869564 -0.8535641 0.5207525 0.01566112 -0.4717425 0.7399113 0.479573 -0.5266596 0.6578361 0.5384063 -0.5007795 0.6416233 0.5809816 0 0 1 -0.4457109 0.7408977 0.5024066 0 0.9998086 0.01956523 0.4457109 0.7408978 0.5024066 0.5007794 0.6416233 0.5809815 0.9424477 0 0.3343537 0.5266596 0.6578361 0.5384063 0.4717425 0.7399113 0.479573 0.853564 0.5207524 0.01566112 0.01956521 0.9997913 0.005869564 0.7800812 0.6256294 0.007818635 0.01956521 0.9997913 -0.005869564 0.780082 0.6256284 -0.007820132 0 0 -1 -0.5008368 -0.63974 -0.5830053 -0.9416091 0 -0.3367082 0.5014078 -0.64047 -0.5817117 0.9416091 0 -0.3367082 -0.5261051 -0.6571415 -0.5397949 -0.4441441 -0.7415445 -0.5028398 -0.8535888 -0.520767 -0.01370459 -0.9424477 0 0.3343537 -0.4717425 -0.7399113 -0.479573 0.4457109 -0.7408977 -0.5024066 -0.7810354 -0.6244376 -0.00783056 0.5266596 -0.6578361 -0.5384063 -0.02152099 -0.9997512 -0.005868074 0.853564 -0.5207524 -0.01566112 0 -0.9998086 -0.01956523 0.4717425 -0.7399113 -0.479573 -0.7810354 -0.6244376 0.00783056 -0.01956521 -0.9997913 0.005869564 -0.8535641 -0.5207525 0.01566112 -0.4717425 -0.7399113 0.479573 -0.5266597 -0.6578348 0.5384078 -0.5007795 -0.6416233 0.5809816 0 0 1 -0.445711 -0.7408995 0.5024038 0 -0.9998086 0.01956523 0.4457111 -0.7408995 0.5024038 0.5007794 -0.6416233 0.5809815 0.9424477 0 0.3343537 0.5266597 -0.6578348 0.5384078 0.4717425 -0.7399113 0.479573 0.853564 -0.5207524 0.01566112 0.01956521 -0.9997913 0.005869564 0.780082 -0.6256285 0.007820133 0.01956521 -0.9997913 -0.005869564 0.7800813 -0.6256294 -0.007818635</float_array>
+          <technique_common>
+            <accessor source="#geom-rupee_low__MI_rupee_Blue-normals-array" count="72" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-rupee_low__MI_rupee_Blue-map-2">
+          <float_array id="geom-rupee_low__MI_rupee_Blue-map-2-array" count="216">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#geom-rupee_low__MI_rupee_Blue-map-2-array" count="72" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-rupee_low__MI_rupee_Blue-map0">
+          <float_array id="geom-rupee_low__MI_rupee_Blue-map0-array" count="216">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#geom-rupee_low__MI_rupee_Blue-map0-array" count="72" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-rupee_low__MI_rupee_Blue-map1">
+          <float_array id="geom-rupee_low__MI_rupee_Blue-map1-array" count="216">0.5000153 1.068362 0 0.9921873 1.275399 0 0.5117038 1.0918 0 0.4882962 1.0918 0 0.007812738 1.275399 0 0.9531236 1.277352 0 0.5117038 1.267586 0 0.9609363 1.289071 0 0.9921873 1.724601 0 0.7187414 1.363292 0 0.4882962 1.267586 0 0.7304605 1.373058 0 0.04687643 1.277352 0 0.7109287 1.373058 0 0.03906369 1.289071 0 0.5000153 1.279305 0 0.2812586 1.363292 0 0.7304605 1.624989 0 0.7109287 1.624989 0 0.9609363 1.710929 0 0.7226478 1.634754 0 0.9531236 1.720695 0 0.5117038 1.902341 0 0.4999847 1.927732 0 0.5117038 1.730461 0 0.5000153 1.718741 0 0.4882962 1.730461 0 0.4882962 1.902341 0 0.007812738 1.724601 0 0.04687643 1.720695 0 0.2773522 1.634754 0 0.03906369 1.710929 0 0.2890713 1.624989 0 0.2695395 1.624989 0 0.2890713 1.373058 0 0.2695395 1.373058 0 0.5000153 0.06836146 0 0.4882962 0.09179968 0 0.007812738 0.275399 0 0.5117038 0.09179968 0 0.9921873 0.275399 0 0.04687643 0.2773522 0 0.4882962 0.2675863 0 0.03906369 0.2890713 0 0.007812738 0.724601 0 0.2812586 0.3632923 0 0.5117038 0.2675863 0 0.2695395 0.3730583 0 0.9531236 0.2773522 0 0.2890713 0.3730583 0 0.9609363 0.2890713 0 0.4999847 0.2793054 0 0.7187414 0.3632923 0 0.2695395 0.6249886 0 0.2890713 0.6249886 0 0.03906369 0.7109287 0 0.2773522 0.6347545 0 0.04687643 0.7206946 0 0.4882962 0.9023408 0 0.5000153 0.9277322 0 0.4882962 0.7304605 0 0.5000153 0.7187414 0 0.5117038 0.7304605 0 0.5117038 0.9023408 0 0.9921873 0.724601 0 0.9531236 0.7206946 0 0.7226478 0.6347545 0 0.9609363 0.7109287 0 0.7109287 0.6249886 0 0.7304605 0.6249886 0 0.7109287 0.3730583 0 0.7304605 0.3730583 0</float_array>
+          <technique_common>
+            <accessor source="#geom-rupee_low__MI_rupee_Blue-map1-array" count="72" stride="3">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+              <param name="P" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="geom-rupee_low__MI_rupee_Blue-vertices">
+          <input semantic="POSITION" source="#geom-rupee_low__MI_rupee_Blue-positions"/>
+        </vertices>
+        <triangles material="MI_rupee_Blue" count="128">
+          <input semantic="VERTEX" source="#geom-rupee_low__MI_rupee_Blue-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#geom-rupee_low__MI_rupee_Blue-normals" offset="1"/>
+          <input semantic="COLOR" source="#geom-rupee_low__MI_rupee_Blue-map0" offset="2" set="0"/>
+          <input semantic="TEXCOORD" source="#geom-rupee_low__MI_rupee_Blue-map1" offset="3" set="0"/>
+          <p>0 0 0 0 1 1 1 1 2 2 2 2 3 3 3 3 0 0 0 0 2 2 2 2 4 4 4 4 0 0 0 0 3 3 3 3 1 1 1 1 5 5 5 5 2 2 2 2 2 2 2 2 6 6 6 6 3 3 3 3 6 6 6 6 2 2 2 2 5 5 5 5 7 7 7 7 5 5 5 5 1 1 1 1 1 1 1 1 8 8 8 8 7 7 7 7 9 9 9 9 6 6 6 6 5 5 5 5 9 9 9 9 5 5 5 5 7 7 7 7 6 6 6 6 10 10 10 10 3 3 3 3 11 11 11 11 9 9 9 9 7 7 7 7 12 12 12 12 3 3 3 3 10 10 10 10 12 12 12 12 4 4 4 4 3 3 3 3 9 9 9 9 11 11 11 11 13 13 13 13 14 14 14 14 4 4 4 4 12 12 12 12 6 6 6 6 9 9 9 9 15 15 15 15 10 10 10 10 6 6 6 6 15 15 15 15 9 9 9 9 13 13 13 13 15 15 15 15 16 16 16 16 12 12 12 12 10 10 10 10 10 10 10 10 15 15 15 15 16 16 16 16 12 12 12 12 16 16 16 16 14 14 14 14 11 11 11 11 17 17 17 17 13 13 13 13 17 17 17 17 11 11 11 11 7 7 7 7 17 17 17 17 18 18 18 18 13 13 13 13 13 13 13 13 18 18 18 18 15 15 15 15 19 19 19 19 17 17 17 17 7 7 7 7 8 8 8 8 19 19 19 19 7 7 7 7 17 17 17 17 20 20 20 20 18 18 18 18 20 20 20 20 17 17 17 17 19 19 19 19 21 21 21 21 19 19 19 19 8 8 8 8 21 21 21 21 20 20 20 20 19 19 19 19 22 22 22 22 21 21 21 21 8 8 8 8 23 23 23 23 22 22 22 22 8 8 8 8 24 24 24 24 20 20 20 20 21 21 21 21 22 22 22 22 24 24 24 24 21 21 21 21 18 18 18 18 20 20 20 20 25 25 25 25 20 20 20 20 24 24 24 24 25 25 25 25 18 18 18 18 25 25 25 25 15 15 15 15 26 26 26 26 24 24 24 24 22 22 22 22 24 24 24 24 26 26 26 26 25 25 25 25 27 27 27 27 22 22 22 22 23 23 23 23 27 27 27 27 26 26 26 26 22 22 22 22 23 23 23 23 28 28 28 28 27 27 27 27 27 27 27 27 29 29 29 29 26 26 26 26 28 28 28 28 29 29 29 29 27 27 27 27 25 25 25 25 26 26 26 26 30 30 30 30 29 29 29 29 30 30 30 30 26 26 26 26 31 31 31 31 29 29 29 29 28 28 28 28 30 30 30 30 29 29 29 29 31 31 31 31 31 31 31 31 28 28 28 28 4 4 4 4 14 14 14 14 31 31 31 31 4 4 4 4 32 32 32 32 25 25 25 25 30 30 30 30 25 25 25 25 32 32 32 32 15 15 15 15 33 33 33 33 30 30 30 30 31 31 31 31 32 32 32 32 30 30 30 30 33 33 33 33 33 33 33 33 31 31 31 31 14 14 14 14 32 32 32 32 34 34 34 34 15 15 15 15 34 34 34 34 32 32 32 32 33 33 33 33 15 15 15 15 34 34 34 34 16 16 16 16 35 35 35 35 33 33 33 33 14 14 14 14 35 35 35 35 34 34 34 34 33 33 33 33 16 16 16 16 35 35 35 35 14 14 14 14 35 35 35 35 16 16 16 16 34 34 34 34 36 36 36 36 37 37 37 37 38 38 38 38 39 39 39 39 37 37 37 37 36 36 36 36 36 36 36 36 40 40 40 40 39 39 39 39 37 37 37 37 41 41 41 41 38 38 38 38 37 37 37 37 39 39 39 39 42 42 42 42 41 41 41 41 37 37 37 37 42 42 42 42 43 43 43 43 38 38 38 38 41 41 41 41 38 38 38 38 43 43 43 43 44 44 44 44 45 45 45 45 41 41 41 41 42 42 42 42 41 41 41 41 45 45 45 45 43 43 43 43 39 39 39 39 46 46 46 46 42 42 42 42 45 45 45 45 47 47 47 47 43 43 43 43 39 39 39 39 48 48 48 48 46 46 46 46 40 40 40 40 48 48 48 48 39 39 39 39 45 45 45 45 49 49 49 49 47 47 47 47 50 50 50 50 48 48 48 48 40 40 40 40 42 42 42 42 51 51 51 51 45 45 45 45 46 46 46 46 51 51 51 51 42 42 42 42 51 51 51 51 49 49 49 49 45 45 45 45 48 48 48 48 52 52 52 52 46 46 46 46 51 51 51 51 46 46 46 46 52 52 52 52 48 48 48 48 50 50 50 50 52 52 52 52 47 47 47 47 49 49 49 49 53 53 53 53 47 47 47 47 53 53 53 53 43 43 43 43 49 49 49 49 54 54 54 54 53 53 53 53 54 54 54 54 49 49 49 49 51 51 51 51 53 53 53 53 55 55 55 55 43 43 43 43 43 43 43 43 55 55 55 55 44 44 44 44 53 53 53 53 54 54 54 54 56 56 56 56 55 55 55 55 53 53 53 53 56 56 56 56 57 57 57 57 44 44 44 44 55 55 55 55 57 57 57 57 55 55 55 55 56 56 56 56 44 44 44 44 57 57 57 57 58 58 58 58 59 59 59 59 44 44 44 44 58 58 58 58 56 56 56 56 60 60 60 60 57 57 57 57 60 60 60 60 58 58 58 58 57 57 57 57 54 54 54 54 61 61 61 61 56 56 56 56 61 61 61 61 60 60 60 60 56 56 56 56 61 61 61 61 54 54 54 54 51 51 51 51 58 58 58 58 60 60 60 60 62 62 62 62 60 60 60 60 61 61 61 61 62 62 62 62 63 63 63 63 59 59 59 59 58 58 58 58 63 63 63 63 58 58 58 58 62 62 62 62 59 59 59 59 63 63 63 63 64 64 64 64 63 63 63 63 62 62 62 62 65 65 65 65 63 63 63 63 65 65 65 65 64 64 64 64 62 62 62 62 61 61 61 61 66 66 66 66 62 62 62 62 66 66 66 66 65 65 65 65 67 67 67 67 64 64 64 64 65 65 65 65 65 65 65 65 66 66 66 66 67 67 67 67 40 40 40 40 64 64 64 64 67 67 67 67 50 50 50 50 40 40 40 40 67 67 67 67 61 61 61 61 68 68 68 68 66 66 66 66 68 68 68 68 61 61 61 61 51 51 51 51 66 66 66 66 69 69 69 69 67 67 67 67 68 68 68 68 69 69 69 69 66 66 66 66 50 50 50 50 67 67 67 67 69 69 69 69 70 70 70 70 68 68 68 68 51 51 51 51 69 69 69 69 68 68 68 68 70 70 70 70 70 70 70 70 51 51 51 51 52 52 52 52 71 71 71 71 50 50 50 50 69 69 69 69 71 71 71 71 69 69 69 69 70 70 70 70 50 50 50 50 71 71 71 71 52 52 52 52 71 71 71 71 70 70 70 70 52 52 52 52</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers>
+    <controller id="geom-rupee_low__MI_rupee_Blue-skin1">
+      <skin source="#geom-rupee_low__MI_rupee_Blue">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="geom-rupee_low__MI_rupee_Blue-skin1-joints">
+          <Name_array id="geom-rupee_low__MI_rupee_Blue-skin1-joints-array" count="1">joint0</Name_array>
+          <technique_common>
+            <accessor source="#geom-rupee_low__MI_rupee_Blue-skin1-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-rupee_low__MI_rupee_Blue-skin1-bind_poses">
+          <float_array id="geom-rupee_low__MI_rupee_Blue-skin1-bind_poses-array" count="16">1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#geom-rupee_low__MI_rupee_Blue-skin1-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="geom-rupee_low__MI_rupee_Blue-skin1-weights">
+          <float_array id="geom-rupee_low__MI_rupee_Blue-skin1-weights-array" count="1">1</float_array>
+          <technique_common>
+            <accessor source="#geom-rupee_low__MI_rupee_Blue-skin1-weights-array" count="1" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#geom-rupee_low__MI_rupee_Blue-skin1-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#geom-rupee_low__MI_rupee_Blue-skin1-bind_poses"/>
+        </joints>
+        <vertex_weights count="72">
+          <input semantic="JOINT" source="#geom-rupee_low__MI_rupee_Blue-skin1-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#geom-rupee_low__MI_rupee_Blue-skin1-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</vcount>
+          <v>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_lights>
+    <light id="EnvironmentAmbientLight" name="EnvironmentAmbientLight">
+      <technique_common>
+        <ambient>
+          <color>0 0 0</color>
+        </ambient>
+      </technique_common>
+    </light>
+  </library_lights>
+  <library_images>
+    <image id="MI_rupee_Blue_alb_png">
+      <init_from>./MI_rupee_Blue_alb.png</init_from>
+    </image>
+  </library_images>
+  <library_visual_scenes>
+    <visual_scene id="MaxScene">
+      <node name="EnvironmentAmbientLight">
+        <instance_light url="#EnvironmentAmbientLight"/>
+      </node>
+      <node id="node-root" name="root" sid="joint0" type="JOINT">
+        <rotate>-1 0 0 -90</rotate>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+            <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+            <primary_visibility sid="primary_visibility" type="bool">1</primary_visibility>
+            <secondary_visibility sid="secondary_visibility" type="bool">1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+      <node id="node-rupee_low__MI_rupee_Blue" name="rupee_low__MI_rupee_Blue">
+        <instance_controller url="#geom-rupee_low__MI_rupee_Blue-skin1">
+          <skeleton>#node-root</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="MI_rupee_Blue" target="#MI_rupee_Blue-material">
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+        <extra>
+          <technique profile="OpenCOLLADA">
+            <cast_shadows sid="cast_shadows" type="bool">1</cast_shadows>
+            <receive_shadows sid="receive_shadows" type="bool">1</receive_shadows>
+            <primary_visibility sid="primary_visibility" type="bool">1</primary_visibility>
+            <secondary_visibility sid="secondary_visibility" type="bool">1</secondary_visibility>
+          </technique>
+        </extra>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#MaxScene"/>
+  </scene>
+</COLLADA>
