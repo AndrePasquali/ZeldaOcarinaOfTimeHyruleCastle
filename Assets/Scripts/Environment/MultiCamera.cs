@@ -6,26 +6,36 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
 {
     public class MultiCamera: MonoBehaviour
     {
-        [SerializeField] private CinemachineVirtualCamera _nextCamera;
-        [SerializeField] private CinemachineVirtualCamera _prevCamera;
+        [SerializeField] private CinemachineVirtualCamera _camera;
+        public string Id => gameObject.name;
+
+        public enum Direction
+        {
+            FRONT,
+            BACK
+        }
+
+        public Direction CurrentDirection = Direction.FRONT;
 
         private void ChangeCamera()
         {
-            var previousCameraInactive = _nextCamera.Priority > _prevCamera.Priority;
-
-            if (previousCameraInactive)
-            {
-                _nextCamera.Priority = _prevCamera.Priority - 1;
-                return;
-            }
-
-            _nextCamera.Priority = _prevCamera.Priority + 1;
+            MultiCameraController.OnCameraChange.Invoke(this);
         }
+
+        public void ChangePriority(int newPriority) => _camera.Priority = newPriority;
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.tag.Equals("Player"))
+            if (other.gameObject.tag.Equals("Player"))
+            {
+                var position = transform.position;
+                var otherPosition = other.transform.position;
+
+                if (otherPosition.x > position.x) CurrentDirection = Direction.BACK;
+                if (otherPosition.x < position.x) CurrentDirection = Direction.FRONT;
+                
                 ChangeCamera();
+            }
         }
     }
 }
