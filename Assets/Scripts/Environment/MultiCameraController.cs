@@ -26,7 +26,7 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
                 ? targetIndex
                 : _cameraList.Count - 1;
 
-            validatedIndex = targetIndex < 0 ? 0 : targetIndex;
+            validatedIndex = validatedIndex < 0 ? 0 : validatedIndex;
             
             _cameraList.ElementAt(validatedIndex).ChangePriority(100);
 
