@@ -28,7 +28,7 @@ namespace MainLeaf.OcarinaOfTime
                     case CommandState.Jump:
                     {
                         _commands["jump"].Execute();
-                        _commands["climb"].Execute();
+                        //_commands["climb"].Execute();
                         break;
                     }
                     case CommandState.Push:

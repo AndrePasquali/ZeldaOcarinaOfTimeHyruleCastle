@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Enrironment
 {
-    public class Box: MonoBehaviour, IPushable
+    public class Box : MonoBehaviour, IPushable
     {
         [SerializeField] private Rigidbody _rigibody;
         [SerializeField] private FixedJoint _joint;
@@ -29,11 +29,16 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
             }
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+
+        }
+
         private async void OnCollisionExit(Collision other)
         {
             if (other.gameObject.tag.Equals("Player"))
             {
-                if(_joint != null) Destroy(_joint);
+                if (_joint != null) Destroy(_joint);
             }
         }
     }

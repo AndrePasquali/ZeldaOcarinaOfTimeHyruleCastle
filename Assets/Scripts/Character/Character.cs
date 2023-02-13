@@ -6,14 +6,14 @@ using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Character
 {
-    public class Character: MonoBehaviour
+    public class Character : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
-        
+
         public CharacterMovement CharacterMovement;
-        
+
         public CharacterStateMachine CharacterState;
-        
+
         public InputController InputController;
 
         public CharacterPhysics CharacterPhysics;
@@ -30,7 +30,7 @@ namespace MainLeaf.OcarinaOfTime.Character
         private void Initialize()
         {
             OnCharacterMovementStateChange += OnCharacterMovementChange;
-            
+
             CharacterState = GetComponent<CharacterStateMachine>();
             CharacterMovement = GetComponent<CharacterMovement>();
             InputController = GetComponent<InputController>();

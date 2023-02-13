@@ -7,7 +7,7 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
     public class MultiCamera: MonoBehaviour
     {
         [SerializeField] private CinemachineVirtualCamera _camera;
-        public string Id => gameObject.name;
+        public string Id;
 
         public enum Direction
         {
@@ -16,6 +16,8 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
         }
 
         public Direction CurrentDirection = Direction.FRONT;
+
+        private void Awake() => Id = gameObject.name;
 
         private void ChangeCamera()
         {

@@ -77,7 +77,10 @@ namespace MainLeaf.OcarinaOfTime.Player
             m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
             m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
 
-            transform.position += transform.forward * m_currentV * m_moveSpeed * Time.deltaTime;
+            Vector3 forwardMovement = transform.forward * m_currentV * m_moveSpeed * Time.deltaTime;
+            //Vector3 verticalMovement = Physics.gravity * Time.deltaTime;
+
+            transform.position += forwardMovement;
             transform.Rotate(0, m_currentH * m_turnSpeed * Time.deltaTime, 0);
 
             m_animator.SetFloat("Forward", m_currentV);

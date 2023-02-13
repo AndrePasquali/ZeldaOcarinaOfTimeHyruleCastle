@@ -6,5 +6,6 @@ namespace MainLeaf.OcarinaOfTime.Scenes
         MAIN = 1,
         HYRULE_CASTLE = 2,
         COURTYARD = 3,
+        COURTYARD_CASTLE = 4
     }
 }

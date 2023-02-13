@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Character
 {
-    public class CharacterPush: CharacterAbility, ICharacterStateObserver, ICameraChange
+    public class CharacterPush : CharacterAbility, ICharacterStateObserver, ICameraChange
     {
         [SerializeField] private float PushForce = 2.0F;
         [SerializeField] private float PushSpeed = 0.5F;
@@ -18,52 +18,54 @@ namespace MainLeaf.OcarinaOfTime.Character
         private Rigidbody _targetRigidbody;
         protected override void Execute()
         {
-           if(!AbilityEnabled) return;
+            if (!AbilityEnabled) return;
 
-           var physics = ServiceLocator.Get<CharacterPhysics>();
-           
-           if(!physics.IsGrounded()) return;
+            var physics = ServiceLocator.Get<CharacterPhysics>();
 
-           var blackBars = ServiceLocator.Get<BlackBars>();
+            if (!physics.IsGrounded()) return;
 
-           if (physics.RayToDirection(CharacterPhysics.RayDirection.Front))
-           {
-               var hit = physics.GetHit();
-               
-               if (hit.collider != null && Vector3.Distance(hit.transform.position, transform.position) <= MinDistanceToPush)
-               {
-                   if (hit.transform.GetComponent<IPushable>() != null)
-                   {
-                       var rigidbody = hit.transform.GetComponent<Rigidbody>();
-                       
-                       _targetRigidbody = rigidbody;
-                       
-                       UpdateAnimator(true);
+            var blackBars = ServiceLocator.Get<BlackBars>();
 
-                       var velocity = Rigidbody.velocity;
-                       var isStopped = velocity.magnitude == 0;
-                       var localVelocity = transform.InverseTransformDirection(velocity);
-                       var movingForward = localVelocity.z > 0;
+            if (physics.RayToDirection(CharacterPhysics.RayDirection.Front))
+            {
+                var hit = physics.GetHit();
 
-                       hit.transform.GetComponent<Box>().GetJoint().connectedBody = Rigidbody;
+                if (hit.collider != null && Vector3.Distance(hit.transform.position, transform.position) <= MinDistanceToPush)
+                {
+                    if (hit.transform.GetComponent<IPushable>() != null)
+                    {
+                        CharacterStateMachine.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Pushing);
+
+                        var rigidbody = hit.transform.GetComponent<Rigidbody>();
+
+                        _targetRigidbody = rigidbody;
+
+                        UpdateAnimator(true);
+
+                        var velocity = Rigidbody.velocity;
+                        var isStopped = velocity.magnitude == 0;
+                        var localVelocity = transform.InverseTransformDirection(velocity);
+                        var movingForward = localVelocity.z > 0;
+
+                        hit.transform.GetComponent<Box>().GetJoint().connectedBody = Rigidbody;
 
 
-                     //  var forceToApply = movingForward ? transform.forward : transform.forward * -1;
+                        //  var forceToApply = movingForward ? transform.forward : transform.forward * -1;
 
-                       
-                      // if(rigidbody != null) rigidbody.velocity = isStopped ? Vector3.zero : forceToApply * PushForce;
-            
-                       //Rigidbody.AddForce(isStopped ? Vector3.zero : forceToApply, ForceMode.VelocityChange);
-                       
-                       blackBars.ShowBlackBars();
-                       OnStateStart();
-                   }
-               }
-           }
-           else
-           {
-               blackBars.HideBlackBars();
-           }
+
+                        // if(rigidbody != null) rigidbody.velocity = isStopped ? Vector3.zero : forceToApply * PushForce;
+
+                        //Rigidbody.AddForce(isStopped ? Vector3.zero : forceToApply, ForceMode.VelocityChange);
+
+                        blackBars.ShowBlackBars();
+                        OnStateStart();
+                    }
+                }
+            }
+            else
+            {
+                blackBars.HideBlackBars();
+            }
         }
 
         protected override void UpdateAnimator(bool value)
@@ -77,14 +79,14 @@ namespace MainLeaf.OcarinaOfTime.Character
             while (Input.GetKey(KeyCode.F))
             {
                 Execute();
-                
+
                 await UniTask.Delay(TimeSpan.FromSeconds(0.5F));
             }
-            
+
             var blackBars = ServiceLocator.Get<BlackBars>();
             blackBars.HideBlackBars();
-            if(_targetRigidbody != null) _targetRigidbody.GetComponent<Box>().GetJoint().connectedBody = null;
-            
+            if (_targetRigidbody != null) _targetRigidbody.GetComponent<Box>().GetJoint().connectedBody = null;
+
             Animator.SetBool("Push", false);
 
 
@@ -94,7 +96,7 @@ namespace MainLeaf.OcarinaOfTime.Character
         public async void OnStateStart()
         {
             Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Pushing);
-           // _targetRigidbody.isKinematic = false;
+            // _targetRigidbody.isKinematic = false;
             await Task.Delay(TimeSpan.FromSeconds(3.0F));
             OnStateFinish();
 

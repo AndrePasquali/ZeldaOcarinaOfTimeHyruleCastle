@@ -2,57 +2,76 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+namespace MainLeaf.OcarinaOfTime.Character
 {
-    public float speed = 10.0f;
-    private Vector3 _playerInput;
-    private Animator _animator;
 
-    private float _horizontalInput;
-    private float _verticalInput;
-
-    private Vector3 _currentMovementInput;
-
-    [SerializeField] private CharacterController _characterController;
-
-    private void Update()
+    public class CharacterMovement : MonoBehaviour
     {
-        // Get input axis for horizontal and vertical movement
-        _horizontalInput = Input.GetAxis("Horizontal");
-        _verticalInput= Input.GetAxis("Vertical");
+        [SerializeField] private Animator _animator;
 
-        _playerInput.x = _horizontalInput;
-        _playerInput.z = _verticalInput;
+        [SerializeField] private Rigidbody _rigidbody;
 
-        var cameraRelativeMovement = ConvertToCameraSpace(_playerInput);
+        [Header("SLOPE")]
+        [SerializeField] private float _slopeLimit = 45.0f;
+        [SerializeField] private float _rayLength = 1.5f;
+        [SerializeField] private float _slopeForce = 8.0f;
 
-        _characterController.Move(cameraRelativeMovement * speed * Time.deltaTime);
-    }
+        [Header("Movement")]
+        [SerializeField] private float _moveSpeed = 2;
+        [SerializeField] private float _turnSpeed = 200;
+        [SerializeField] private float _jumpForce = 10;
+        private readonly float _interpolation = 10;
+        private float _currentVertical = 0;
+        private float _currentHorizontal = 0;
 
-    private Vector3 ConvertToCameraSpace(Vector3 vectorToRotate)
-    {
-        var currentYValue = vectorToRotate.y;
-        var cameraForward = Camera.main.transform.forward;
-        var cameraRight = Camera.main.transform.right;
 
-        cameraForward.y = 0;
-        cameraRight.y = 0;
+        private void FixedUpdate()
+        {
+            HandleSlope();
+            UpdateMovement();
+        }
 
-        cameraForward = cameraForward.normalized;
-        cameraRight = cameraRight.normalized;
+        private void UpdateMovement()
+        {
+            float v = Input.GetAxis("Vertical");
+            float h = Input.GetAxis("Horizontal");
 
-        var cameraForwardZProduct = vectorToRotate.z * cameraForward;
-        var cameraRightXProduct = vectorToRotate.x * cameraRight;
+            bool walk = Input.GetKey(KeyCode.LeftShift);
 
-        var vectorRotateToCameraSpace = cameraForwardZProduct + cameraRightXProduct;
-        vectorRotateToCameraSpace.y = currentYValue;
+            _currentVertical = Mathf.Lerp(_currentVertical, v, Time.deltaTime * _interpolation);
+            _currentHorizontal = Mathf.Lerp(_currentHorizontal, h, Time.deltaTime * _interpolation);
 
-        return vectorRotateToCameraSpace;
-    }
+            Vector3 forwardMovement = transform.forward * _currentVertical * _moveSpeed * Time.deltaTime;
+            //Vector3 verticalMovement = Physics.gravity * Time.deltaTime;
 
-    private void HandleRotation()
-    {
-        var positionToLookAt = new Vector3();
-       // positionToLookAt.x = 
+            transform.position += forwardMovement;
+            transform.Rotate(0, _currentHorizontal * _turnSpeed * Time.deltaTime, 0);
+
+            _animator.SetFloat("Forward", _currentVertical);
+            _animator.SetFloat("Turn", _currentHorizontal);
+        }
+
+        private bool OnSlope()
+        {
+            RaycastHit hit;
+            if (UnityEngine.Physics.Raycast(transform.position, Vector3.down, out hit, _rayLength))
+            {
+                float angle = Vector3.Angle(hit.normal, Vector3.up);
+                Vector3 surfaceNormal = new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad), 0);
+                Debug.DrawRay(transform.position, surfaceNormal, Color.cyan);
+                if (angle > _slopeLimit)
+                {
+                    Debug.Log("SLOPE DETECT");
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void HandleSlope()
+        {
+            if (OnSlope()) _rigidbody.AddForce(Vector3.down * _slopeForce, ForceMode.Impulse);
+        }
     }
 }
