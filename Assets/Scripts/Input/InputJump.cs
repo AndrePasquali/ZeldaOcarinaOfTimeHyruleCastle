@@ -1,8 +1,8 @@
 using MainLeaf.OcarinaOfTime.Character;
 
-namespace MainLeaf.OcarinaOfTime
+namespace MainLeaf.OcarinaOfTime.Input
 {
-    public class InputJump: InputCommand
+    public class InputJump : InputCommand
     {
         private CharacterJump _characterJump;
 

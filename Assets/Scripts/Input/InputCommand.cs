@@ -1,4 +1,4 @@
-namespace MainLeaf.OcarinaOfTime
+namespace MainLeaf.OcarinaOfTime.Input
 {
     public interface InputCommand
     {

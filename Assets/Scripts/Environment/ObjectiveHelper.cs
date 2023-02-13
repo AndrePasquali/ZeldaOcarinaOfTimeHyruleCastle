@@ -8,23 +8,56 @@ namespace MainLeaf.Environment
 {
     public class ObjectiveHelper : MonoBehaviour
     {
-        public void OnTriggerEnter(Collider other)
+        private bool _completed;
+        public void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.name == "Box")
+            if (other.gameObject.name == "Box" && !_completed)
             {
                 var rigidbody = other.gameObject.GetComponent<Rigidbody>();
 
                 rigidbody.freezeRotation = false;
                 rigidbody.constraints = RigidbodyConstraints.None;
 
+                _completed = true;
+
             }
         }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.name == "Box" && !_completed)
+            {
+                var rigidbody = other.gameObject.GetComponent<Rigidbody>();
+
+                rigidbody.freezeRotation = false;
+                rigidbody.constraints = RigidbodyConstraints.None;
+
+                _completed = true;
+
+            }
+        }
+
+        public void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.name == "Box" && !_completed)
+            {
+                var rigidbody = other.gameObject.GetComponent<Rigidbody>();
+
+                rigidbody.freezeRotation = false;
+                rigidbody.constraints = RigidbodyConstraints.None;
+
+                _completed = true;
+
+            }
+        }
+
+
 
         private async void ApplyForce()
         {
             await UniTask.Delay(1000);
 
-            GetComponent<Rigidbody>().AddForce(transform.forward * 0.7F, ForceMode.VelocityChange);
+            GetComponent<Rigidbody>().AddForce(transform.forward * 0.8F, ForceMode.VelocityChange);
 
         }
     }

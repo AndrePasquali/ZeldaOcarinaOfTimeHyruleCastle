@@ -3,11 +3,12 @@ using JetBrains.Annotations;
 using MainLeaf.OcarinaOfTime.Character.StateMachine;
 using MainLeaf.OcarinaOfTime.Enrironment;
 using MainLeaf.OcarinaOfTime.Services;
+using MainLeaf.OcarinaOfTime.Input;
 using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Character.Physics
 {
-    public class CharacterPhysics: MonoBehaviour
+    public class CharacterPhysics : MonoBehaviour
     {
         public float RayCastDistance = 3.0F;
         public float RayCastOffset = 0.5F;
@@ -32,11 +33,11 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
         public CharacterStateMachine CharacterState =>
             _characterState ?? (_characterState = ServiceLocator.Get<CharacterStateMachine>());
         private CharacterStateMachine _characterState;
-        
+
         public CharacterMovement CharacterMovement =>
             _characterMovement ?? (_characterMovement = ServiceLocator.Get<CharacterMovement>());
         private CharacterMovement _characterMovement;
-        
+
         public InputController InputController =>
             _inputController ?? (_inputController = ServiceLocator.Get<InputController>());
         private InputController _inputController;
@@ -51,7 +52,7 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
         [CanBeNull]
         public GameObject GetGameObjectByTag(string tag)
         {
-            if(_currentHit.collider != null)
+            if (_currentHit.collider != null)
                 if (_currentHit.transform.gameObject.tag.Equals(tag))
                     return _currentHit.transform.gameObject;
 
@@ -63,45 +64,45 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
             switch (targetDirection)
             {
                 case RayDirection.Up:
-                {
-                    var origin = transform.position;
-                    var target = transform.up;
-                    var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: rayDistance);
-                    Debug.DrawRay(origin, target, Color.cyan);
-                    return rayCastHit;
-                }
+                    {
+                        var origin = transform.position;
+                        var target = transform.up;
+                        var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: rayDistance);
+                        Debug.DrawRay(origin, target, Color.cyan);
+                        return rayCastHit;
+                    }
                 case RayDirection.Left:
-                {
-                    var origin = transform.position + (transform.up * RayCastOffset);
-                    var target = -transform.right;
-                    var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: rayDistance);
-                    Debug.DrawRay(origin, target, Color.blue);
-                    return rayCastHit;
-                }
+                    {
+                        var origin = transform.position + (transform.up * RayCastOffset);
+                        var target = -transform.right;
+                        var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: rayDistance);
+                        Debug.DrawRay(origin, target, Color.blue);
+                        return rayCastHit;
+                    }
                 case RayDirection.Right:
-                {
-                    var origin = transform.position + (transform.up * RayCastOffset);
-                    var target = transform.right;
-                    var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: rayDistance);
-                    Debug.DrawRay(origin, target, Color.yellow);
-                    return rayCastHit;
-                }
+                    {
+                        var origin = transform.position + (transform.up * RayCastOffset);
+                        var target = transform.right;
+                        var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: rayDistance);
+                        Debug.DrawRay(origin, target, Color.yellow);
+                        return rayCastHit;
+                    }
                 case RayDirection.Back:
-                {
-                    var origin = transform.position + (transform.up * RayCastOffset);
-                    var target = -transform.forward;
-                    var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: rayDistance);
-                    Debug.DrawRay(origin, target, Color.green);
-                    return rayCastHit;
-                }
+                    {
+                        var origin = transform.position + (transform.up * RayCastOffset);
+                        var target = -transform.forward;
+                        var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: rayDistance);
+                        Debug.DrawRay(origin, target, Color.green);
+                        return rayCastHit;
+                    }
                 case RayDirection.Front:
-                {
-                    var origin = transform.position + (transform.up * RayCastOffset);
-                    var target = transform.forward;
-                    var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: rayDistance);
-                    Debug.DrawRay(origin, target, Color.magenta);
-                    return rayCastHit;
-                }
+                    {
+                        var origin = transform.position + (transform.up * RayCastOffset);
+                        var target = transform.forward;
+                        var rayCastHit = UnityEngine.Physics.Raycast(hitInfo: out _currentHit, origin: origin, direction: target, maxDistance: rayDistance);
+                        Debug.DrawRay(origin, target, Color.magenta);
+                        return rayCastHit;
+                    }
                 default: return false;
             }
         }
@@ -113,7 +114,7 @@ namespace MainLeaf.OcarinaOfTime.Character.Physics
             var isGrounded = UnityEngine.Physics.Raycast(transform.position, -Vector3.up, _groundCheckDistance);
 
             _isGrounded = isGrounded;
-            
+
             return isGrounded;
         }
 

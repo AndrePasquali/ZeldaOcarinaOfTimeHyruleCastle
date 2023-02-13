@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Character
@@ -33,10 +31,10 @@ namespace MainLeaf.OcarinaOfTime.Character
 
         private void UpdateMovement()
         {
-            float v = Input.GetAxis("Vertical");
-            float h = Input.GetAxis("Horizontal");
+            float v = UnityEngine.Input.GetAxis("Vertical");
+            float h = UnityEngine.Input.GetAxis("Horizontal");
 
-            bool walk = Input.GetKey(KeyCode.LeftShift);
+            bool walk = UnityEngine.Input.GetKey(KeyCode.LeftShift);
 
             _currentVertical = Mathf.Lerp(_currentVertical, v, Time.deltaTime * _interpolation);
             _currentHorizontal = Mathf.Lerp(_currentHorizontal, h, Time.deltaTime * _interpolation);

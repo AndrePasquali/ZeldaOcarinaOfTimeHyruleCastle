@@ -1,6 +1,7 @@
 using System;
 using MainLeaf.OcarinaOfTime.Character.Physics;
 using MainLeaf.OcarinaOfTime.Character.StateMachine;
+using MainLeaf.OcarinaOfTime.Input;
 using MainLeaf.OcarinaOfTime.Services;
 using UnityEngine;
 
@@ -41,6 +42,8 @@ namespace MainLeaf.OcarinaOfTime.Character
             ServiceLocator.Register(CharacterMovement);
             ServiceLocator.Register(InputController);
             ServiceLocator.Register(CharacterPhysics);
+
         }
+
     }
 }

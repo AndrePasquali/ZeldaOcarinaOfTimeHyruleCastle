@@ -1,3 +1,4 @@
+using MainLeaf.OcarinaOfTime.Audio;
 using MainLeaf.OcarinaOfTime.Character.Physics;
 using MainLeaf.OcarinaOfTime.Game;
 using MainLeaf.OcarinaOfTime.Scenes;
@@ -8,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 namespace MainLeaf.OcarinaOfTime.Character.AI
 {
-    public class AIStateMachine : MonoBehaviour
+    public class AIStateMachine : MonoBehaviour, ISound
     {
         public enum AIState
         {
@@ -16,6 +17,9 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
             WALK,
             PAUSE
         }
+
+        [SerializeField] private AudioClip _soundClip;
+        [SerializeField] private AudioSource _audioSource;
 
         public AIState CurrentAIState;
         public Transform Player => _player ?? (_player = GameObject.FindWithTag("Player").transform);
@@ -53,7 +57,7 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
         private void Update()
         {
             CurrentState.UpdateState();
-            
+
             CheckPlayerByView();
             CheckPlayerByDistance();
         }
@@ -61,9 +65,9 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
         private void OnAnimatorMove()
         {
             var velocity = Agent.velocity.magnitude;
-            
+
             _animator.SetFloat("Forward", velocity > 0 ? 0.5F : 0);
-            
+
             //_animator.SetFloat("Turn", Agent.transform.rotation.eulerAngles.magnitude);
         }
 
@@ -83,9 +87,9 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
         private void CheckPlayerByView()
         {
             var rayForward = CharacterPhysics.RayToDirection(CharacterPhysics.RayDirection.Front, _detectPlayerDistanceView);
-            
-            if(!rayForward || _playerDetected) return;
-            
+
+            if (!rayForward || _playerDetected) return;
+
             var hit = CharacterPhysics.GetHit();
 
             if (hit.transform.gameObject.tag.Equals("Player")) OnPlayerBusted();
@@ -93,25 +97,27 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
 
         public void CheckPlayerByDistance()
         {
-            if(_playerDetected) return;
-            
+            if (_playerDetected) return;
+
             var playerIsNear = Vector3.Distance(transform.position, Player.transform.position) < _detectPlayerDistance;
-            
-            if(playerIsNear) OnPlayerBusted();
-            
+
+            if (playerIsNear) OnPlayerBusted();
+
         }
 
         private void OnPlayerBusted()
         {
             _playerDetected = true;
 
+            PlaySoundFX();
+
             Time.timeScale = 0;
-            
+
             GameRuntimeStateHolder.SaveScene(SceneName.COURTYARD);
             GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.GAMEOVER);
 
             var popup = ServiceLocator.Get<PopupController>();
-                
+
             popup.ShowPopup("ALERT", "Hey You! Stop! \n You. kid. over there!",
                 () => SceneManager.LoadScene(0));
         }
@@ -119,6 +125,11 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
         public void OnDestroy()
         {
             Agent.gameObject.SetActive(false);
+        }
+
+        public void PlaySoundFX()
+        {
+            _audioSource.PlayOneShot(_soundClip);
         }
     }
 }

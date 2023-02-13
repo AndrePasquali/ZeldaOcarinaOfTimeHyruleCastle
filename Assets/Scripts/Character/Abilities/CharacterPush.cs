@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using MainLeaf.OcarinaOfTime.Audio;
 using MainLeaf.OcarinaOfTime.Camera;
 using MainLeaf.OcarinaOfTime.Character.Physics;
 using MainLeaf.OcarinaOfTime.Character.StateMachine;
@@ -10,7 +11,7 @@ using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Character
 {
-    public class CharacterPush : CharacterAbility, ICharacterStateObserver, ICameraChange
+    public class CharacterPush : CharacterAbility, ICharacterStateObserver, ICameraChange, ISound
     {
         [SerializeField] private float PushForce = 2.0F;
         [SerializeField] private float PushSpeed = 0.5F;
@@ -76,7 +77,7 @@ namespace MainLeaf.OcarinaOfTime.Character
         public async void Push()
         {
             ChangeMode(CameraController.CameraMode.ThirdPerson);
-            while (Input.GetKey(KeyCode.F))
+            while (UnityEngine.Input.GetKey(KeyCode.F))
             {
                 Execute();
 
@@ -95,6 +96,8 @@ namespace MainLeaf.OcarinaOfTime.Character
 
         public async void OnStateStart()
         {
+            PlaySoundFX();
+
             Character.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Pushing);
             // _targetRigidbody.isKinematic = false;
             await Task.Delay(TimeSpan.FromSeconds(3.0F));
@@ -111,6 +114,13 @@ namespace MainLeaf.OcarinaOfTime.Character
         {
             var cameraController = ServiceLocator.Get<CameraController>();
             cameraController.ChangeMode(newCameraMode);
+        }
+
+        public void PlaySoundFX()
+        {
+            if (AudioSource.isPlaying) return;
+            AudioSource.clip = SoundClip[0];
+            AudioSource.PlayDelayed(0.75F);
         }
     }
 }

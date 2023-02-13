@@ -28,6 +28,11 @@ namespace MainLeaf.OcarinaOfTime.Character.StateMachine
 
                         break;
                     }
+                case CharacterMovement.Crouching:
+                    {
+
+                        break;
+                    }
             }
         }
 

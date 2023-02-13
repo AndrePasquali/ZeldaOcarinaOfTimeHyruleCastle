@@ -4,9 +4,9 @@ using System.Linq;
 using MainLeaf.OcarinaOfTime.Character;
 using UnityEngine;
 
-namespace MainLeaf.OcarinaOfTime
+namespace MainLeaf.OcarinaOfTime.Input
 {
-    public class InputController: MonoBehaviour
+    public class InputController : MonoBehaviour
     {
         private Dictionary<string, InputCommand> _commands;
 
@@ -14,7 +14,8 @@ namespace MainLeaf.OcarinaOfTime
         {
             Default,
             Jump,
-            Push
+            Push,
+            Crouch
         }
 
         public CommandState CurrentCommand
@@ -26,16 +27,21 @@ namespace MainLeaf.OcarinaOfTime
                 switch (value)
                 {
                     case CommandState.Jump:
-                    {
-                        _commands["jump"].Execute();
-                        //_commands["climb"].Execute();
-                        break;
-                    }
+                        {
+                            _commands["jump"].Execute();
+                            //_commands["climb"].Execute();
+                            break;
+                        }
                     case CommandState.Push:
-                    {
-                        _commands["push"].Execute();
-                        break;
-                    }
+                        {
+                            _commands["push"].Execute();
+                            break;
+                        }
+                    case CommandState.Crouch:
+                        {
+                            _commands["crouch"].Execute();
+                            break;
+                        }
                     case CommandState.Default: break;
                 }
             }
@@ -51,14 +57,16 @@ namespace MainLeaf.OcarinaOfTime
             {
                 { "jump", new InputJump(GetComponent<CharacterJump>()) },
                 { "push", new InputPush(GetComponent<CharacterPush>()) },
-                { "climb", new InputClimb(GetComponent<CharacterClimb>())}
+                { "climb", new InputClimb(GetComponent<CharacterClimb>())},
+                { "crouch", new InputCrouch(GetComponent<CharacterCrouch>())}
             };
         }
-        
+
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space)) CurrentCommand = CommandState.Jump;
-            else if (Input.GetKeyDown(KeyCode.F)) CurrentCommand = CommandState.Push;
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Space)) CurrentCommand = CommandState.Jump;
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.F)) CurrentCommand = CommandState.Push;
+            else if (UnityEngine.Input.GetKeyDown(KeyCode.C)) CurrentCommand = CommandState.Crouch;
             else CurrentCommand = CommandState.Default;
         }
     }

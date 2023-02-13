@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Enrironment.Item
 {
-    public class ItemRotate: MonoBehaviour
+    public class ItemRotate : MonoBehaviour
     {
         public Vector3 RotationSpeed = new Vector3(0, 45, 0);
 
@@ -17,7 +17,7 @@ namespace MainLeaf.OcarinaOfTime.Enrironment.Item
             while (_enabled)
             {
                 transform.Rotate(RotationSpeed * Time.deltaTime);
-                
+
                 await UniTask.WaitForEndOfFrame();
             }
         }

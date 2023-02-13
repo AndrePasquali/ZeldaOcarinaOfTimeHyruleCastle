@@ -1,11 +1,11 @@
 using MainLeaf.OcarinaOfTime.Character;
 
-namespace MainLeaf.OcarinaOfTime
+namespace MainLeaf.OcarinaOfTime.Input
 {
-    public class InputPush: InputCommand
+    public class InputPush : InputCommand
     {
         private CharacterPush _characterAbility;
-        
+
         public InputPush(CharacterAbility characterAbility)
         {
             _characterAbility = characterAbility as CharacterPush;
