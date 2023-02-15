@@ -13,49 +13,40 @@ namespace MainLeaf.OcarinaOfTime.Scenes
 
         private void LoadNextScene()
         {
-            var targetScene = GetNextScene();
+            var targetScene = GetNextLevel();
             SceneManager.LoadScene((int)targetScene);
         }
 
-        public SceneName GetNextScene()
+        public SceneName GetNextLevel()
         {
-            var currentScene = GameRuntimeStateHolder.GetCurrentScene();
-            var currentGameState = GameRuntimeStateHolder.GetGameState();
-            switch (currentScene)
+            var currentLevel = GameRuntimeStateHolder.GetCurrentLevel();
+            var currentLevelCompleted = GameRuntimeStateHolder.IsLevelCompleted(currentLevel);
+
+            Debug.Log("CURRENT LEVEL: " + currentLevel);
+            switch (currentLevel)
             {
                 case SceneName.COURTYARD_CASTLE: return SceneName.MAIN;
                 case SceneName.LOADING: return SceneName.MAIN;
                 case SceneName.HYRULE_CASTLE:
                     {
 
-                        GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.GAMEPLAY);
-                        GameRuntimeStateHolder.SaveScene(SceneName.COURTYARD);
                         return SceneName.COURTYARD;
                     }
                 case SceneName.COURTYARD:
                     {
-                        if (currentGameState == GameRuntimeStateHolder.GameState.GAMEOVER)
-                        {
-
-                            GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.COMPLETED);
-                            GameRuntimeStateHolder.SaveScene(SceneName.HYRULE_CASTLE);
+                        if (!GameRuntimeStateHolder.IsLevelCompleted(SceneName.COURTYARD))
                             return SceneName.HYRULE_CASTLE;
-                        }
 
-                        GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.GAMEPLAY);
-                        GameRuntimeStateHolder.SaveScene(SceneName.COURTYARD_CASTLE);
+
                         return SceneName.COURTYARD_CASTLE;
                     }
 
                 case SceneName.MAIN:
                     {
-                        GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.GAMEPLAY);
-                        GameRuntimeStateHolder.SaveScene(SceneName.HYRULE_CASTLE);
                         return SceneName.HYRULE_CASTLE;
                     }
                 default:
                     {
-                        GameRuntimeStateHolder.SaveScene(SceneName.MAIN);
                         return SceneName.MAIN;
                     }
             }

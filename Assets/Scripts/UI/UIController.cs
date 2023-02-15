@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using UnityEngine.SceneManagement;
+using MainLeaf.OcarinaOfTime.Game;
+using TMPro;
+using MainLeaf.OcarinaOfTime.UI;
 
 namespace Mainleaf.OcarinaOfTime.UI
 {
     public class UIController : MonoBehaviour
     {
         [SerializeField] private List<UIScreenItem> _uiScreenList;
+        [SerializeField] private FadeInEffect _fadeInEffect;
         public enum UIScreen
         {
             DEFAULT,
-            PAUSE
+            PAUSE,
+            TITLE_SCREEN
         }
 
         private UIScreen _currentUIScreen;
@@ -38,12 +43,16 @@ namespace Mainleaf.OcarinaOfTime.UI
                             break;
                         }
 
+
+
                 }
                 _currentUIScreen = value;
             }
         }
 
         public static Action<UIScreen> OnUIScreenChanged;
+
+        public static Action OnLevelEnded;
 
         private void Start()
         {
@@ -68,5 +77,6 @@ namespace Mainleaf.OcarinaOfTime.UI
 
             }
         }
+
     }
 }

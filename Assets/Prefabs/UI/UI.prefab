@@ -12,8 +12,11 @@ GameObject:
   - component: {fileID: 658039814}
   - component: {fileID: 658039813}
   - component: {fileID: 658039812}
+  - component: {fileID: 299963491302403070}
+  - component: {fileID: 6471439158887105173}
+  - component: {fileID: 299963491302403067}
   m_Layer: 5
-  m_Name: TitleLabel
+  m_Name: TitleScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,8 +80,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -95,8 +98,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -152,6 +155,75 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.7372549}
   m_EffectDistance: {x: 4.62, y: 3}
   m_UseGraphicAlpha: 1
+--- !u!114 &299963491302403070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658039810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661fd53e5572a4c0eb7dc4d8d78ff1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Screen: 2
+--- !u!114 &6471439158887105173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658039810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9246e001fcc54fe2ad645ea9907a4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 299963491302403068}
+  Duration: 5
+  AutoStart: 1
+  EaseEffect: 2
+  OnAnimationFinishedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 299963491302403067}
+        m_TargetAssemblyTypeName: MainLeaf.OcarinaOfTime.UI.FadeOutEffect, Assembly-CSharp
+        m_MethodName: StartAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAnimationStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &299963491302403067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658039810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31fa21a902ceb4b71b6b35d62949fcca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanvasGroup: {fileID: 299963491302403068}
+  Duration: 4
+  AutoStart: 0
+  EaseEffect: 3
+  OnAnimationFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAnimationStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1082466113
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1082466114}
+  - component: {fileID: 299963491302403068}
   m_Layer: 5
   m_Name: LevelTitle
   m_TagString: Untagged
@@ -189,6 +262,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &299963491302403068
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082466113}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &299963490283785336
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +914,12 @@ MonoBehaviour:
   Duration: 2
   AutoStart: 1
   EaseEffect: 20
+  OnAnimationFinishedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAnimationStartedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!225 &1355773646
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -837,7 +928,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299963491922850470}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

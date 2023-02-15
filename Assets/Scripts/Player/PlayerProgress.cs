@@ -10,5 +10,7 @@ namespace MainLeaf.OcarinaOfTime.Player
         }
 
         public static int GetPoints() => _points;
+
+        public static void ResetPoints() => _points = 0;
     }
 }

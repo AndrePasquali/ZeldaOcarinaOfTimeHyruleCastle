@@ -7,7 +7,6 @@ namespace MainLeaf.OcarinaOfTime.Game.Goal
     {
         public void OnGoalCompleted()
         {
-            GameRuntimeStateHolder.ChangeGameState(GameState.COMPLETED);
         }
     }
 }

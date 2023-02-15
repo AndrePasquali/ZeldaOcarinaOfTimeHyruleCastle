@@ -10,9 +10,7 @@ namespace Mainleaf.OcarinaOfTime.UI
     {
         [SerializeField]
         private Button _resumeButton;
-
         [SerializeField] private Button _restartButton;
-
         [SerializeField] private Button _quitButton;
 
         private void Start()
@@ -35,12 +33,18 @@ namespace Mainleaf.OcarinaOfTime.UI
 
         private async void OnQuitButton()
         {
-            GameRuntimeStateHolder.SaveScene(MainLeaf.OcarinaOfTime.Scenes.SceneName.LOADING);
-
+            GameRuntimeStateHolder.OnGameQuit();
             await SceneManager.LoadSceneAsync(0);
 
         }
 
+        private void OnDestroy()
+        {
+            _resumeButton.onClick.RemoveAllListeners();
+            _restartButton.onClick.RemoveAllListeners();
+            _quitButton.onClick.RemoveAllListeners();
+
+        }
 
     }
 }

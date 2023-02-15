@@ -1,6 +1,7 @@
 using MainLeaf.OcarinaOfTime.Audio;
 using MainLeaf.OcarinaOfTime.Character.Physics;
 using MainLeaf.OcarinaOfTime.Game;
+using MainLeaf.OcarinaOfTime.Game.Level;
 using MainLeaf.OcarinaOfTime.Scenes;
 using MainLeaf.OcarinaOfTime.Services;
 using UnityEngine;
@@ -113,8 +114,7 @@ namespace MainLeaf.OcarinaOfTime.Character.AI
 
             Time.timeScale = 0;
 
-            GameRuntimeStateHolder.SaveScene(SceneName.COURTYARD);
-            GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.GAMEOVER);
+            LevelController.OnLevelEnded.Invoke(SceneName.COURTYARD, EndGameReason.GameOver);
 
             var popup = ServiceLocator.Get<PopupController>();
 

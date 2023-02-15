@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using MainLeaf.OcarinaOfTime.Game;
+using MainLeaf.OcarinaOfTime.Game.Level;
 using MainLeaf.OcarinaOfTime.Scenes;
 using TMPro;
 using UnityEngine;
@@ -63,8 +64,7 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
 
         private void SaveGameState()
         {
-            GameRuntimeStateHolder.SaveScene(SceneName.LOADING);
-            GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.DEFAULT);
+            LevelController.OnLevelEnded.Invoke(SceneName.COURTYARD_CASTLE, EndGameReason.Completed);
         }
 
         private async void OnContinue()

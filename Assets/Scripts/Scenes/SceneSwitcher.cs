@@ -36,8 +36,6 @@ namespace MainLeaf.OcarinaOfTime.Scenes
 
         private async void LoadScene()
         {
-            SaveGameState();
-
             PlaySoundFX();
 
             await UniTask.Delay(800);
@@ -48,12 +46,6 @@ namespace MainLeaf.OcarinaOfTime.Scenes
         private void Update()
         {
             if (UnityEngine.Input.GetKeyDown(KeyCode.Return)) LoadScene();
-        }
-
-        private void SaveGameState()
-        {
-            GameRuntimeStateHolder.SaveScene(SceneName.MAIN);
-            GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.DEFAULT);
         }
 
         public void PlaySoundFX()

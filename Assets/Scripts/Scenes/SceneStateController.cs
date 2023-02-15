@@ -14,8 +14,6 @@ namespace MainLeaf.OcarinaOfTime.Scenes
         {
             int currentScene = SceneManager.GetActiveScene().buildIndex;
 
-            GameRuntimeStateHolder.SaveScene((SceneName)currentScene);
-
             Time.timeScale = 1;
         }
     }

@@ -10,23 +10,7 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
         [SerializeField] private Rigidbody _rigibody;
         [SerializeField] private FixedJoint _joint;
 
-        [SerializeField] private int _id;
-
-        private void Start() => Initialize();
-
-        private void Initialize()
-        {
-            return;
-            var box1Position = GameRuntimeStateHolder.GetBoxPositionState().Box1PositionState;
-            var box2Position = GameRuntimeStateHolder.GetBoxPositionState().Box2PositionState;
-
-            if (_id == 1 && box1Position != null) transform.position = box1Position;
-
-            if (_id == 2 && box2Position != null) transform.position = box2Position;
-        }
-
-
-
+        public int Id;
 
         public FixedJoint GetJoint()
         {
@@ -61,7 +45,7 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
 
         }
 
-        private async void OnCollisionExit(Collision other)
+        private void OnCollisionExit(Collision other)
         {
             if (other.gameObject.tag.Equals("Player"))
             {
@@ -71,6 +55,16 @@ namespace MainLeaf.OcarinaOfTime.Enrironment
 
                 if (_joint != null) Destroy(_joint);
             }
+        }
+
+        public void DisablePhysics()
+        {
+            _rigibody.isKinematic = true;
+            _rigibody.angularVelocity = Vector3.zero;
+            _rigibody.velocity = Vector3.zero;
+
+            if (_joint != null) Destroy(_joint);
+
         }
 
     }

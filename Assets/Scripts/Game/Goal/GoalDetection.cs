@@ -20,17 +20,7 @@ namespace MainLeaf.OcarinaOfTime.Game.Goal
         private readonly float _xAxisGoal = 9.979904F;
         private readonly float _yAxisGoal = -0.999729968F;
         private readonly float _zAxisGoal = 3.410384F;
-        private readonly List<IGoalObserver> _observers = new List<IGoalObserver>();
 
-        public void AddObserver(IGoalObserver observer)
-        {
-            _observers.Add(observer);
-        }
-
-        public void RemoveObserver(IGoalObserver observer)
-        {
-            _observers.Remove(observer);
-        }
 
         private void Update()
         {
@@ -91,9 +81,7 @@ namespace MainLeaf.OcarinaOfTime.Game.Goal
 
         private void NotifyGoalCompleted()
         {
-            SaveState();
-
-            foreach (var observer in _observers) observer.OnGoalCompleted();
+            SaveBoxState();
 
             OnObjectiveCompleted();
         }
@@ -113,9 +101,20 @@ namespace MainLeaf.OcarinaOfTime.Game.Goal
             _box2.GetComponent<Rigidbody>().isKinematic = true;
         }
 
-        private void SaveState()
+        private void SaveBoxState()
         {
-            GameRuntimeStateHolder.SetBoxPositionState(_box1.transform.position, _box2.transform.position);
+            var box1 = new BoxState
+            {
+                Position = _box1.transform.position,
+                Rotation = _box1.transform.rotation
+            };
+            var box2 = new BoxState
+            {
+                Position = _box2.transform.position,
+                Rotation = _box2.transform.rotation
+            };
+
+            GameRuntimeStateHolder.SetBoxPositionState(box1, box2);
         }
 
         public void PlaySoundFX()
@@ -123,5 +122,4 @@ namespace MainLeaf.OcarinaOfTime.Game.Goal
             _AudioSource.PlayOneShot(_soundClip);
         }
     }
-
 }

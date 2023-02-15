@@ -4,6 +4,12 @@ namespace MainLeaf.OcarinaOfTime.UI
 {
     public sealed class FadeInEffect : UIEffect
     {
-        public override void StartAnimation() => CanvasGroup.DOFade(1, Duration).SetEase(EaseEffect);
+        public override void StartAnimation() => CanvasGroup.DOFade(1, Duration).SetEase(EaseEffect).OnComplete(() =>
+        {
+            OnAnimationFinish();
+        }).OnStart(() =>
+        {
+            OnAnimationStart();
+        });
     }
 }
