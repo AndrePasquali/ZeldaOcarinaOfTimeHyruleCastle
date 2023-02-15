@@ -1,9 +1,11 @@
 namespace MainLeaf.OcarinaOfTime.Character
 {
-    public class CharacterHang: CharacterAbility
+    public class CharacterHang : CharacterAbility
     {
         protected override void Execute()
         {
+            if (!AbilityEnabled) return;
+
             throw new System.NotImplementedException();
         }
 

@@ -136,7 +136,7 @@ MonoBehaviour:
     m_Duration: 8.033333333333333
     m_TimeScale: 1
     m_ParentTrack: {fileID: -5586067915103681132}
-    m_EaseInDuration: 0
+    m_EaseInDuration: 1
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
     m_BlendOutDuration: -1
@@ -197,7 +197,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: ThirdPerson Camera (1)
+    m_DisplayName: TimelineCamera
   m_Markers:
     m_Objects: []
 --- !u!114 &-3879217417783370139

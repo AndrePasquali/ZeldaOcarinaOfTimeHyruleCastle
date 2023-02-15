@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using MainLeaf.OcarinaOfTime.Audio;
+using Cysharp.Threading.Tasks;
 
 namespace MainLeaf.OcarinaOfTime.Game.Goal
 {
@@ -56,19 +57,18 @@ namespace MainLeaf.OcarinaOfTime.Game.Goal
 
         private bool IsBoxesStacked()
         {
-
             var box1Position = _box1.transform.localPosition;
             var box2Position = _box2.transform.localPosition;
 
-            var validBox1HorizontalPosition = IsWithinTolerance(box1Position.x, _xAxisGoal, 0.5F);
-            var validBox2HorizontalPosition = IsWithinTolerance(box2Position.x, _xAxisGoal, 0.5F);
+            var validBox1HorizontalPosition = CheckTolerance(box1Position.x, _xAxisGoal, 0.7F);
+            var validBox2HorizontalPosition = CheckTolerance(box2Position.x, _xAxisGoal, 0.8F);
 
             var verticalPositionToCheck = box1Position.y - box2Position.y;
 
-            var validBoxVerticalPosition = IsWithinTolerance(verticalPositionToCheck, _yAxisGoal, 0.5F);
+            var validBoxVerticalPosition = CheckTolerance(verticalPositionToCheck, _yAxisGoal, 0.7F);
 
-            var validBox1ZPosition = IsWithinTolerance(box1Position.z, _zAxisGoal, 0.5F);
-            var validBox2ZPosition = IsWithinTolerance(box2Position.z, _zAxisGoal, 0.5F);
+            var validBox1ZPosition = CheckTolerance(box1Position.z, _zAxisGoal, 0.7F);
+            var validBox2ZPosition = CheckTolerance(box2Position.z, _zAxisGoal, 0.7F);
 
             return validBox1HorizontalPosition && validBox2HorizontalPosition && validBox1ZPosition && validBox2ZPosition && validBoxVerticalPosition;
 
@@ -84,28 +84,38 @@ namespace MainLeaf.OcarinaOfTime.Game.Goal
 
 
 
-        private bool IsWithinTolerance(float value, float reference, float tolerance)
+        private bool CheckTolerance(float value, float reference, float tolerance)
         {
             return value >= reference - tolerance && value <= reference + tolerance;
         }
 
         private void NotifyGoalCompleted()
         {
-            Debug.Log("Objetivo concluído!");
+            SaveState();
 
             foreach (var observer in _observers) observer.OnGoalCompleted();
+
+            OnObjectiveCompleted();
         }
 
         private void NotifyGoalFailed()
         {
-            Debug.Log("Objetivo Falhou");
 
         }
 
-        private void OnObjectiveCompleted()
+        private async void OnObjectiveCompleted()
         {
+            await UniTask.Delay(1000);
+
+            if (!IsBoxesStacked()) return;
+
             _box1.GetComponent<Rigidbody>().isKinematic = true;
             _box2.GetComponent<Rigidbody>().isKinematic = true;
+        }
+
+        private void SaveState()
+        {
+            GameRuntimeStateHolder.SetBoxPositionState(_box1.transform.position, _box2.transform.position);
         }
 
         public void PlaySoundFX()

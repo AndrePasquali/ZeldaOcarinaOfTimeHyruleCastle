@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CourtYard.unity
     guid: 916e48eeca4544424b09d85804b148ab
   - enabled: 1
-    path: Assets/Scenes/Castle.unity
+    path: Assets/Scenes/CourtYardCastle.unity
     guid: 8663a7725c4e54b6084c8c5477281c52
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 70f02f6ac6e924657a99392ccdfaa71a,

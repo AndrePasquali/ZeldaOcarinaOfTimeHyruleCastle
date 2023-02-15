@@ -21,6 +21,10 @@ namespace MainLeaf.Environment
                 _completed = true;
 
             }
+
+            CheckFixedJoint(other);
+
+
         }
 
         public void OnTriggerEnter(Collider other)
@@ -31,6 +35,12 @@ namespace MainLeaf.Environment
 
                 rigidbody.freezeRotation = false;
                 rigidbody.constraints = RigidbodyConstraints.None;
+
+                if (other.gameObject.GetComponent<FixedJoint>() != null)
+                {
+                    var fixedJoint = other.gameObject.GetComponent<FixedJoint>();
+                    Destroy(fixedJoint);
+                }
 
                 _completed = true;
 
@@ -46,11 +56,26 @@ namespace MainLeaf.Environment
                 rigidbody.freezeRotation = false;
                 rigidbody.constraints = RigidbodyConstraints.None;
 
+                if (other.gameObject.GetComponent<FixedJoint>() != null)
+                {
+                    var fixedJoint = other.gameObject.GetComponent<FixedJoint>();
+                    Destroy(fixedJoint);
+                }
+
                 _completed = true;
 
             }
         }
 
+        private void CheckFixedJoint(Collider other)
+        {
+            if (other.gameObject.name == "Box")
+                if (other.gameObject.GetComponent<FixedJoint>() != null)
+                {
+                    var fixedJoint = other.gameObject.GetComponent<FixedJoint>();
+                    Destroy(fixedJoint);
+                }
+        }
 
 
         private async void ApplyForce()

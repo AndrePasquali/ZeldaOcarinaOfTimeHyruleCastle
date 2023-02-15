@@ -35,11 +35,19 @@ namespace MainLeaf.OcarinaOfTime.Character
                 {
                     if (hit.transform.GetComponent<IPushable>() != null)
                     {
-                        CharacterStateMachine.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Pushing);
 
                         var rigidbody = hit.transform.GetComponent<Rigidbody>();
 
                         _targetRigidbody = rigidbody;
+
+                        hit.transform.GetComponent<Box>().GetJoint().connectedBody = Rigidbody;
+
+
+                        if (_targetRigidbody == null || hit.transform.GetComponent<Box>().GetJoint().connectedBody == null) return;
+
+                        CharacterStateMachine.OnCharacterMovementStateChange.Invoke(StateMachine.CharacterMovement.Pushing);
+
+                        ChangeMode(CameraController.CameraMode.ThirdPerson);
 
                         UpdateAnimator(true);
 
@@ -47,8 +55,6 @@ namespace MainLeaf.OcarinaOfTime.Character
                         var isStopped = velocity.magnitude == 0;
                         var localVelocity = transform.InverseTransformDirection(velocity);
                         var movingForward = localVelocity.z > 0;
-
-                        hit.transform.GetComponent<Box>().GetJoint().connectedBody = Rigidbody;
 
 
                         //  var forceToApply = movingForward ? transform.forward : transform.forward * -1;
@@ -76,7 +82,6 @@ namespace MainLeaf.OcarinaOfTime.Character
 
         public async void Push()
         {
-            ChangeMode(CameraController.CameraMode.ThirdPerson);
             while (UnityEngine.Input.GetKey(KeyCode.F))
             {
                 Execute();
@@ -118,6 +123,8 @@ namespace MainLeaf.OcarinaOfTime.Character
 
         public void PlaySoundFX()
         {
+            if (AudioSource == null || SoundClip == null) return;
+
             if (AudioSource.isPlaying) return;
             AudioSource.clip = SoundClip[0];
             AudioSource.PlayDelayed(0.75F);

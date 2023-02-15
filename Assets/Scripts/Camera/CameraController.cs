@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace MainLeaf.OcarinaOfTime.Camera
 {
-    public class CameraController: MonoBehaviour
+    public class CameraController : MonoBehaviour
     {
         [SerializeField] private CinemachineFreeLook _freeLookCamera;
         [SerializeField] private CinemachineVirtualCamera _thirdPersonCamera;
-        
+
         private void Start()
         {
             ServiceLocator.Register(this);
@@ -25,21 +25,25 @@ namespace MainLeaf.OcarinaOfTime.Camera
 
         public void ChangeMode(CameraMode newCameraMode)
         {
+            if (CurrentMode == newCameraMode) return;
+
             switch (newCameraMode)
             {
                 case CameraMode.FreeLook:
-                {
-                    CurrentMode = newCameraMode;
-                    _freeLookCamera.Priority = _thirdPersonCamera.Priority + 1;
-                    break;
-                }
+                    {
+                        CurrentMode = newCameraMode;
+                        _freeLookCamera.Priority = _thirdPersonCamera.Priority + 1;
+                        break;
+                    }
                 case CameraMode.ThirdPerson:
-                {
-                    CurrentMode = newCameraMode;
-                    _thirdPersonCamera.Priority = _freeLookCamera.Priority + 1;
-                    break;
-                }
+                    {
+                        CurrentMode = newCameraMode;
+                        _thirdPersonCamera.Priority = _freeLookCamera.Priority + 1;
+                        break;
+                    }
             }
         }
+
+
     }
 }

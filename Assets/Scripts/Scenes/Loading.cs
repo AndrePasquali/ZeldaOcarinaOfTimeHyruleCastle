@@ -14,7 +14,6 @@ namespace MainLeaf.OcarinaOfTime.Scenes
         private void LoadNextScene()
         {
             var targetScene = GetNextScene();
-            Debug.Log($"NEXT SCENE: {targetScene} STATE: {GameRuntimeStateHolder.GetGameState()} CURRENT: {GameRuntimeStateHolder.GetCurrentScene()}");
             SceneManager.LoadScene((int)targetScene);
         }
 
@@ -24,9 +23,11 @@ namespace MainLeaf.OcarinaOfTime.Scenes
             var currentGameState = GameRuntimeStateHolder.GetGameState();
             switch (currentScene)
             {
+                case SceneName.COURTYARD_CASTLE: return SceneName.MAIN;
                 case SceneName.LOADING: return SceneName.MAIN;
                 case SceneName.HYRULE_CASTLE:
                     {
+
                         GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.GAMEPLAY);
                         GameRuntimeStateHolder.SaveScene(SceneName.COURTYARD);
                         return SceneName.COURTYARD;
@@ -35,7 +36,8 @@ namespace MainLeaf.OcarinaOfTime.Scenes
                     {
                         if (currentGameState == GameRuntimeStateHolder.GameState.GAMEOVER)
                         {
-                            GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.GAMEPLAY);
+
+                            GameRuntimeStateHolder.ChangeGameState(GameRuntimeStateHolder.GameState.COMPLETED);
                             GameRuntimeStateHolder.SaveScene(SceneName.HYRULE_CASTLE);
                             return SceneName.HYRULE_CASTLE;
                         }

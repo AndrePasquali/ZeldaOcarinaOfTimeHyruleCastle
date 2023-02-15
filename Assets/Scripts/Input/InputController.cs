@@ -29,7 +29,6 @@ namespace MainLeaf.OcarinaOfTime.Input
                     case CommandState.Jump:
                         {
                             _commands["jump"].Execute();
-                            //_commands["climb"].Execute();
                             break;
                         }
                     case CommandState.Push:
@@ -39,7 +38,7 @@ namespace MainLeaf.OcarinaOfTime.Input
                         }
                     case CommandState.Crouch:
                         {
-                            _commands["crouch"].Execute();
+                            //_commands["crouch"].Execute();
                             break;
                         }
                     case CommandState.Default: break;

@@ -7,12 +7,9 @@ namespace MainLeaf.OcarinaOfTime.Character
     public abstract class CharacterAbility : MonoBehaviour
     {
         public bool AbilityEnabled;
-
         public KeyCode ActionKey;
-
         public string AnimationName;
         public Animator Animator => _animator ?? (_animator = ServiceLocator.Get<Animator>());
-
         private Animator _animator;
 
         protected bool Initialized;

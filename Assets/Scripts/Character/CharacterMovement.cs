@@ -18,14 +18,13 @@ namespace MainLeaf.OcarinaOfTime.Character
         [SerializeField] private float _moveSpeed = 2;
         [SerializeField] private float _turnSpeed = 200;
         [SerializeField] private float _jumpForce = 10;
-        private readonly float _interpolation = 10;
+        [SerializeField] private float _interpolation = 10;
         private float _currentVertical = 0;
         private float _currentHorizontal = 0;
 
 
         private void FixedUpdate()
         {
-            HandleSlope();
             UpdateMovement();
         }
 
@@ -49,6 +48,7 @@ namespace MainLeaf.OcarinaOfTime.Character
             _animator.SetFloat("Turn", _currentHorizontal);
         }
 
+
         private bool OnSlope()
         {
             RaycastHit hit;
@@ -59,7 +59,6 @@ namespace MainLeaf.OcarinaOfTime.Character
                 Debug.DrawRay(transform.position, surfaceNormal, Color.cyan);
                 if (angle > _slopeLimit)
                 {
-                    Debug.Log("SLOPE DETECT");
                     return true;
                 }
             }

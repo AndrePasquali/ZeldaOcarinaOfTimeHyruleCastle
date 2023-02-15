@@ -19,17 +19,19 @@ namespace MainLeaf.OcarinaOfTime.Character.StateMachine
             {
                 case CharacterMovement.Pushing:
                     {
-                        //  var pushBehaviour = GetComponent<CharacterPush>();
-                        //pushBehaviour.Push();
+                        CurrentMovementState = CharacterMovement.Pushing;
                         break;
+
                     }
                 case CharacterMovement.Jumping:
                     {
 
+                        CurrentMovementState = CharacterMovement.Jumping;
                         break;
                     }
                 case CharacterMovement.Crouching:
                     {
+                        CurrentMovementState = CharacterMovement.Crouching;
 
                         break;
                     }

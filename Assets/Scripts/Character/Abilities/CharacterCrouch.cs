@@ -14,6 +14,8 @@ namespace MainLeaf.OcarinaOfTime.Character
     {
         protected override void Execute()
         {
+            if (!AbilityEnabled) return;
+
             var physics = ServiceLocator.Get<CharacterPhysics>();
 
             if (!physics.IsGrounded()) return;
@@ -64,6 +66,7 @@ namespace MainLeaf.OcarinaOfTime.Character
 
         public void PlaySoundFX()
         {
+            if (AudioSource == null || SoundClip == null) return;
             AudioSource.PlayOneShot(SoundClip[UnityEngine.Random.Range(0, SoundClip.Length)]);
         }
 
