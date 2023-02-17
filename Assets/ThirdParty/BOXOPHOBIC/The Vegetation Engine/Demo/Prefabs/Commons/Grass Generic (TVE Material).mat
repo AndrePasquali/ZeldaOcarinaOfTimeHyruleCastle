@@ -12,13 +12,12 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - TVE_FEATURE_BATCHING
   - TVE_FEATURE_CLIP
   - _DISABLE_DECALS
   - _DISABLE_SSR
   m_InvalidKeywords: []
   m_LightmapFlags: 0
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2450
   stringTagMap:
@@ -371,7 +370,7 @@ Material:
     - _SubsurfaceAmbientValue: 0.2
     - _SubsurfaceAngleValue: 2
     - _SubsurfaceCat: 1
-    - _SubsurfaceDiffusion: 2.9178872
+    - _SubsurfaceDiffusion: 3.5648174
     - _SubsurfaceDirectValue: 1
     - _SubsurfaceLightValue: 1
     - _SubsurfaceMaskMaxValue: 0.5
@@ -411,8 +410,8 @@ Material:
     - _VariationMessage: 0
     - _VariationMotionMessage: 0
     - _VertexCat: 0
-    - _VertexDataMode: 1
-    - _VertexDynamicMode: 1
+    - _VertexDataMode: 0
+    - _VertexDynamicMode: 0
     - _VertexHeightValue: 1
     - _VertexMaskMode: 0
     - _VertexMasksMode: 0
@@ -477,8 +476,8 @@ Material:
     - _OverlayMaskRemap: {r: 0, g: 0, b: 0, a: 0}
     - _SecondMaskRemap: {r: 0, g: 0, b: 0, a: 0}
     - _SubsurfaceColor: {r: 0.2699546, g: 0.3411765, b: 0, a: 1}
-    - _SubsurfaceDiffusion_Asset: {r: -1.2775997e+12, g: 0.08025454, b: 2.8915498e-12,
-        a: 1.1799919e-29}
+    - _SubsurfaceDiffusion_Asset: {r: 2.2888926e+38, g: 1.2389358e-26, b: 7.69327e-37,
+        a: 0.00018220427}
     - _SubsurfaceDiffusion_asset: {r: 2.2888926e+38, g: 1.2389358e-26, b: 7.69327e-37,
         a: 0.00018220427}
     - _SubsurfaceMaskRemap: {r: 0, g: 0, b: 0, a: 0}
@@ -487,18 +486,3 @@ Material:
     - _render_normals: {r: -1, g: -1, b: -1, a: 0}
     - _render_normals_options: {r: -1, g: -1, b: -1, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &437616468937543591
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa486462e6be1764e89c788ba30e61f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_DiffusionProfileReferences:
-  - {fileID: 11400000, guid: 70bb94d37e5ca43d88794b2caf546f0f, type: 2}
-  m_MaterialReferences: []
